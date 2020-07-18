@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(Login());
-}
 
 class Login extends StatefulWidget {
   @override
