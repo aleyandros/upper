@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "857663725746",
+    "firebase_url": "https://uppertest1.firebaseio.com",
+    "project_id": "uppertest1",
+    "storage_bucket": "uppertest1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:857663725746:android:cbcf008477307f65b629ab",
+        "android_client_info": {
+          "package_name": "com.upperapp.upper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "857663725746-gt45pksv71c0ejhhkib2saha9ceqlrjf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCV1dUPCM05BEzMWK0PvuieYZUuipW-U9M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "857663725746-gt45pksv71c0ejhhkib2saha9ceqlrjf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
