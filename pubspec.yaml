@@ -65,7 +65,7 @@ flutter:
     - family: Montserrat-SemiBold
       fonts:
         - asset: fonts/Montserrat/Montserrat-SemiBold.ttf
-    - family: Montserrat-SemiBold
+    - family: Pacifico-Regular
       fonts:
         - asset: fonts/Pacifico/Pacifico-Regular.ttf
 
