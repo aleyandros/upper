@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../Constants/labels.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -20,16 +20,13 @@ class _LoginState extends State<Login> {
                 Expanded(
                   child: Container(
                     width: double.infinity,
-                    color: Color(0xFF2BB2FF),
+                    color: kBlueColour,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
                           'Bienvenido a Upper',
-                          style: TextStyle(
-                              fontFamily: 'Montserrat-SemiBold',
-                              color: Colors.white,
-                              fontSize: 25.0),
+                          style: kLabelTitleWhite,
                         ),
                         SizedBox(
                           height: 10.0,
@@ -37,10 +34,7 @@ class _LoginState extends State<Login> {
                         Text(
                           'Inicia sesion o crea una\ncuenta.',
                           textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontFamily: 'Montserrat-Regular',
-                              color: Colors.white,
-                              fontSize: 16.0),
+                          style: kLabelSubtitleWhite,
                         ),
                       ],
                     ),
@@ -49,26 +43,17 @@ class _LoginState extends State<Login> {
                 Expanded(
                   child: Container(
                     width: double.infinity,
-                    color: Color(0xFFFFFFFF),
+                    color: kWhiteColour,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
                           '¿No tienes cuenta? ',
-                          style: TextStyle(
-                            fontFamily: 'Montserrat-Regular',
-                            fontSize: 14.0,
-                            color: Color(0xFF2BB2FF),
-                          ),
+                          style: kLabelBlue,
                         ),
                         Text(
                           'crea una',
-                          style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            fontFamily: 'Montserrat-Medium',
-                            fontSize: 14.0,
-                            color: Color(0xFF2BB2FF),
-                          ),
+                          style: kLabelUnderlineBlue,
                         )
                       ],
                     ),
@@ -79,7 +64,7 @@ class _LoginState extends State<Login> {
             Positioned(
               top: 395.0,
               child: Container(
-                color: Colors.white,
+                color: kWhiteColour,
                 width: 374.0,
                 height: 200.0,
               ),
