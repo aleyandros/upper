@@ -7,6 +7,12 @@ const kGreyColour = Color(0xFFB1B1B1);
 const kBlackColour = Color(0xFF000000);
 const kRedColour = Color(0xFFE30000);
 
+const kLabelUpperYellow = TextStyle(
+  fontSize: 36.0,
+  color: kYellowColour,
+  fontFamily: 'Pacifico-Regular',
+);
+
 const kLabelTitleWhite = TextStyle(
   fontSize: 25.0,
   color: kWhiteColour,
