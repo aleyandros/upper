@@ -15,3 +15,17 @@ Future signIn() async{
     print(e);
   }
 }
+// HOW TO USE INSIDE A ASYNC FUNCTION MAYBE NOT 100% SAFE
+            //try {
+            //var user = await signIn();
+            //if (user != null) {
+            //print('inside');
+            //}
+            //}catch (e){
+            //print(e);
+//}
+
+
+void register(){
+
+}
