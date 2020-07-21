@@ -5,30 +5,23 @@ import 'package:flutter/cupertino.dart';
 
 final _auth = FirebaseAuth.instance;
 final db = Firestore.instance;
-Future signIn({String email, String pass}) async {
+
+Future signIn({@required String email, @required String pass}) async {
   try {
-    final user =
+    AuthResult user =
         await _auth.signInWithEmailAndPassword(email: email, password: pass);
     return (user);
   } catch (e) {
     print(e);
   }
 }
-// HOW TO USE INSIDE A ASYNC FUNCTION MAYBE NOT 100% SAFE
-//try {
-//var user = await signIn();
-//if (user != null) {
-//print('inside');
-//}
-//}catch (e){
-//print(e);
-//}
 
 void register({
   @required String email,
   @required String pass,
   @required String phone,
 }) async {
+  //esto bva al firebase
   Map<String, Object> data = {
     "Nombre": "Trial",
     "Correo": email,
@@ -39,10 +32,21 @@ void register({
       await _auth.createUserWithEmailAndPassword(email: email, password: pass);
   FirebaseUser user = res.user;
   await db.collection("Users").document(user.uid).setData(data);
-  print(await db.collection("Users").document(user.uid).get());
+  print(await db.collection("Users").document(user.uid));
 }
 
-void verifyPhoneNumber() {
+// Funciona en caso de estar iniciado
+Future<void> sendEmailVerification() async {
+  FirebaseUser user = await _auth.currentUser();
+  user.sendEmailVerification();
+}
+
+Future<bool> isEmailVerified() async {
+  FirebaseUser user = await _auth.currentUser();
+  return user.isEmailVerified;
+}
+
+Future<void> verifyPhoneNumber() {
   //no funciona
   _auth.verifyPhoneNumber(
       phoneNumber: "+573142523657",
