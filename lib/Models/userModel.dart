@@ -1,10 +1,10 @@
-class User {
+class UserModel {
   String nombre;
   String apellido;
   String email;
   String celular;
 
-  User({this.nombre, this.apellido, this.email, this.celular});
+  UserModel({this.nombre, this.apellido, this.email, this.celular});
 
   toJson() {
     return {

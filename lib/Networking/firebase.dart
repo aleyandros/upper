@@ -3,7 +3,7 @@ import 'authExceptionHandler.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:upper/Models/user.dart';
+import 'package:upper/Models/userModel.dart';
 
 final _auth = FirebaseAuth.instance;
 final db = Firestore.instance;
@@ -34,8 +34,8 @@ Future<String> register({
   @required String phone,
 }) async {
   //esto se guarda en el firebase
-  User user =
-      User(email: email, nombre: nombre, apellido: apellido, celular: phone);
+  UserModel user = UserModel(
+      email: email, nombre: nombre, apellido: apellido, celular: phone);
 
   Map<String, Object> data = user.toJson();
 
@@ -77,11 +77,11 @@ Future<bool> isEmailVerified() async {
     final status = AuthExceptionHandler.handleException(e);
     final String errormsg =
         AuthExceptionHandler.generateExceptionMessage(status);
-    print(errormsg);
+    return false;
   }
 }
 
-Future<void> verifyPhoneNumber() {
+Future verifyPhoneNumber() {
   //no funciona
   _auth.verifyPhoneNumber(
       phoneNumber: "+573142523657",
