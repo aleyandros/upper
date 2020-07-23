@@ -9,6 +9,8 @@ final _auth = FirebaseAuth.instance;
 final db = Firestore.instance;
 AuthResultStatus _status;
 
+String verificationId;
+
 Future signIn({@required String email, @required String pass}) async {
   try {
     AuthResult res =
@@ -81,13 +83,29 @@ Future<bool> isEmailVerified() async {
   }
 }
 
-Future verifyPhoneNumber() {
-  //no funciona
-  _auth.verifyPhoneNumber(
-      phoneNumber: "+573142523657",
-      timeout: Duration(seconds: 60),
-      verificationCompleted: null,
-      verificationFailed: null,
-      codeSent: null,
-      codeAutoRetrievalTimeout: null);
+Future<void> verifyPhone(phoneNo) async {
+  final PhoneVerificationCompleted verified = (AuthCredential authResult) {
+    _auth.signInWithCredential(authResult);
+  };
+
+  final PhoneVerificationFailed verificationFailed =
+      (AuthException authException) {
+    print('${authException.message}');
+  };
+
+  final PhoneCodeSent smsSent = (String verId, [int forceResend]) {
+    verificationId = verId;
+  };
+
+  final PhoneCodeAutoRetrievalTimeout autoTimeout = (String verId) {
+    verificationId = verId;
+  };
+
+  await _auth.verifyPhoneNumber(
+      phoneNumber: phoneNo,
+      timeout: const Duration(seconds: 5),
+      verificationCompleted: verified,
+      verificationFailed: verificationFailed,
+      codeSent: smsSent,
+      codeAutoRetrievalTimeout: autoTimeout);
 }
