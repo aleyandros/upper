@@ -52,7 +52,7 @@ class AuthExceptionHandler {
         errorMessage = "Tu correo parece no ser valido.";
         break;
       case AuthResultStatus.wrongPassword:
-        errorMessage = "Tu contraseña no existe.";
+        errorMessage = "Tu contraseña es incorrecta.";
         break;
       case AuthResultStatus.userNotFound:
         errorMessage = "No existe usuario con este correo.";
