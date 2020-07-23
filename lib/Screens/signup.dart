@@ -64,7 +64,7 @@ class _LoginState extends State<Signup> {
                             child: Row(
                               children: <Widget>[
                                 Text(
-                                  '¿Torve? ',
+                                  '¿Ya tienes cuenta? ',
                                   style: kLabelWhite,
                                 ),
                                 Text(
