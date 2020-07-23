@@ -68,7 +68,7 @@ class _LoginState extends State<Signup> {
                                   style: kLabelWhite,
                                 ),
                                 Text(
-                                  'inicia sesión marica herrera',
+                                  'inicia sesión',
                                   style: kLabelUnderlineWhite,
                                 ),
                               ],

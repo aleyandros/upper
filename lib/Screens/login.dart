@@ -52,7 +52,7 @@ class _LoginState extends State<Login> {
                           style: kLabelBlue,
                         ),
                         Text(
-                          'crea una mazamorra',
+                          'crea una',
                           style: kLabelUnderlineBlue,
                         )
                       ],
