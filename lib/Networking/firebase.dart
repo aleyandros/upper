@@ -3,6 +3,7 @@ import 'authExceptionHandler.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:upper/Models/user.dart';
 
 final _auth = FirebaseAuth.instance;
 final db = Firestore.instance;
@@ -26,16 +27,18 @@ Future signIn({@required String email, @required String pass}) async {
 }
 
 Future<String> register({
+  @required String nombre,
+  @required String apellido,
   @required String email,
   @required String pass,
   @required String phone,
 }) async {
   //esto se guarda en el firebase
-  Map<String, Object> data = {
-    "Nombre": "Trial",
-    "Correo": email,
-    "Phone": phone,
-  };
+  User user =
+      User(email: email, nombre: nombre, apellido: apellido, celular: phone);
+
+  Map<String, Object> data = user.toJson();
+
   try {
     AuthResult res = await _auth.createUserWithEmailAndPassword(
         email: email, password: pass);
