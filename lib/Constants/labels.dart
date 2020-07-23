@@ -37,6 +37,13 @@ const kLabelButtonWhite = TextStyle(
   fontFamily: 'Montserrat-Medium',
 );
 
+const kLabelUnderlineWhite = TextStyle(
+  fontSize: 14.0,
+  color: kWhiteColour,
+  fontFamily: 'Montserrat-Medium',
+  decoration: TextDecoration.underline,
+);
+
 const kLabelBlue = TextStyle(
   fontSize: 14.0,
   color: kBlueColour,

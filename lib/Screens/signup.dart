@@ -24,36 +24,56 @@ class _LoginState extends State<Signup> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            SizedBox(
-                              width: 10.0,
-                            ),
-                            Icon(
-                              Icons.arrow_back_ios,
-                              color: kWhiteColour,
-                              size: 16.0,
-                            ),
-                            Expanded(
-                              child: Center(
-                                child: Text(
-                                  'Registrate',
-                                  style: kLabelTitleWhite,
+                        Expanded(
+                          flex: 2,
+                          child: Row(
+                            children: <Widget>[
+                              SizedBox(
+                                width: 10.0,
+                              ),
+                              Icon(
+                                Icons.arrow_back_ios,
+                                color: kWhiteColour,
+                                size: 16.0,
+                              ),
+                              Expanded(
+                                child: Center(
+                                  child: Text(
+                                    'Registrate',
+                                    style: kLabelTitleWhite,
+                                  ),
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                              width: 20.0,
-                            ),
-                          ],
+                              SizedBox(
+                                width: 20.0,
+                              ),
+                            ],
+                          ),
                         ),
-                        SizedBox(
-                          height: 50.0,
+                        Expanded(
+                          flex: 4,
+                          child: Container(
+                            color: kWhiteColour,
+                            width: 374,
+                            height: 571,
+                          ),
                         ),
-                        Container(
-                          color: kWhiteColour,
-                          width: 374,
-                          height: 571,
+                        Expanded(
+                          flex: 3,
+                          child: Center(
+                            child: Row(
+                              children: <Widget>[
+                                Text(
+                                  '¿Ya tienes cuenta? ',
+                                  style: kLabelWhite,
+                                ),
+                                Text(
+                                  'inicia sesión',
+                                  style: kLabelUnderlineWhite,
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -64,7 +84,9 @@ class _LoginState extends State<Signup> {
             Positioned(
               top: 670.0,
               child: Container(
-                color: kYellowColour,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15.0),
+                    color: kYellowColour),
                 width: 300.0,
                 height: 50.0,
               ),
