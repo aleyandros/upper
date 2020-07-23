@@ -10,15 +10,22 @@ AuthResultStatus _status;
 
 Future signIn({@required String email, @required String pass}) async {
   try {
-    AuthResult user =
+    AuthResult res =
         await _auth.signInWithEmailAndPassword(email: email, password: pass);
-    return (user);
+    if (res.user != null) {
+      _status = AuthResultStatus.successful;
+    } else {
+      _status = AuthResultStatus.undefined;
+    }
   } catch (e) {
-    print(e);
+    final status = AuthExceptionHandler.handleException(e);
+    final String errormsg =
+        AuthExceptionHandler.generateExceptionMessage(status);
+    return errormsg;
   }
 }
 
-Future<void> register({
+Future<String> register({
   @required String email,
   @required String pass,
   @required String phone,
@@ -34,28 +41,41 @@ Future<void> register({
         email: email, password: pass);
     if (res.user != null) {
       _status = AuthResultStatus.successful;
+      await db.collection("Users").document(res.user.uid).setData(data);
     } else {
       _status = AuthResultStatus.undefined;
     }
-    FirebaseUser user = res.user;
-    await db.collection("Users").document(user.uid).setData(data);
   } catch (e) {
     final status = AuthExceptionHandler.handleException(e);
-    final errormsg = AuthExceptionHandler.generateExceptionMessage(status);
+    final String errormsg =
+        AuthExceptionHandler.generateExceptionMessage(status);
     return errormsg;
   }
-
-  return _status;
+  return "Exitoso";
 }
 
 Future<void> sendEmailVerification() async {
-  FirebaseUser user = await _auth.currentUser();
-  user.sendEmailVerification();
+  try {
+    FirebaseUser user = await _auth.currentUser();
+    user.sendEmailVerification();
+  } catch (e) {
+    final status = AuthExceptionHandler.handleException(e);
+    final String errormsg =
+        AuthExceptionHandler.generateExceptionMessage(status);
+    return errormsg;
+  }
 }
 
 Future<bool> isEmailVerified() async {
-  FirebaseUser user = await _auth.currentUser();
-  return user.isEmailVerified;
+  try {
+    FirebaseUser user = await _auth.currentUser();
+    return user.isEmailVerified;
+  } catch (e) {
+    final status = AuthExceptionHandler.handleException(e);
+    final String errormsg =
+        AuthExceptionHandler.generateExceptionMessage(status);
+    print(errormsg);
+  }
 }
 
 Future<void> verifyPhoneNumber() {
