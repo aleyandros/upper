@@ -87,6 +87,12 @@ const kLabelExampleGrey = TextStyle(
   fontFamily: 'Montserrat-Regular',
 );
 
+const kLabelVerificationGrey = TextStyle(
+  fontSize: 50.0,
+  color: kGreyColour,
+  fontFamily: 'Montserrat-Regular',
+);
+
 const kLabelClosedRed = TextStyle(
   fontSize: 12.0,
   color: kRedColour,

@@ -50,163 +50,60 @@ class _LoginState extends State<Verificacion> {
                     ),
                   ),
                   Expanded(
-                    flex: 52,
+                    flex: 20,
                     child: Container(
                       color: kBlueColour,
                     ),
                   ),
                   Expanded(
-                    flex: 600,
-                    child: Stack(
-                      alignment: AlignmentDirectional.bottomCenter,
-                      children: <Widget>[
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 30, vertical: 10),
-                          color: kWhiteColour,
-                          width: 374,
-                          child: Form(
-                            key: _formKey,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: <Widget>[
-                                Text(
-                                  'Nombre:',
-                                  style: kLabelSignupBlue,
-                                ),
-                                TextFormField(
-                                  decoration: const InputDecoration(
-                                    hintText: 'Tu nombre',
-                                  ),
-                                  validator: (value) {
-                                    if (value.isEmpty) {
-                                      return 'Escribe tu nombre';
-                                    }
-                                    return null;
-                                  },
-                                ),
-                                Text(
-                                  'Apellido:',
-                                  style: kLabelSignupBlue,
-                                ),
-                                TextFormField(
-                                  decoration: const InputDecoration(
-                                    hintText: 'Tu apellido',
-                                  ),
-                                  validator: (value) {
-                                    if (value.isEmpty) {
-                                      return 'Escribe tu apellido';
-                                    }
-                                    return null;
-                                  },
-                                ),
-                                Text(
-                                  'Correo Electronico:',
-                                  style: kLabelSignupBlue,
-                                ),
-                                TextFormField(
-                                  decoration: const InputDecoration(
-                                    hintText: 'Correo Electrónico',
-                                  ),
-                                  validator: (value) {
-                                    if (value.isEmpty) {
-                                      return 'ex: upper@mail.co';
-                                    }
-                                    return null;
-                                  },
-                                ),
-                                Text(
-                                  'Celular',
-                                  style: kLabelSignupBlue,
-                                ),
-                                TextFormField(
-                                  decoration: const InputDecoration(
-                                    hintText: '*** *** ****',
-                                  ),
-                                  validator: (value) {
-                                    if (value.isEmpty) {
-                                      return '******';
-                                    }
-                                    return null;
-                                  },
-                                ),
-                                Text(
-                                  'Contraseña:',
-                                  style: kLabelSignupBlue,
-                                ),
-                                TextFormField(
-                                  decoration: const InputDecoration(
-                                    hintText: 'Contraseña',
-                                  ),
-                                  validator: (value) {
-                                    if (value.isEmpty) {
-                                      return '******';
-                                    }
-                                    return null;
-                                  },
-                                ),
-                                Text(
-                                  'Repetir contraseña:',
-                                  style: kLabelSignupBlue,
-                                ),
-                                TextFormField(
-                                  decoration: const InputDecoration(
-                                    hintText: 'Repite la contraseña',
-                                  ),
-                                  validator: (value) {
-                                    if (value.isEmpty) {
-                                      return '******';
-                                    }
-                                    return null;
-                                  },
-                                ),
-                                SizedBox(
-                                  width: 30.0,
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          bottom: -25,
-                          child: SizedBox(
-                            width: 314,
-                            height: 50,
-                            child: RaisedButton(
-                              color: kYellowColour,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      new BorderRadius.circular(15.0)),
-                              onPressed: () {
-                                // Validate will return true if the form is valid, or false if
-                                // the form is invalid.
-                                if (_formKey.currentState.validate()) {
-                                  // Process data.
-                                }
-                              },
-                              child: Text(
-                                'CREAR CUENTA',
-                                style: kLabelButtonWhite,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                      overflow: Overflow.visible,
+                    flex: 100,
+                    child: Align(
+                      alignment: Alignment.topCenter,
+                      child: Text(
+                        "Hemos enviado un código de confirmación "
+                        "\na tu correo electrónico, ingresalo aquí.",
+                        style: kLabelSubtitleWhite,
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
                   Expanded(
-                    flex: 135,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    flex: 600,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        Text(
-                          '¿Ya tienes cuenta? ',
-                          style: kLabelWhite,
+                        Container(
+                          //padding: EdgeInsets.symmetric(
+                          //  horizontal: 30, vertical: 10),
+                          color: kWhiteColour,
+                          width: 372,
+                          height: 300,
+                          child: Center(
+                            child: Text(
+                              "_ _ _ _",
+                              style: kLabelVerificationGrey,
+                            ),
+                          ),
                         ),
-                        Text(
-                          'inicia sesión',
-                          style: kLabelUnderlineWhite,
+                        SizedBox(
+                          width: 314,
+                          height: 50,
+                          child: RaisedButton(
+                            color: kYellowColour,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(15.0)),
+                            onPressed: () {
+                              // Validate will return true if the form is valid, or false if
+                              // the form is invalid.
+                              if (_formKey.currentState.validate()) {
+                                // Process data.
+                              }
+                            },
+                            child: Text(
+                              'FINALIZAR',
+                              style: kLabelButtonWhite,
+                            ),
+                          ),
                         ),
                       ],
                     ),
