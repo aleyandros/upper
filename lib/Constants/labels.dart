@@ -50,6 +50,12 @@ const kLabelBlue = TextStyle(
   fontFamily: 'Montserrat-Regular',
 );
 
+const kLabelSignupBlue = TextStyle(
+  fontSize: 14.0,
+  color: kBlueColour,
+  fontFamily: 'Montserrat-Medium',
+);
+
 const kLabelUnderlineBlue = TextStyle(
   fontSize: 14.0,
   color: kBlueColour,
