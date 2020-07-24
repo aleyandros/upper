@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../Constants/labels.dart';
-
+import 'package:upper/Networking/firebase.dart';
 class Signup extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
@@ -174,11 +174,11 @@ class _LoginState extends State<Signup> {
                               shape: RoundedRectangleBorder(
                                   borderRadius:
                                       new BorderRadius.circular(15.0)),
-                              onPressed: () {
+                              onPressed: () async{
                                 // Validate will return true if the form is valid, or false if
                                 // the form is invalid.
                                 if (_formKey.currentState.validate()) {
-                                  // Process data.
+                                  await register(nombre:"Register" , apellido: "upper", email: "register@upper.com", pass: "123456", phone: "+573152523657");
                                 }
                               },
                               child: Text(
