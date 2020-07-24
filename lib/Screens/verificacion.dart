@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../Constants/labels.dart';
 
-class Signup extends StatefulWidget {
+class Verificacion extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
 }
 
-class _LoginState extends State<Signup> {
+class _LoginState extends State<Verificacion> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -26,16 +26,19 @@ class _LoginState extends State<Signup> {
                         SizedBox(
                           width: 20.0,
                         ),
-                        Icon(
-                          Icons.arrow_back_ios,
-                          color: kWhiteColour,
-                          size: 16.0,
+                        Align(
+                          alignment: Alignment.center,
+                          child: Icon(
+                            Icons.arrow_back_ios,
+                            color: kWhiteColour,
+                            size: 16.0,
+                          ),
                         ),
                         Expanded(
                           child: Align(
                             alignment: Alignment.center,
                             child: Text(
-                              'Registrate',
+                              'Verificación',
                               style: kLabelTitleWhite,
                             ),
                           ),
@@ -47,7 +50,7 @@ class _LoginState extends State<Signup> {
                     ),
                   ),
                   Expanded(
-                    flex: 20,
+                    flex: 52,
                     child: Container(
                       color: kBlueColour,
                     ),
