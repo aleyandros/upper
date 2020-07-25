@@ -6,6 +6,7 @@ const kWhiteColour = Color(0xFFFFFFFF);
 const kGreyColour = Color(0xFFB1B1B1);
 const kBlackColour = Color(0xFF000000);
 const kRedColour = Color(0xFFE30000);
+const kDarkerBlueColour = Color(0xFF0070A3);
 
 const kLabelUpperYellow = TextStyle(
   fontSize: 36.0,
