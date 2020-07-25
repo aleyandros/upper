@@ -85,9 +85,12 @@ class _LoginState extends State<Signup> {
                                       return null;
                                     },
                                   ),
-                                  Text(
-                                    'Apellido:',
-                                    style: kLabelSignupBlue,
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      'Apellido:',
+                                      style: kLabelSignupBlue,
+                                    ),
                                   ),
                                   TextFormField(
                                     decoration: const InputDecoration(
