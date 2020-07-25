@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../Constants/labels.dart';
 import 'package:upper/Networking/firebase.dart';
+import '../Constants/inputs.dart';
 
 class Signup extends StatefulWidget {
   @override
@@ -10,6 +11,7 @@ class Signup extends StatefulWidget {
 
 class _LoginState extends State<Signup> {
   final _formKey = GlobalKey<FormState>();
+  Inputs inp = Inputs();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -60,8 +62,7 @@ class _LoginState extends State<Signup> {
                       children: <Widget>[
                         Card(
                           child: Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 30, vertical: 10),
+                            padding: EdgeInsets.fromLTRB(30, 0, 30, 30),
                             color: kWhiteColour,
                             width: 374,
                             child: Form(
@@ -70,102 +71,32 @@ class _LoginState extends State<Signup> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: <Widget>[
-                                  Text(
-                                    'Nombre:',
-                                    style: kLabelSignupBlue,
-                                  ),
-                                  TextFormField(
-                                    decoration: const InputDecoration(
-                                      hintText: 'Tu nombre',
-                                    ),
-                                    validator: (value) {
-                                      if (value.isEmpty) {
-                                        return 'Escribe tu nombre';
-                                      }
-                                      return null;
-                                    },
-                                  ),
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      'Apellido:',
-                                      style: kLabelSignupBlue,
-                                    ),
-                                  ),
-                                  TextFormField(
-                                    decoration: const InputDecoration(
-                                      hintText: 'Tu apellido',
-                                    ),
-                                    validator: (value) {
-                                      if (value.isEmpty) {
-                                        return 'Escribe tu apellido';
-                                      }
-                                      return null;
-                                    },
-                                  ),
-                                  Text(
-                                    'Correo Electronico:',
-                                    style: kLabelSignupBlue,
-                                  ),
-                                  TextFormField(
-                                    decoration: const InputDecoration(
-                                      hintText: 'Correo Electrónico',
-                                    ),
-                                    validator: (value) {
-                                      if (value.isEmpty) {
-                                        return 'ex: upper@mail.co';
-                                      }
-                                      return null;
-                                    },
-                                  ),
-                                  Text(
-                                    'Celular',
-                                    style: kLabelSignupBlue,
-                                  ),
-                                  TextFormField(
-                                    decoration: const InputDecoration(
-                                      hintText: '*** *** ****',
-                                    ),
-                                    validator: (value) {
-                                      if (value.isEmpty) {
-                                        return '******';
-                                      }
-                                      return null;
-                                    },
-                                  ),
-                                  Text(
-                                    'Contraseña:',
-                                    style: kLabelSignupBlue,
-                                  ),
-                                  TextFormField(
-                                    decoration: const InputDecoration(
-                                      hintText: 'Contraseña',
-                                    ),
-                                    validator: (value) {
-                                      if (value.isEmpty) {
-                                        return '******';
-                                      }
-                                      return null;
-                                    },
-                                  ),
-                                  Text(
-                                    'Repetir contraseña:',
-                                    style: kLabelSignupBlue,
-                                  ),
-                                  TextFormField(
-                                    decoration: const InputDecoration(
-                                      hintText: 'Repite la contraseña',
-                                    ),
-                                    validator: (value) {
-                                      if (value.isEmpty) {
-                                        return '******';
-                                      }
-                                      return null;
-                                    },
-                                  ),
-                                  SizedBox(
-                                    width: 30.0,
-                                  )
+                                  inp.textForm("Nombre"),
+                                  inp.inputForm(
+                                      description: "Tu nombre",
+                                      correction: "Escribe tu nombre"),
+                                  inp.textForm("Apellido"),
+                                  inp.inputForm(
+                                      description: "Tu apellido",
+                                      correction: "Escribe tu apellido"),
+                                  inp.textForm("Correo electrónico"),
+                                  inp.inputForm(
+                                      description: "Correo electrónico",
+                                      correction: "ex: upper@mail.co"),
+                                  inp.textForm("Celular"),
+                                  inp.inputForm(
+                                      description: "(000)-000-00-00",
+                                      correction: "No valido"),
+                                  inp.textForm("Contraseña"),
+                                  inp.inputForm(
+                                      description: "********",
+                                      correction: "No valido",
+                                      icono: Icons.lock),
+                                  inp.textForm("Repetir contraseña"),
+                                  inp.inputForm(
+                                      description: "********",
+                                      correction: "No son iguales",
+                                      icono: Icons.lock)
                                 ],
                               ),
                             ),
