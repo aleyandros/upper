@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:upper/Constants/buttons.dart';
 import '../Constants/labels.dart';
 import 'package:upper/Networking/firebase.dart';
 import '../Constants/inputs.dart';
@@ -12,6 +13,7 @@ class Signup extends StatefulWidget {
 class _LoginState extends State<Signup> {
   final _formKey = GlobalKey<FormState>();
   Inputs inp = Inputs();
+  Buttons but = Buttons();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,11 +31,7 @@ class _LoginState extends State<Signup> {
                         SizedBox(
                           width: 20.0,
                         ),
-                        Icon(
-                          Icons.arrow_back_ios,
-                          color: kWhiteColour,
-                          size: 16.0,
-                        ),
+                        but.backButton(icono: Icons.arrow_back_ios),
                         Expanded(
                           child: Align(
                             alignment: Alignment.center,
@@ -104,7 +102,9 @@ class _LoginState extends State<Signup> {
                         ),
                         Positioned(
                           bottom: -25,
-                          child: SizedBox(
+                          child: but.biggestButton(
+                              text: 'crear cuenta', width: 314.0, height: 50.0),
+                          /*child: SizedBox(
                             width: 314,
                             height: 50,
                             child: RaisedButton(
@@ -129,7 +129,7 @@ class _LoginState extends State<Signup> {
                                 style: kLabelButtonWhite,
                               ),
                             ),
-                          ),
+                          ),*/
                         ),
                       ],
                       overflow: Overflow.visible,
