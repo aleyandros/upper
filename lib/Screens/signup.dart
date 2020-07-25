@@ -31,7 +31,7 @@ class _LoginState extends State<Signup> {
                         SizedBox(
                           width: 20.0,
                         ),
-                        but.backButton(icono: Icons.arrow_back_ios),
+                        but.backButton(icon: Icons.arrow_back_ios),
                         Expanded(
                           child: Align(
                             alignment: Alignment.center,
@@ -65,36 +65,42 @@ class _LoginState extends State<Signup> {
                             width: 374,
                             child: Form(
                               key: _formKey,
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+                              child: ListView(
+                                /*mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,*/
                                 children: <Widget>[
+                                  inp.dividerElements(),
                                   inp.textForm("Nombre"),
                                   inp.inputForm(
                                       description: "Tu nombre",
                                       correction: "Escribe tu nombre"),
+                                  inp.dividerElements(),
                                   inp.textForm("Apellido"),
                                   inp.inputForm(
                                       description: "Tu apellido",
                                       correction: "Escribe tu apellido"),
+                                  inp.dividerElements(),
                                   inp.textForm("Correo electrónico"),
                                   inp.inputForm(
                                       description: "Correo electrónico",
                                       correction: "ex: upper@mail.co"),
+                                  inp.dividerElements(),
                                   inp.textForm("Celular"),
                                   inp.inputForm(
                                       description: "(000)-000-00-00",
                                       correction: "No valido"),
+                                  inp.dividerElements(),
                                   inp.textForm("Contraseña"),
                                   inp.inputForm(
                                       description: "********",
                                       correction: "No valido",
-                                      icono: Icons.lock),
+                                      icon: Icons.lock),
+                                  inp.dividerElements(),
                                   inp.textForm("Repetir contraseña"),
                                   inp.inputForm(
                                       description: "********",
                                       correction: "No son iguales",
-                                      icono: Icons.lock)
+                                      icon: Icons.lock)
                                 ],
                               ),
                             ),

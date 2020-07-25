@@ -12,12 +12,12 @@ class Inputs {
     );
   }
 
-  Widget inputForm({@required description, correction, icono}) {
+  Widget inputForm({@required description, correction, icon}) {
     return TextFormField(
       decoration: InputDecoration(
-        hintText: description,
+        hintText: "  $description",
         suffixIcon: Icon(
-          icono,
+          icon,
           color: kBlueColour,
         ),
       ),
@@ -27,6 +27,12 @@ class Inputs {
         }
         return null;
       },
+    );
+  }
+
+  Widget dividerElements() {
+    return SizedBox(
+      height: 20,
     );
   }
 }

@@ -22,9 +22,9 @@ class Buttons {
     );
   }
 
-  Widget backButton({@required icono}) {
+  Widget backButton({@required icon}) {
     return Icon(
-      icono,
+      icon,
       color: kWhiteColour,
       size: 16.0,
     );
