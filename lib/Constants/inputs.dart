@@ -13,7 +13,6 @@ class Inputs {
   }
 
   Widget inputForm({@required description, correction, icono}) {
-    ;
     return TextFormField(
       decoration: InputDecoration(
         hintText: description,
