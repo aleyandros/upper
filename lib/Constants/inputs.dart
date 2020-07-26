@@ -18,8 +18,10 @@ class Inputs {
       icon,
       Function validate,
       Function onSave,
-      TextInputType keyboard}) {
+      TextInputType keyboard,
+      bool obscureText}) {
     return TextFormField(
+      obscureText: obscureText ?? false,
       keyboardType: keyboard,
       decoration: InputDecoration(
         hintText: "  $description",

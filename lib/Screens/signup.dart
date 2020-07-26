@@ -16,224 +16,215 @@ class _LoginState extends State<Signup> {
   Buttons but = Buttons();
   String nombre;
   String apellido;
-  String pass;
+  String pass1;
+  String pass2;
   String celular;
   String email;
+  String backendError = "";
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         body: SafeArea(
-          child: Expanded(
-            child: Container(
-              color: kBlueColour,
-              child: Column(
-                children: <Widget>[
-                  Expanded(
-                    flex: 138,
-                    child: Row(
-                      children: <Widget>[
-                        SizedBox(
-                          width: 20.0,
-                        ),
-                        but.backButton(icon: Icons.arrow_back_ios),
-                        Expanded(
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              'Registrate',
-                              style: kLabelTitleWhite,
-                            ),
+          child: Container(
+            color: kBlueColour,
+            child: Column(
+              children: <Widget>[
+                Expanded(
+                  flex: 138,
+                  child: Row(
+                    children: <Widget>[
+                      SizedBox(
+                        width: 20.0,
+                      ),
+                      but.backButton(icon: Icons.arrow_back_ios),
+                      Expanded(
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'Registrate',
+                            style: kLabelTitleWhite,
                           ),
                         ),
-                        SizedBox(
-                          width: 30.0,
-                        ),
-                      ],
-                    ),
+                      ),
+                      SizedBox(
+                        width: 30.0,
+                      ),
+                    ],
                   ),
-                  Expanded(
-                    flex: 20,
-                    child: Container(
-                      color: kBlueColour,
-                    ),
+                ),
+                Visibility(
+                  visible: backendError.isNotEmpty,
+                  child: Text(
+                    backendError,
+                    style: kLabelWhite,
                   ),
-                  Expanded(
-                    flex: 600,
-                    child: Stack(
-                      alignment: AlignmentDirectional.bottomCenter,
-                      children: <Widget>[
-                        Card(
-                          child: Container(
-                            padding: EdgeInsets.fromLTRB(30, 0, 30, 30),
-                            color: kWhiteColour,
-                            width: 374,
-                            child: Form(
-                              key: _formKey,
-                              autovalidate: true,
-                              onChanged: () {
-                                Form.of(primaryFocus.context).save();
-                              },
-                              child: ListView(
-                                /*mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,*/
-                                children: <Widget>[
-                                  inp.dividerElements(),
-                                  inp.textForm("Nombre"),
-                                  inp.inputForm(
-                                      description: "Tu nombre",
-                                      correction: "Escribe tu nombre",
-                                      validate: (value) {
-                                        if (value == null) {
-                                          return "Escribe tu nombre";
-                                        }
-                                        return null;
-                                      },
-                                      onSave: (value) {
-                                        nombre = value;
-                                      }),
-                                  inp.dividerElements(),
-                                  inp.textForm("Apellido"),
-                                  inp.inputForm(
-                                      description: "Tu apellido",
-                                      correction: "Escribe tu apellido",
-                                      validate: (value) {
-                                        if (value == null) {
-                                          return "Escribe tu apellido";
-                                        }
-                                        return null;
-                                      },
-                                      onSave: (value) {
-                                        apellido = value;
-                                      }),
-                                  inp.dividerElements(),
-                                  inp.textForm("Correo electrónico"),
-                                  inp.inputForm(
-                                      keyboard: TextInputType.emailAddress,
-                                      description: "Correo electrónico",
-                                      correction: "ex: upper@mail.co",
-                                      validate: (value) {
-                                        if (value == null) {
-                                          return "Escribe tu correo";
-                                        }
-                                        return null;
-                                      },
-                                      onSave: (value) {
-                                        email = value;
-                                      }),
-                                  inp.dividerElements(),
-                                  inp.textForm("Celular"),
-                                  inp.inputForm(
-                                      keyboard:
-                                          TextInputType.numberWithOptions(),
-                                      description: "(000)-000-00-00",
-                                      correction: "No valido",
-                                      validate: (value) {
-                                        if (value == null) {
-                                          return "celular";
-                                        }
-                                        return null;
-                                      },
-                                      onSave: (value) {
-                                        celular = value;
-                                      }),
-                                  inp.dividerElements(),
-                                  inp.textForm("Contraseña"),
-                                  inp.inputForm(
-                                      description: "********",
-                                      correction: "No valido",
-                                      icon: Icons.lock,
-                                      validate: (String value) {
-                                        if (value.length > 6) {
-                                          return "No valido";
-                                        }
-                                        return null;
-                                      }),
-                                  inp.dividerElements(),
-                                  inp.textForm("Repetir contraseña"),
-                                  inp.inputForm(
-                                      description: "********",
-                                      correction: "No son iguales",
-                                      icon: Icons.lock,
-                                      validate: (String value) {
-                                        if (value.length > 6) {
-                                          return "No valido";
-                                        }
-                                        return null;
-                                      })
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          bottom: -25,
-                          child: GestureDetector(
-                            child: but.biggestButton(
-                                text: 'crear cuenta',
-                                width: 314.0,
-                                height: 50.0),
-                            onTap: () async {
-                              if (_formKey.currentState.validate()) {
-                                _formKey.currentState.save();
-                                await register(
-                                    nombre: "Register",
-                                    apellido: "upper",
-                                    email: "register2@upper.com",
-                                    pass: "123456",
-                                    phone: "+573152523657");
-                              }
+                ),
+                Expanded(
+                  flex: 20,
+                  child: Container(
+                    color: kBlueColour,
+                  ),
+                ),
+                Expanded(
+                  flex: 600,
+                  child: Stack(
+                    alignment: AlignmentDirectional.bottomCenter,
+                    children: <Widget>[
+                      Card(
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(30, 0, 30, 30),
+                          color: kWhiteColour,
+                          width: 374,
+                          child: Form(
+                            key: _formKey,
+                            autovalidate: false,
+                            onChanged: () {
+                              Form.of(primaryFocus.context).save();
                             },
-                          ),
-                          /*child: SizedBox(
-                            width: 314,
-                            height: 50,
-                            child: RaisedButton(
-                              color: kYellowColour,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      new BorderRadius.circular(15.0)),
-                              onPressed: () async {
-                                // Validate will return true if the form is valid, or false if
-                                // the form is invalid.
-                                if (_formKey.currentState.validate()) {
-                                  await register(
-                                      nombre: "Register",
-                                      apellido: "upper",
-                                      email: "register@upper.com",
-                                      pass: "123456",
-                                      phone: "+573152523657");
-                                }
-                              },
-                              child: Text(
-                                'CREAR CUENTA',
-                                style: kLabelButtonWhite,
-                              ),
+                            child: ListView(
+                              /*mainAxisAlignment:
+                                  MainAxisAlignment.spaceEvenly,*/
+                              children: <Widget>[
+                                inp.dividerElements(),
+                                inp.textForm("Nombre"),
+                                inp.inputForm(
+                                    description: "Tu nombre",
+                                    correction: "Escribe tu nombre",
+                                    validate: (String value) {
+                                      if (value.isEmpty) {
+                                        return "Escribe tu nombre";
+                                      }
+                                      return null;
+                                    },
+                                    onSave: (value) {
+                                      nombre = value;
+                                    }),
+                                inp.dividerElements(),
+                                inp.textForm("Apellido"),
+                                inp.inputForm(
+                                    description: "Tu apellido",
+                                    correction: "Escribe tu apellido",
+                                    validate: (String value) {
+                                      if (value.isEmpty) {
+                                        return "Escribe tu apellido";
+                                      }
+                                      return null;
+                                    },
+                                    onSave: (value) {
+                                      apellido = value;
+                                    }),
+                                inp.dividerElements(),
+                                inp.textForm("Correo electrónico"),
+                                inp.inputForm(
+                                    keyboard: TextInputType.emailAddress,
+                                    description: "Correo electrónico",
+                                    correction: "ex: upper@mail.co",
+                                    validate: (String value) {
+                                      if (value.isEmpty) {
+                                        return "Escribe tu correo";
+                                      }
+                                      return null;
+                                    },
+                                    onSave: (value) {
+                                      email = value;
+                                    }),
+                                inp.dividerElements(),
+                                inp.textForm("Celular"),
+                                inp.inputForm(
+                                    keyboard: TextInputType.numberWithOptions(),
+                                    description: "(000)-000-00-00",
+                                    correction: "No valido",
+                                    validate: (String value) {
+                                      if (value.isEmpty) {
+                                        return "Ingresa unnumero de celular";
+                                      }
+                                      return null;
+                                    },
+                                    onSave: (value) {
+                                      celular = value;
+                                    }),
+                                inp.dividerElements(),
+                                inp.textForm("Contraseña"),
+                                inp.inputForm(
+                                    obscureText: true,
+                                    description: "********",
+                                    correction: "No valido",
+                                    icon: Icons.lock,
+                                    validate: (String value) {
+                                      if (value.length < 6) {
+                                        return "No valido";
+                                      } else {
+                                        pass1 = value;
+                                      }
+                                      return null;
+                                    }),
+                                inp.dividerElements(),
+                                inp.textForm("Repetir contraseña"),
+                                inp.inputForm(
+                                    obscureText: true,
+                                    description: "********",
+                                    correction: "No son iguales",
+                                    icon: Icons.lock,
+                                    validate: (value) {
+                                      if (value == pass1) {
+                                        pass2 = value;
+                                        return null;
+                                      } else {
+                                        return "La contraseña no coincide";
+                                      }
+                                    })
+                              ],
                             ),
-                          ),*/
+                          ),
                         ),
-                      ],
-                      overflow: Overflow.visible,
-                    ),
+                      ),
+                      Positioned(
+                        bottom: -25,
+                        child: but.biggestButton(
+                          text: 'crear cuenta',
+                          width: 314.0,
+                          height: 50.0,
+                          onPress: () async {
+                            // Validate will return true if the form is valid, or false if
+                            // the form is invalid.
+                            if (_formKey.currentState.validate()) {
+                              _formKey.currentState.save();
+
+                              String feedback = await register(
+                                  nombre: nombre,
+                                  apellido: apellido,
+                                  email: email,
+                                  pass: pass2,
+                                  phone: celular);
+                              setState(() {
+                                backendError = feedback;
+                              });
+                            }
+                          },
+                        ),
+                      ),
+                    ],
+                    overflow: Overflow.visible,
                   ),
-                  Expanded(
-                    flex: 135,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          '¿Ya tienes cuenta? ',
-                          style: kLabelWhite,
-                        ),
-                        Text(
-                          'inicia sesión',
-                          style: kLabelUnderlineWhite,
-                        ),
-                      ],
-                    ),
+                ),
+                Expanded(
+                  flex: 135,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        '¿Ya tienes cuenta? ',
+                        style: kLabelWhite,
+                      ),
+                      Text(
+                        'inicia sesión',
+                        style: kLabelUnderlineWhite,
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

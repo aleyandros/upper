@@ -5,7 +5,7 @@ class Buttons {
   double _width = 314;
   double _height = 50;
 
-  Widget biggestButton({@required text, width, height}) {
+  Widget biggestButton({@required text, width, height, Function onPress}) {
     return SizedBox(
       width: _width,
       height: _height,
@@ -13,7 +13,7 @@ class Buttons {
         color: kYellowColour,
         shape: RoundedRectangleBorder(
             borderRadius: new BorderRadius.circular(15.0)),
-        onPressed: () async {},
+        onPressed: onPress,
         child: Text(
           '$text'.toUpperCase(),
           style: kLabelButtonWhite,
