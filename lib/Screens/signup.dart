@@ -175,6 +175,7 @@ class _LoginState extends State<Signup> {
                                 height: 50.0),
                             onTap: () async {
                               if (_formKey.currentState.validate()) {
+                                _formKey.currentState.save();
                                 await register(
                                     nombre: "Register",
                                     apellido: "upper",
