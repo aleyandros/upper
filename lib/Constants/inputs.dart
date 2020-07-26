@@ -12,8 +12,15 @@ class Inputs {
     );
   }
 
-  Widget inputForm({@required description, correction, icon}) {
+  Widget inputForm(
+      {@required description,
+      correction,
+      icon,
+      Function validate,
+      Function onSave,
+      TextInputType keyboard}) {
     return TextFormField(
+      keyboardType: keyboard,
       decoration: InputDecoration(
         hintText: "  $description",
         suffixIcon: Icon(
@@ -21,12 +28,8 @@ class Inputs {
           color: kDarkerBlueColour,
         ),
       ),
-      validator: (value) {
-        if (value.isEmpty) {
-          return correction;
-        }
-        return null;
-      },
+      validator: validate,
+      onSaved: onSave,
     );
   }
 

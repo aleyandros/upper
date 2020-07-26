@@ -14,6 +14,11 @@ class _LoginState extends State<Signup> {
   final _formKey = GlobalKey<FormState>();
   Inputs inp = Inputs();
   Buttons but = Buttons();
+  String nombre;
+  String apellido;
+  String pass;
+  String celular;
+  String email;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -65,6 +70,10 @@ class _LoginState extends State<Signup> {
                             width: 374,
                             child: Form(
                               key: _formKey,
+                              autovalidate: true,
+                              onChanged: () {
+                                Form.of(primaryFocus.context).save();
+                              },
                               child: ListView(
                                 /*mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,*/
@@ -73,34 +82,85 @@ class _LoginState extends State<Signup> {
                                   inp.textForm("Nombre"),
                                   inp.inputForm(
                                       description: "Tu nombre",
-                                      correction: "Escribe tu nombre"),
+                                      correction: "Escribe tu nombre",
+                                      validate: (value) {
+                                        if (value == null) {
+                                          return "Escribe tu nombre";
+                                        }
+                                        return null;
+                                      },
+                                      onSave: (value) {
+                                        nombre = value;
+                                      }),
                                   inp.dividerElements(),
                                   inp.textForm("Apellido"),
                                   inp.inputForm(
                                       description: "Tu apellido",
-                                      correction: "Escribe tu apellido"),
+                                      correction: "Escribe tu apellido",
+                                      validate: (value) {
+                                        if (value == null) {
+                                          return "Escribe tu apellido";
+                                        }
+                                        return null;
+                                      },
+                                      onSave: (value) {
+                                        apellido = value;
+                                      }),
                                   inp.dividerElements(),
                                   inp.textForm("Correo electrónico"),
                                   inp.inputForm(
+                                      keyboard: TextInputType.emailAddress,
                                       description: "Correo electrónico",
-                                      correction: "ex: upper@mail.co"),
+                                      correction: "ex: upper@mail.co",
+                                      validate: (value) {
+                                        if (value == null) {
+                                          return "Escribe tu correo";
+                                        }
+                                        return null;
+                                      },
+                                      onSave: (value) {
+                                        email = value;
+                                      }),
                                   inp.dividerElements(),
                                   inp.textForm("Celular"),
                                   inp.inputForm(
+                                      keyboard:
+                                          TextInputType.numberWithOptions(),
                                       description: "(000)-000-00-00",
-                                      correction: "No valido"),
+                                      correction: "No valido",
+                                      validate: (value) {
+                                        if (value == null) {
+                                          return "celular";
+                                        }
+                                        return null;
+                                      },
+                                      onSave: (value) {
+                                        celular = value;
+                                      }),
                                   inp.dividerElements(),
                                   inp.textForm("Contraseña"),
                                   inp.inputForm(
                                       description: "********",
                                       correction: "No valido",
-                                      icon: Icons.lock),
+                                      icon: Icons.lock,
+                                      validate: (String value) {
+                                        if (value.length > 6) {
+                                          return "No valido";
+                                        }
+                                        return null;
+                                      }),
                                   inp.dividerElements(),
                                   inp.textForm("Repetir contraseña"),
                                   inp.inputForm(
                                       description: "********",
                                       correction: "No son iguales",
-                                      icon: Icons.lock)
+                                      icon: Icons.lock,
+                                      validate: (String value) {
+                                        if (value.length > 6) {
+                                          return "No valido";
+                                        }
+                                        return null;
+                                      })
                                 ],
                               ),
                             ),
@@ -108,8 +168,22 @@ class _LoginState extends State<Signup> {
                         ),
                         Positioned(
                           bottom: -25,
-                          child: but.biggestButton(
-                              text: 'crear cuenta', width: 314.0, height: 50.0),
+                          child: GestureDetector(
+                            child: but.biggestButton(
+                                text: 'crear cuenta',
+                                width: 314.0,
+                                height: 50.0),
+                            onTap: () async {
+                              if (_formKey.currentState.validate()) {
+                                await register(
+                                    nombre: "Register",
+                                    apellido: "upper",
+                                    email: "register2@upper.com",
+                                    pass: "123456",
+                                    phone: "+573152523657");
+                              }
+                            },
+                          ),
                           /*child: SizedBox(
                             width: 314,
                             height: 50,
