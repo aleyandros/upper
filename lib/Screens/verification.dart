@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../Constants/labels.dart';
 
-class Verificacion extends StatefulWidget {
+class Verification extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
 }
 
-class _LoginState extends State<Verificacion> {
+class _LoginState extends State<Verification> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {

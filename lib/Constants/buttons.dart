@@ -22,7 +22,7 @@ class Buttons {
     );
   }
 
-  Widget backButton({@required icon}) {
+  Widget backButton({@required icon, navigation}) {
     return Icon(
       icon,
       color: kWhiteColour,

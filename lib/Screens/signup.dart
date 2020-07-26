@@ -217,9 +217,14 @@ class _LoginState extends State<Signup> {
                         '¿Ya tienes cuenta? ',
                         style: kLabelWhite,
                       ),
-                      Text(
-                        'inicia sesión',
-                        style: kLabelUnderlineWhite,
+                      FlatButton(
+                        child: Text(
+                          'inicia sesión',
+                          style: kLabelUnderlineWhite,
+                        ),
+                        onPressed: () {
+                          Navigator.pushNamed(context, 'Login');
+                        },
                       ),
                     ],
                   ),

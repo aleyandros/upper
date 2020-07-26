@@ -144,10 +144,8 @@ class _LoginState extends State<Login> {
                               color: kYellowColour,
                               shape: RoundedRectangleBorder(
                                   borderRadius:
-                                  new BorderRadius.circular(15.0)),
-                              onPressed: () {
-
-                              },
+                                      new BorderRadius.circular(15.0)),
+                              onPressed: () {},
                               child: Text(
                                 'INICIAR SESIÓN',
                                 style: kLabelButtonWhite,
@@ -172,9 +170,14 @@ class _LoginState extends State<Login> {
                         '¿No tienes cuenta? ',
                         style: kLabelBlue,
                       ),
-                      Text(
-                        "crea una",
-                        style: kLabelUnderlineBlue,
+                      FlatButton(
+                        child: Text(
+                          "crea una",
+                          style: kLabelUnderlineBlue,
+                        ),
+                        onPressed: () {
+                          Navigator.pushNamed(context, 'Signup');
+                        },
                       )
                     ],
                   ),
