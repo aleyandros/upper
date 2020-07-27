@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../Constants/labels.dart';
 
 class Verification extends StatefulWidget {
+  static final id = "verification";
   @override
   _LoginState createState() => _LoginState();
 }

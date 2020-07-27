@@ -6,6 +6,7 @@ import 'package:upper/Networking/firebase.dart';
 import '../Constants/inputs.dart';
 
 class Signup extends StatefulWidget {
+  static final id = "signup";
   @override
   _LoginState createState() => _LoginState();
 }

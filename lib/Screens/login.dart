@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../Constants/labels.dart';
 
 class Login extends StatefulWidget {
+  static final id = "login";
   @override
   _LoginState createState() => _LoginState();
 }
