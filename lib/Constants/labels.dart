@@ -6,6 +6,7 @@ const kWhiteColour = Color(0xFFFFFFFF);
 const kGreyColour = Color(0xFFB1B1B1);
 const kBlackColour = Color(0xFF000000);
 const kRedColour = Color(0xFFE30000);
+const kDarkerBlueColour = Color(0xFF0070A3);
 
 const kLabelUpperYellow = TextStyle(
   fontSize: 36.0,
@@ -37,10 +38,23 @@ const kLabelButtonWhite = TextStyle(
   fontFamily: 'Montserrat-Medium',
 );
 
+const kLabelUnderlineWhite = TextStyle(
+  fontSize: 14.0,
+  color: kWhiteColour,
+  fontFamily: 'Montserrat-Medium',
+  decoration: TextDecoration.underline,
+);
+
 const kLabelBlue = TextStyle(
   fontSize: 14.0,
   color: kBlueColour,
   fontFamily: 'Montserrat-Regular',
+);
+
+const kLabelSignupBlue = TextStyle(
+  fontSize: 14.0,
+  color: kBlueColour,
+  fontFamily: 'Montserrat-Medium',
 );
 
 const kLabelUnderlineBlue = TextStyle(
@@ -70,6 +84,12 @@ const kLabelBlack = TextStyle(
 
 const kLabelExampleGrey = TextStyle(
   fontSize: 14.0,
+  color: kGreyColour,
+  fontFamily: 'Montserrat-Regular',
+);
+
+const kLabelVerificationGrey = TextStyle(
+  fontSize: 50.0,
   color: kGreyColour,
   fontFamily: 'Montserrat-Regular',
 );
