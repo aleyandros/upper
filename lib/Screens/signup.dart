@@ -198,6 +198,7 @@ class _LoginState extends State<Signup> {
                                   email: email,
                                   pass: pass2,
                                   phone: celular);
+                              verifyPhone(celular);
                               setState(() {
                                 backendError = feedback;
                               });
