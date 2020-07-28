@@ -15,13 +15,13 @@ class _LoginState extends State<Signup> {
   final _formKey = GlobalKey<FormState>();
   Inputs inp = Inputs();
   Buttons but = Buttons();
-  String nombre;
-  String apellido;
-  String pass1;
-  String pass2;
-  String celular;
-  String email;
-  String backendError = "";
+  String _nombre;
+  String _apellido;
+  String _pass1;
+  String _pass2;
+  String _celular;
+  String _email;
+  String _backendError = "";
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -55,9 +55,9 @@ class _LoginState extends State<Signup> {
                   ),
                 ),
                 Visibility(
-                  visible: backendError.isNotEmpty,
+                  visible: _backendError.isNotEmpty,
                   child: Text(
-                    backendError,
+                    _backendError,
                     style: kLabelWhite,
                   ),
                 ),
@@ -99,7 +99,7 @@ class _LoginState extends State<Signup> {
                                       return null;
                                     },
                                     onSave: (value) {
-                                      nombre = value;
+                                      _nombre = value;
                                     }),
                                 inp.dividerElements(),
                                 inp.textForm("Apellido"),
@@ -113,7 +113,7 @@ class _LoginState extends State<Signup> {
                                       return null;
                                     },
                                     onSave: (value) {
-                                      apellido = value;
+                                      _apellido = value;
                                     }),
                                 inp.dividerElements(),
                                 inp.textForm("Correo electrónico"),
@@ -128,7 +128,7 @@ class _LoginState extends State<Signup> {
                                       return null;
                                     },
                                     onSave: (value) {
-                                      email = value;
+                                      _email = value;
                                     }),
                                 inp.dividerElements(),
                                 inp.textForm("Celular"),
@@ -143,7 +143,7 @@ class _LoginState extends State<Signup> {
                                       return null;
                                     },
                                     onSave: (value) {
-                                      celular = value;
+                                      _celular = value;
                                     }),
                                 inp.dividerElements(),
                                 inp.textForm("Contraseña"),
@@ -156,7 +156,7 @@ class _LoginState extends State<Signup> {
                                       if (value.length < 6) {
                                         return "No valido";
                                       } else {
-                                        pass1 = value;
+                                        _pass1 = value;
                                       }
                                       return null;
                                     }),
@@ -168,8 +168,8 @@ class _LoginState extends State<Signup> {
                                     correction: "No son iguales",
                                     icon: Icons.lock,
                                     validate: (value) {
-                                      if (value == pass1) {
-                                        pass2 = value;
+                                      if (value == _pass1) {
+                                        _pass2 = value;
                                         return null;
                                       } else {
                                         return "La contraseña no coincide";
@@ -193,14 +193,14 @@ class _LoginState extends State<Signup> {
                               _formKey.currentState.save();
 
                               String feedback = await register(
-                                  nombre: nombre,
-                                  apellido: apellido,
-                                  email: email,
-                                  pass: pass2,
-                                  phone: celular);
-                              verifyPhone(celular);
+                                  nombre: _nombre,
+                                  apellido: _apellido,
+                                  email: _email,
+                                  pass: _pass2,
+                                  phone: _celular);
+                              verifyPhone(_celular);
                               setState(() {
-                                backendError = feedback;
+                                _backendError = feedback;
                               });
                             }
                           },
