@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:upper/Constants/buttons.dart';
-import 'package:upper/Constants/grid.dart';
-import 'package:upper/Screens/login.dart';
 import '../Constants/labels.dart';
 import 'package:upper/Networking/firebase.dart';
 import '../Constants/inputs.dart';
@@ -29,13 +27,14 @@ class _LoginState extends State<Profile> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: kWhiteColour,
         body: SafeArea(
           child: Container(
             color: kWhiteColour,
             child: Column(
               children: <Widget>[
                 Expanded(
-                  flex: 4,
+                  flex: kUpGrid,
                   child: Row(
                     children: <Widget>[
                       SizedBox(
@@ -59,13 +58,13 @@ class _LoginState extends State<Profile> {
                         color: kBlueColour,
                       ),
                       SizedBox(
-                        width: 30.0,
+                        width: 20.0,
                       ),
                     ],
                   ),
                 ),
                 Expanded(
-                  flex: 37,
+                  flex: kCenterUpGrid + kCenterBottomGrid,
                   child: Stack(
                     alignment: AlignmentDirectional.bottomCenter,
                     children: <Widget>[
@@ -86,14 +85,26 @@ class _LoginState extends State<Profile> {
                                   MainAxisAlignment.spaceEvenly,*/
                               children: <Widget>[
                                 inp.dividerElements2(),
-                                CircleAvatar(
-                                  radius: 50,
-                                  backgroundColor: kBlueColour,
-                                  child: CircleAvatar(
-                                    radius: 49,
-                                    backgroundImage: AssetImage(
-                                        'images/PatinoChaparro_Foto.jpg'),
-                                  ),
+                                Stack(
+                                  alignment: Alignment.bottomCenter,
+                                  children: <Widget>[
+                                    CircleAvatar(
+                                      radius: 50,
+                                      backgroundColor: kBlueColour,
+                                      child: CircleAvatar(
+                                        radius: 49,
+                                        backgroundImage: AssetImage(
+                                            'images/PatinoChaparro_Foto.jpg'),
+                                      ),
+                                    ),
+                                    Positioned(
+                                      bottom: -15,
+                                      right: 90,
+                                      child: but.bigIconsButton(
+                                          icon: Icons.edit, color: kBlueColour),
+                                    )
+                                  ],
+                                  overflow: Overflow.visible,
                                 ),
                                 inp.dividerElements(),
                                 inp.textNameForm("Alejandro Patino"),
@@ -207,7 +218,7 @@ class _LoginState extends State<Profile> {
                   ),
                 ),
                 Expanded(
-                  flex: 6,
+                  flex: kBottomGrid,
                   child: SizedBox(),
                 ),
               ],

@@ -21,7 +21,7 @@ class _LoginState extends State<Verification> {
               child: Column(
                 children: <Widget>[
                   Expanded(
-                    flex: 138,
+                    flex: kUpGrid,
                     child: Row(
                       children: <Widget>[
                         SizedBox(
@@ -51,13 +51,13 @@ class _LoginState extends State<Verification> {
                     ),
                   ),
                   Expanded(
-                    flex: 20,
+                    flex: kCenterUpGrid,
                     child: Container(
                       color: kBlueColour,
                     ),
                   ),
                   Expanded(
-                    flex: 100,
+                    flex: 5,
                     child: Align(
                       alignment: Alignment.topCenter,
                       child: Text(
@@ -69,7 +69,7 @@ class _LoginState extends State<Verification> {
                     ),
                   ),
                   Expanded(
-                    flex: 600,
+                    flex: 31 + kBottomGrid,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[

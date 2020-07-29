@@ -8,6 +8,11 @@ const kBlackColour = Color(0xFF000000);
 const kRedColour = Color(0xFFE30000);
 const kDarkerBlueColour = Color(0xFF0070A3);
 
+const kUpGrid = 4;
+const kCenterUpGrid = 1;
+const kCenterBottomGrid = 36;
+const kBottomGrid = 6;
+
 const kLabelUpperYellow = TextStyle(
   fontSize: 36.0,
   color: kYellowColour,

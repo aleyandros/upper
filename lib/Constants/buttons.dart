@@ -27,7 +27,18 @@ class Buttons {
       icon: Icon(
         icon,
         color: color,
-        size: 16.0,
+        size: 20.0,
+      ),
+      onPressed: navigation,
+    );
+  }
+
+  Widget bigIconsButton({@required icon, color, navigation}) {
+    return IconButton(
+      icon: Icon(
+        icon,
+        color: color,
+        size: 24.0,
       ),
       onPressed: navigation,
     );

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:upper/Constants/buttons.dart';
 import 'package:upper/Screens/login.dart';
+import 'package:upper/Screens/profile.dart';
 import '../Constants/labels.dart';
 import 'package:upper/Networking/firebase.dart';
 import '../Constants/inputs.dart';
@@ -33,14 +34,19 @@ class _LoginState extends State<Signup> {
             child: Column(
               children: <Widget>[
                 Expanded(
-                  flex: 138,
+                  flex: kUpGrid,
                   child: Row(
                     children: <Widget>[
                       SizedBox(
                         width: 20.0,
                       ),
                       but.backButton(
-                          icon: Icons.arrow_back_ios, color: kWhiteColour),
+                        icon: Icons.arrow_back_ios,
+                        color: kWhiteColour,
+                        navigation: () {
+                          Navigator.pushNamed(context, Login.id);
+                        },
+                      ),
                       Expanded(
                         child: Align(
                           alignment: Alignment.center,
@@ -49,6 +55,13 @@ class _LoginState extends State<Signup> {
                             style: kLabelTitleWhite,
                           ),
                         ),
+                      ),
+                      but.backButton(
+                        icon: Icons.shop,
+                        color: kBlueColour,
+                        navigation: () {
+                          Navigator.pushNamed(context, Profile.id);
+                        },
                       ),
                       SizedBox(
                         width: 30.0,
@@ -64,17 +77,18 @@ class _LoginState extends State<Signup> {
                   ),
                 ),
                 Expanded(
-                  flex: 20,
+                  flex: 1,
                   child: Container(
                     color: kBlueColour,
                   ),
                 ),
                 Expanded(
-                  flex: 600,
+                  flex: 36,
                   child: Stack(
                     alignment: AlignmentDirectional.bottomCenter,
                     children: <Widget>[
                       Card(
+                        elevation: 3,
                         child: Container(
                           padding: EdgeInsets.fromLTRB(30, 0, 30, 30),
                           color: kWhiteColour,
@@ -213,7 +227,7 @@ class _LoginState extends State<Signup> {
                   ),
                 ),
                 Expanded(
-                  flex: 135,
+                  flex: 6,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
