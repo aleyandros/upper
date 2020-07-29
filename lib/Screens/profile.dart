@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:upper/Constants/buttons.dart';
+import 'package:upper/Screens/verification.dart';
 import '../Constants/labels.dart';
 import 'package:upper/Networking/firebase.dart';
 import '../Constants/inputs.dart';
@@ -54,9 +55,11 @@ class _LoginState extends State<Profile> {
                         ),
                       ),
                       but.backButton(
-                        icon: FontAwesomeIcons.shoppingCart,
-                        color: kBlueColour,
-                      ),
+                          icon: FontAwesomeIcons.shoppingCart,
+                          color: kBlueColour,
+                          navigation: () {
+                            Navigator.pushNamed(context, Verification.id);
+                          }),
                       SizedBox(
                         width: 20.0,
                       ),

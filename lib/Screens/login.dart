@@ -64,6 +64,7 @@ class _LoginState extends State<Login> {
                 Expanded(
                   flex: 8,
                   child: Card(
+                    elevation: 3,
                     child: Stack(
                       alignment: AlignmentDirectional.bottomCenter,
                       overflow: Overflow.visible,

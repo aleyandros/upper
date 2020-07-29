@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:upper/Constants/buttons.dart';
 import 'package:upper/Screens/login.dart';
 import 'package:upper/Screens/profile.dart';
+import 'package:upper/Screens/verification.dart';
 import '../Constants/labels.dart';
 import 'package:upper/Networking/firebase.dart';
 import '../Constants/inputs.dart';
@@ -60,7 +61,7 @@ class _LoginState extends State<Signup> {
                         icon: Icons.shop,
                         color: kBlueColour,
                         navigation: () {
-                          Navigator.pushNamed(context, Profile.id);
+                          Navigator.pushNamed(context, Verification.id);
                         },
                       ),
                       SizedBox(
@@ -77,13 +78,13 @@ class _LoginState extends State<Signup> {
                   ),
                 ),
                 Expanded(
-                  flex: 1,
+                  flex: kCenterUpGrid,
                   child: Container(
                     color: kBlueColour,
                   ),
                 ),
                 Expanded(
-                  flex: 36,
+                  flex: kCenterBottomGrid,
                   child: Stack(
                     alignment: AlignmentDirectional.bottomCenter,
                     children: <Widget>[
@@ -200,8 +201,6 @@ class _LoginState extends State<Signup> {
                         bottom: -25,
                         child: but.biggestButton(
                           text: 'crear cuenta',
-                          width: 314.0,
-                          height: 50.0,
                           onPress: () async {
                             // Validate will return true if the form is valid, or false if
                             // the form is invalid.
@@ -227,7 +226,7 @@ class _LoginState extends State<Signup> {
                   ),
                 ),
                 Expanded(
-                  flex: 6,
+                  flex: kBottomGrid,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -240,9 +239,6 @@ class _LoginState extends State<Signup> {
                           'inicia sesión',
                           style: kLabelUnderlineWhite,
                         ),
-                        onPressed: () {
-                          Navigator.pushNamed(context, Login.id);
-                        },
                       ),
                     ],
                   ),
