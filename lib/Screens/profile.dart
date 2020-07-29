@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:upper/Constants/buttons.dart';
 import 'package:upper/Screens/verification.dart';
+import 'package:upper/Screens/index.dart';
 import '../Constants/labels.dart';
 import 'package:upper/Networking/firebase.dart';
 import '../Constants/inputs.dart';
@@ -42,9 +43,11 @@ class _LoginState extends State<Profile> {
                         width: 20.0,
                       ),
                       but.backButton(
-                        icon: Icons.arrow_back_ios,
-                        color: kGreyColour,
-                      ),
+                          icon: Icons.arrow_back_ios,
+                          color: kGreyColour,
+                          navigation: () {
+                            Navigator.pushNamed(context, Index.id);
+                          }),
                       Expanded(
                         child: Align(
                           alignment: Alignment.center,

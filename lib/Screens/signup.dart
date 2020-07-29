@@ -239,6 +239,9 @@ class _LoginState extends State<Signup> {
                           'inicia sesión',
                           style: kLabelUnderlineWhite,
                         ),
+                        onPressed: () {
+                          Navigator.pushNamed(context, Login.id);
+                        },
                       ),
                     ],
                   ),

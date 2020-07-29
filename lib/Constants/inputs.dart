@@ -56,4 +56,46 @@ class Inputs {
       height: 10,
     );
   }
+
+  Widget searchBar() {
+    return Align(
+      alignment: Alignment.center,
+      child: Row(
+        children: <Widget>[
+          SizedBox(
+            width: 20,
+          ),
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                  border: Border.all(color: kGreyColour, width: 2),
+                  borderRadius: BorderRadius.circular(20),
+                  color: kWhiteColour,
+                  boxShadow: [
+                    BoxShadow(
+                      color: kGreyColour,
+                      offset: Offset(0.0, 1.0),
+                      blurRadius: 6.0,
+                    ),
+                  ]),
+              height: 40,
+              child: TextFormField(
+                decoration: InputDecoration(
+                  icon: Icon(
+                    Icons.search,
+                    color: kGreyColour,
+                  ),
+                  hintText: 'Que desea?',
+                  labelText: 'Prueba',
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 20,
+          ),
+        ],
+      ),
+    );
+  }
 }
