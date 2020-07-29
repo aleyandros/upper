@@ -39,7 +39,7 @@ class _LoginState extends State<Verification> {
                           child: Align(
                             alignment: Alignment.center,
                             child: Text(
-                              'Verificación',
+                              '',
                               style: kLabelTitleWhite,
                             ),
                           ),
@@ -96,9 +96,7 @@ class _LoginState extends State<Verification> {
                             onPressed: () {
                               // Validate will return true if the form is valid, or false if
                               // the form is invalid.
-                              if (_formKey.currentState.validate()) {
-
-                              }
+                              if (_formKey.currentState.validate()) {}
                             },
                             child: Text(
                               'FINALIZAR',

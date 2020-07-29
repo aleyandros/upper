@@ -5,14 +5,15 @@ import 'package:upper/Screens/login.dart';
 import '../Constants/labels.dart';
 import 'package:upper/Networking/firebase.dart';
 import '../Constants/inputs.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class Signup extends StatefulWidget {
-  static final id = "signup";
+class Profile extends StatefulWidget {
+  static final id = "profile";
   @override
   _LoginState createState() => _LoginState();
 }
 
-class _LoginState extends State<Signup> {
+class _LoginState extends State<Profile> {
   final _formKey = GlobalKey<FormState>();
   Inputs inp = Inputs();
   Buttons but = Buttons();
@@ -29,18 +30,18 @@ class _LoginState extends State<Signup> {
       home: Scaffold(
         body: SafeArea(
           child: Container(
-            color: kBlueColour,
+            color: kWhiteColour,
             child: Column(
               children: <Widget>[
                 Expanded(
-                  flex: 138,
+                  flex: 50,
                   child: Row(
                     children: <Widget>[
                       SizedBox(
                         width: 20.0,
                       ),
                       but.backButton(
-                          icon: Icons.arrow_back_ios, color: kWhiteColour),
+                          icon: Icons.arrow_back_ios, color: kGreyColour),
                       Expanded(
                         child: Align(
                           alignment: Alignment.center,
@@ -50,6 +51,9 @@ class _LoginState extends State<Signup> {
                           ),
                         ),
                       ),
+                      but.backButton(
+                          icon: FontAwesomeIcons.shoppingCart,
+                          color: kBlueColour),
                       SizedBox(
                         width: 30.0,
                       ),
@@ -64,9 +68,9 @@ class _LoginState extends State<Signup> {
                   ),
                 ),
                 Expanded(
-                  flex: 20,
+                  flex: 100,
                   child: Container(
-                    color: kBlueColour,
+                    color: kRedColour,
                   ),
                 ),
                 Expanded(
@@ -213,25 +217,8 @@ class _LoginState extends State<Signup> {
                   ),
                 ),
                 Expanded(
-                  flex: 135,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        '¿Ya tienes cuenta? ',
-                        style: kLabelWhite,
-                      ),
-                      FlatButton(
-                        child: Text(
-                          'inicia sesión',
-                          style: kLabelUnderlineWhite,
-                        ),
-                        onPressed: () {
-                          Navigator.pushNamed(context, Login.id);
-                        },
-                      ),
-                    ],
-                  ),
+                  flex: 55,
+                  child: SizedBox(),
                 ),
               ],
             ),

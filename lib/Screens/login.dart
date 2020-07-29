@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:upper/Screens/signup.dart';
 import '../Constants/labels.dart';
 
 class Login extends StatefulWidget {
@@ -177,7 +178,7 @@ class _LoginState extends State<Login> {
                           style: kLabelUnderlineBlue,
                         ),
                         onPressed: () {
-                          Navigator.pushNamed(context, 'Signup');
+                          Navigator.pushNamed(context, Signup.id);
                         },
                       )
                     ],
