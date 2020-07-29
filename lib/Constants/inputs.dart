@@ -12,6 +12,16 @@ class Inputs {
     );
   }
 
+  Widget textNameForm(text) {
+    return Align(
+      alignment: Alignment.center,
+      child: Text(
+        '$text',
+        style: kLabelTitleBlack,
+      ),
+    );
+  }
+
   Widget inputForm(
       {@required description,
       correction,
@@ -35,9 +45,15 @@ class Inputs {
     );
   }
 
-  Widget dividerElements() {
+  Widget dividerElements2() {
     return SizedBox(
       height: 20,
+    );
+  }
+
+  Widget dividerElements() {
+    return SizedBox(
+      height: 10,
     );
   }
 }

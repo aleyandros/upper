@@ -21,7 +21,7 @@ class _LoginState extends State<Verification> {
               child: Column(
                 children: <Widget>[
                   Expanded(
-                    flex: 138,
+                    flex: kUpGrid,
                     child: Row(
                       children: <Widget>[
                         SizedBox(
@@ -39,7 +39,7 @@ class _LoginState extends State<Verification> {
                           child: Align(
                             alignment: Alignment.center,
                             child: Text(
-                              'Verificación',
+                              '',
                               style: kLabelTitleWhite,
                             ),
                           ),
@@ -51,13 +51,13 @@ class _LoginState extends State<Verification> {
                     ),
                   ),
                   Expanded(
-                    flex: 20,
+                    flex: kCenterUpGrid,
                     child: Container(
                       color: kBlueColour,
                     ),
                   ),
                   Expanded(
-                    flex: 100,
+                    flex: 5,
                     child: Align(
                       alignment: Alignment.topCenter,
                       child: Text(
@@ -69,7 +69,7 @@ class _LoginState extends State<Verification> {
                     ),
                   ),
                   Expanded(
-                    flex: 600,
+                    flex: 31 + kBottomGrid,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
@@ -96,9 +96,7 @@ class _LoginState extends State<Verification> {
                             onPressed: () {
                               // Validate will return true if the form is valid, or false if
                               // the form is invalid.
-                              if (_formKey.currentState.validate()) {
-
-                              }
+                              if (_formKey.currentState.validate()) {}
                             },
                             child: Text(
                               'FINALIZAR',

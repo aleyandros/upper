@@ -22,11 +22,25 @@ class Buttons {
     );
   }
 
-  Widget backButton({@required icon, navigation}) {
-    return Icon(
-      icon,
-      color: kWhiteColour,
-      size: 16.0,
+  Widget backButton({@required icon, color, navigation}) {
+    return IconButton(
+      icon: Icon(
+        icon,
+        color: color,
+        size: 20.0,
+      ),
+      onPressed: navigation,
+    );
+  }
+
+  Widget bigIconsButton({@required icon, color, navigation}) {
+    return IconButton(
+      icon: Icon(
+        icon,
+        color: color,
+        size: 24.0,
+      ),
+      onPressed: navigation,
     );
   }
 }
