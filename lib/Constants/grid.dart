@@ -1,20 +1,19 @@
-import 'labels.dart';
-import 'buttons.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-Buttons but = Buttons();
+import 'buttons.dart';
+import 'labels.dart';
 
 class Grid {
-  Widget Up({icon1, color1, nav, text, icon2, color2, nav2}) {
+  Buttons but = Buttons();
+
+  Widget Up({icon1, icon2, color1, color2, navigation1, navigation2, text}) {
     return Expanded(
-      flex: 50,
+      flex: 138,
       child: Row(
         children: <Widget>[
           SizedBox(
             width: 20.0,
           ),
-          but.backButton(icon: icon1, color: color1),
+          but.backButton(icon: icon1, color: icon2, navigation: navigation1),
           Expanded(
             child: Align(
               alignment: Alignment.center,
@@ -24,7 +23,7 @@ class Grid {
               ),
             ),
           ),
-          but.backButton(icon: icon2, color: color2),
+          but.backButton(icon: icon2, color: color2, navigation: navigation2),
           SizedBox(
             width: 30.0,
           ),

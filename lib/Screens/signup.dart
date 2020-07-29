@@ -89,7 +89,7 @@ class _LoginState extends State<Signup> {
                               /*mainAxisAlignment:
                                   MainAxisAlignment.spaceEvenly,*/
                               children: <Widget>[
-                                inp.dividerElements(),
+                                inp.dividerElements2(),
                                 inp.textForm("Nombre"),
                                 inp.inputForm(
                                     description: "Tu nombre",
@@ -103,7 +103,7 @@ class _LoginState extends State<Signup> {
                                     onSave: (value) {
                                       _nombre = value;
                                     }),
-                                inp.dividerElements(),
+                                inp.dividerElements2(),
                                 inp.textForm("Apellido"),
                                 inp.inputForm(
                                     description: "Tu apellido",
@@ -117,7 +117,7 @@ class _LoginState extends State<Signup> {
                                     onSave: (value) {
                                       _apellido = value;
                                     }),
-                                inp.dividerElements(),
+                                inp.dividerElements2(),
                                 inp.textForm("Correo electrónico"),
                                 inp.inputForm(
                                     keyboard: TextInputType.emailAddress,
@@ -132,7 +132,7 @@ class _LoginState extends State<Signup> {
                                     onSave: (value) {
                                       _email = value;
                                     }),
-                                inp.dividerElements(),
+                                inp.dividerElements2(),
                                 inp.textForm("Celular"),
                                 inp.inputForm(
                                     keyboard: TextInputType.numberWithOptions(),
@@ -147,7 +147,7 @@ class _LoginState extends State<Signup> {
                                     onSave: (value) {
                                       _celular = value;
                                     }),
-                                inp.dividerElements(),
+                                inp.dividerElements2(),
                                 inp.textForm("Contraseña"),
                                 inp.inputForm(
                                     obscureText: true,
@@ -162,7 +162,7 @@ class _LoginState extends State<Signup> {
                                       }
                                       return null;
                                     }),
-                                inp.dividerElements(),
+                                inp.dividerElements2(),
                                 inp.textForm("Repetir contraseña"),
                                 inp.inputForm(
                                     obscureText: true,

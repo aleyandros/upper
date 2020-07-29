@@ -23,10 +23,13 @@ class Buttons {
   }
 
   Widget backButton({@required icon, color, navigation}) {
-    return Icon(
-      icon,
-      color: color,
-      size: 16.0,
+    return IconButton(
+      icon: Icon(
+        icon,
+        color: color,
+        size: 16.0,
+      ),
+      onPressed: navigation,
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:upper/Constants/buttons.dart';
+import 'package:upper/Constants/grid.dart';
 import 'package:upper/Screens/login.dart';
 import '../Constants/labels.dart';
 import 'package:upper/Networking/firebase.dart';
@@ -34,51 +35,42 @@ class _LoginState extends State<Profile> {
             child: Column(
               children: <Widget>[
                 Expanded(
-                  flex: 50,
+                  flex: 4,
                   child: Row(
                     children: <Widget>[
                       SizedBox(
                         width: 20.0,
                       ),
                       but.backButton(
-                          icon: Icons.arrow_back_ios, color: kGreyColour),
+                        icon: Icons.arrow_back_ios,
+                        color: kGreyColour,
+                      ),
                       Expanded(
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
-                            'Registrate',
+                            "",
                             style: kLabelTitleWhite,
                           ),
                         ),
                       ),
                       but.backButton(
-                          icon: FontAwesomeIcons.shoppingCart,
-                          color: kBlueColour),
+                        icon: FontAwesomeIcons.shoppingCart,
+                        color: kBlueColour,
+                      ),
                       SizedBox(
                         width: 30.0,
                       ),
                     ],
                   ),
                 ),
-                Visibility(
-                  visible: _backendError.isNotEmpty,
-                  child: Text(
-                    _backendError,
-                    style: kLabelWhite,
-                  ),
-                ),
                 Expanded(
-                  flex: 100,
-                  child: Container(
-                    color: kRedColour,
-                  ),
-                ),
-                Expanded(
-                  flex: 600,
+                  flex: 37,
                   child: Stack(
                     alignment: AlignmentDirectional.bottomCenter,
                     children: <Widget>[
                       Card(
+                        elevation: 3,
                         child: Container(
                           padding: EdgeInsets.fromLTRB(30, 0, 30, 30),
                           color: kWhiteColour,
@@ -93,7 +85,19 @@ class _LoginState extends State<Profile> {
                               /*mainAxisAlignment:
                                   MainAxisAlignment.spaceEvenly,*/
                               children: <Widget>[
+                                inp.dividerElements2(),
+                                CircleAvatar(
+                                  radius: 50,
+                                  backgroundColor: kBlueColour,
+                                  child: CircleAvatar(
+                                    radius: 49,
+                                    backgroundImage: AssetImage(
+                                        'images/PatinoChaparro_Foto.jpg'),
+                                  ),
+                                ),
                                 inp.dividerElements(),
+                                inp.textNameForm("Alejandro Patino"),
+                                inp.dividerElements2(),
                                 inp.textForm("Nombre"),
                                 inp.inputForm(
                                     description: "Tu nombre",
@@ -107,7 +111,7 @@ class _LoginState extends State<Profile> {
                                     onSave: (value) {
                                       _nombre = value;
                                     }),
-                                inp.dividerElements(),
+                                inp.dividerElements2(),
                                 inp.textForm("Apellido"),
                                 inp.inputForm(
                                     description: "Tu apellido",
@@ -121,7 +125,7 @@ class _LoginState extends State<Profile> {
                                     onSave: (value) {
                                       _apellido = value;
                                     }),
-                                inp.dividerElements(),
+                                inp.dividerElements2(),
                                 inp.textForm("Correo electrónico"),
                                 inp.inputForm(
                                     keyboard: TextInputType.emailAddress,
@@ -136,7 +140,7 @@ class _LoginState extends State<Profile> {
                                     onSave: (value) {
                                       _email = value;
                                     }),
-                                inp.dividerElements(),
+                                inp.dividerElements2(),
                                 inp.textForm("Celular"),
                                 inp.inputForm(
                                     keyboard: TextInputType.numberWithOptions(),
@@ -151,7 +155,7 @@ class _LoginState extends State<Profile> {
                                     onSave: (value) {
                                       _celular = value;
                                     }),
-                                inp.dividerElements(),
+                                inp.dividerElements2(),
                                 inp.textForm("Contraseña"),
                                 inp.inputForm(
                                     obscureText: true,
@@ -166,21 +170,7 @@ class _LoginState extends State<Profile> {
                                       }
                                       return null;
                                     }),
-                                inp.dividerElements(),
-                                inp.textForm("Repetir contraseña"),
-                                inp.inputForm(
-                                    obscureText: true,
-                                    description: "********",
-                                    correction: "No son iguales",
-                                    icon: Icons.lock,
-                                    validate: (value) {
-                                      if (value == _pass1) {
-                                        _pass2 = value;
-                                        return null;
-                                      } else {
-                                        return "La contraseña no coincide";
-                                      }
-                                    })
+                                inp.dividerElements2(),
                               ],
                             ),
                           ),
@@ -189,7 +179,7 @@ class _LoginState extends State<Profile> {
                       Positioned(
                         bottom: -25,
                         child: but.biggestButton(
-                          text: 'crear cuenta',
+                          text: 'editar perfil',
                           width: 314.0,
                           height: 50.0,
                           onPress: () async {
@@ -217,7 +207,7 @@ class _LoginState extends State<Profile> {
                   ),
                 ),
                 Expanded(
-                  flex: 55,
+                  flex: 6,
                   child: SizedBox(),
                 ),
               ],
