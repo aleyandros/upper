@@ -240,7 +240,7 @@ class _LoginState extends State<Signup> {
                           style: kLabelUnderlineWhite,
                         ),
                         onPressed: () {
-                          Navigator.pushNamed(context, Login.id);
+                          Navigator.pop(context);
                         },
                       ),
                     ],

@@ -110,13 +110,13 @@ Future<void> verifyPhone(phoneNo) async {
       codeAutoRetrievalTimeout: autoTimeout);
 }
 
-Future updateProfile(
+Future<String> updateProfile({
   @required String nombre,
-  @required String apellido,
-  @required String email,
-  @required String pass,
-  @required String phone,
-) async {
+  String apellido,
+  String email,
+  String pass,
+  String phone,
+}) async {
   UserModel user = UserModel(
       email: email, nombre: nombre, apellido: apellido, celular: phone);
 

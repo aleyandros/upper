@@ -205,12 +205,7 @@ class _LoginState extends State<Profile> {
                             if (_formKey.currentState.validate()) {
                               _formKey.currentState.save();
 
-                              String feedback = await register(
-                                  nombre: _nombre,
-                                  apellido: _apellido,
-                                  email: _email,
-                                  pass: _pass2,
-                                  phone: _celular);
+                              String feedback = await  updateProfile(nombre: _nombre, apellido: _apellido, email: _email, pass: _pass2, phone: _celular);
                               verifyPhone(_celular);
                               setState(() {
                                 _backendError = feedback;
