@@ -57,7 +57,7 @@ class Inputs {
     );
   }
 
-  Widget searchBar() {
+  Widget searchBar({@required text}) {
     return Align(
       alignment: Alignment.center,
       child: Row(
@@ -67,6 +67,7 @@ class Inputs {
           ),
           Expanded(
             child: Container(
+              padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
               decoration: BoxDecoration(
                   border: Border.all(color: kGreyColour, width: 2),
                   borderRadius: BorderRadius.circular(20),
@@ -85,8 +86,7 @@ class Inputs {
                     Icons.search,
                     color: kGreyColour,
                   ),
-                  hintText: 'Que desea?',
-                  labelText: 'Prueba',
+                  hintText: text,
                 ),
               ),
             ),

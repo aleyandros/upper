@@ -70,7 +70,7 @@ class _LoginState extends State<Index> {
                   flex: kCenterUpGrid + kCenterBottomGrid + kBottomGrid,
                   child: ListView(
                     children: <Widget>[
-                      inp.searchBar(),
+                      inp.searchBar(text: 'Que desea?'),
                     ],
                   ),
                 ),
