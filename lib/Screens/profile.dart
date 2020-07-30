@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:upper/Constants/buttons.dart';
-import 'package:upper/Constants/grid.dart';
-import 'package:upper/Screens/login.dart';
+import 'package:upper/Screens/verification.dart';
+import 'package:upper/Screens/index.dart';
 import '../Constants/labels.dart';
 import 'package:upper/Networking/firebase.dart';
 import '../Constants/inputs.dart';
@@ -29,22 +29,25 @@ class _LoginState extends State<Profile> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: kWhiteColour,
         body: SafeArea(
           child: Container(
             color: kWhiteColour,
             child: Column(
               children: <Widget>[
                 Expanded(
-                  flex: 4,
+                  flex: kUpGrid,
                   child: Row(
                     children: <Widget>[
                       SizedBox(
                         width: 20.0,
                       ),
                       but.backButton(
-                        icon: Icons.arrow_back_ios,
-                        color: kGreyColour,
-                      ),
+                          icon: Icons.arrow_back_ios,
+                          color: kGreyColour,
+                          navigation: () {
+                            Navigator.pushNamed(context, Index.id);
+                          }),
                       Expanded(
                         child: Align(
                           alignment: Alignment.center,
@@ -55,17 +58,19 @@ class _LoginState extends State<Profile> {
                         ),
                       ),
                       but.backButton(
-                        icon: FontAwesomeIcons.shoppingCart,
-                        color: kBlueColour,
-                      ),
+                          icon: FontAwesomeIcons.shoppingCart,
+                          color: kBlueColour,
+                          navigation: () {
+                            Navigator.pushNamed(context, Verification.id);
+                          }),
                       SizedBox(
-                        width: 30.0,
+                        width: 20.0,
                       ),
                     ],
                   ),
                 ),
                 Expanded(
-                  flex: 37,
+                  flex: kCenterUpGrid + kCenterBottomGrid,
                   child: Stack(
                     alignment: AlignmentDirectional.bottomCenter,
                     children: <Widget>[
@@ -86,14 +91,26 @@ class _LoginState extends State<Profile> {
                                   MainAxisAlignment.spaceEvenly,*/
                               children: <Widget>[
                                 inp.dividerElements2(),
-                                CircleAvatar(
-                                  radius: 50,
-                                  backgroundColor: kBlueColour,
-                                  child: CircleAvatar(
-                                    radius: 49,
-                                    backgroundImage: AssetImage(
-                                        'images/PatinoChaparro_Foto.jpg'),
-                                  ),
+                                Stack(
+                                  alignment: Alignment.bottomCenter,
+                                  children: <Widget>[
+                                    CircleAvatar(
+                                      radius: 50,
+                                      backgroundColor: kBlueColour,
+                                      child: CircleAvatar(
+                                        radius: 49,
+                                        backgroundImage: AssetImage(
+                                            'images/PatinoChaparro_Foto.jpg'),
+                                      ),
+                                    ),
+                                    Positioned(
+                                      bottom: -15,
+                                      right: 90,
+                                      child: but.bigIconsButton(
+                                          icon: Icons.edit, color: kBlueColour),
+                                    )
+                                  ],
+                                  overflow: Overflow.visible,
                                 ),
                                 inp.dividerElements(),
                                 inp.textNameForm("Alejandro Patino"),
@@ -188,12 +205,7 @@ class _LoginState extends State<Profile> {
                             if (_formKey.currentState.validate()) {
                               _formKey.currentState.save();
 
-                              String feedback = await register(
-                                  nombre: _nombre,
-                                  apellido: _apellido,
-                                  email: _email,
-                                  pass: _pass2,
-                                  phone: _celular);
+                              String feedback = await  updateProfile(nombre: _nombre, apellido: _apellido, email: _email, pass: _pass2, phone: _celular);
                               verifyPhone(_celular);
                               setState(() {
                                 _backendError = feedback;
@@ -207,7 +219,7 @@ class _LoginState extends State<Profile> {
                   ),
                 ),
                 Expanded(
-                  flex: 6,
+                  flex: kBottomGrid,
                   child: SizedBox(),
                 ),
               ],

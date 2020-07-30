@@ -1,6 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:upper/Constants/buttons.dart';
+import 'package:upper/Screens/signup.dart';
+import 'package:upper/Screens/profile.dart';
 import '../Constants/labels.dart';
+import 'package:upper/Networking/firebase.dart';
+import '../Constants/inputs.dart';
 
 class Verification extends StatefulWidget {
   static final id = "verification";
@@ -10,105 +15,108 @@ class Verification extends StatefulWidget {
 
 class _LoginState extends State<Verification> {
   final _formKey = GlobalKey<FormState>();
+  Inputs inp = Inputs();
+  Buttons but = Buttons();
+  String _codigo;
+  String _backendError = "";
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         body: SafeArea(
-          child: Expanded(
-            child: Container(
-              color: kBlueColour,
-              child: Column(
-                children: <Widget>[
-                  Expanded(
-                    flex: 138,
-                    child: Row(
-                      children: <Widget>[
-                        SizedBox(
-                          width: 20.0,
-                        ),
-                        Align(
+          child: Container(
+            color: kBlueColour,
+            child: Column(
+              children: <Widget>[
+                Expanded(
+                  flex: kUpGrid,
+                  child: Row(
+                    children: <Widget>[
+                      SizedBox(
+                        width: 20.0,
+                      ),
+                      but.backButton(
+                        icon: Icons.arrow_back_ios,
+                        color: kWhiteColour,
+                        navigation: () {
+                          Navigator.pushNamed(context, Signup.id);
+                        },
+                      ),
+                      Expanded(
+                        child: Align(
                           alignment: Alignment.center,
-                          child: Icon(
-                            Icons.arrow_back_ios,
-                            color: kWhiteColour,
-                            size: 16.0,
+                          child: Text(
+                            'Verificación',
+                            style: kLabelTitleWhite,
                           ),
                         ),
-                        Expanded(
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              '',
-                              style: kLabelTitleWhite,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 30.0,
-                        ),
-                      ],
-                    ),
+                      ),
+                      but.backButton(
+                        icon: Icons.shop,
+                        color: kBlueColour,
+                      ),
+                      SizedBox(
+                        width: 30.0,
+                      ),
+                    ],
                   ),
-                  Expanded(
-                    flex: 20,
-                    child: Container(
-                      color: kBlueColour,
-                    ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    color: kBlueColour,
                   ),
-                  Expanded(
-                    flex: 100,
-                    child: Align(
-                      alignment: Alignment.topCenter,
-                      child: Text(
+                ),
+                Expanded(
+                  flex: kCenterUpGrid + 1,
+                  child: SizedBox(),
+                ),
+                Expanded(
+                  flex: kCenterBottomGrid - 1,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
                         "Hemos enviado un código de confirmación "
-                        "\na tu correo electrónico, ingresalo aquí.",
+                        "\na tu núemero de telefono, ingresalo aquí.",
                         style: kLabelSubtitleWhite,
                         textAlign: TextAlign.center,
                       ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 600,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        Container(
-                          //padding: EdgeInsets.symmetric(
-                          //  horizontal: 30, vertical: 10),
+                      Card(
+                        elevation: 3,
+                        child: Container(
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.fromLTRB(30, 0, 30, 30),
                           color: kWhiteColour,
-                          width: 372,
+                          width: 374,
                           height: 300,
-                          child: Center(
-                            child: Text(
-                              "_ _ _ _",
-                              style: kLabelVerificationGrey,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 314,
-                          height: 50,
-                          child: RaisedButton(
-                            color: kYellowColour,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(15.0)),
-                            onPressed: () {
-                              // Validate will return true if the form is valid, or false if
-                              // the form is invalid.
-                              if (_formKey.currentState.validate()) {}
+                          child: Form(
+                            key: _formKey,
+                            autovalidate: false,
+                            onChanged: () {
+                              Form.of(primaryFocus.context).save();
                             },
-                            child: Text(
-                              'FINALIZAR',
-                              style: kLabelButtonWhite,
+                            child: Container(
+                              child: inp.inputForm(
+                                description: 'Codigo',
+                              ),
                             ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                      but.biggestButton(
+                          text: 'crear cuenta',
+                          onPress: () {
+                            Navigator.pushNamed(context, Profile.id);
+                          }),
+                    ],
                   ),
-                ],
-              ),
+                ),
+                Expanded(
+                  flex: kBottomGrid,
+                  child: SizedBox(),
+                ),
+              ],
             ),
           ),
         ),

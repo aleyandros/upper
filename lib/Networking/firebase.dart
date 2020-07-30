@@ -109,3 +109,25 @@ Future<void> verifyPhone(phoneNo) async {
       codeSent: smsSent,
       codeAutoRetrievalTimeout: autoTimeout);
 }
+
+Future<String> updateProfile({
+  @required String nombre,
+  String apellido,
+  String email,
+  String pass,
+  String phone,
+}) async {
+  UserModel user = UserModel(
+      email: email, nombre: nombre, apellido: apellido, celular: phone);
+
+  Map<String, Object> data = user.toJson();
+  try {
+    FirebaseUser user = await _auth.currentUser();
+    db.collection("Users").document(user.uid).setData(data);
+  } catch (e) {
+    final status = AuthExceptionHandler.handleException(e);
+    final String errormsg =
+        AuthExceptionHandler.generateExceptionMessage(status);
+    return errormsg;
+  }
+}
