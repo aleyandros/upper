@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:upper/Screens/categories.dart';
 import 'package:upper/Screens/login.dart';
 import 'package:upper/Screens/signup.dart';
 import 'package:upper/Screens/verification.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
         Verification.id: (context) => Verification(),
         Profile.id: (context) => Profile(),
         Index.id: (context) => Index(),
+        Categories.id: (context) => Categories(),
       },
     );
   }
