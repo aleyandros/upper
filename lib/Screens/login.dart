@@ -45,7 +45,7 @@ class _LoginState extends State<Login> {
                 Expanded(
                   flex: 2,
                   child: Text(
-                    'Bienvenido a Upper',
+                    'Bienvenido a hUpper',
                     style: kLabelTitleWhite,
                   ),
                 ),
@@ -74,12 +74,8 @@ class _LoginState extends State<Login> {
                           width: 374.0,
                           child: Padding(
                             padding: const EdgeInsets.all(20.0),
-                            child: Column(
+                            child: ListView(
                               children: <Widget>[
-                                Expanded(
-                                  flex: 1,
-                                  child: SizedBox(),
-                                ),
                                 Expanded(
                                   flex: 3,
                                   child: Column(
