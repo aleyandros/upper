@@ -57,6 +57,12 @@ class Inputs {
     );
   }
 
+  Widget dividerElements3() {
+    return SizedBox(
+      height: 30,
+    );
+  }
+
   Widget searchBar({@required text}) {
     return Align(
       alignment: Alignment.center,

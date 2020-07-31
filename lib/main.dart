@@ -5,6 +5,7 @@ import 'package:upper/Screens/signup.dart';
 import 'package:upper/Screens/verification.dart';
 import 'package:upper/Screens/profile.dart';
 import 'package:upper/Screens/index.dart';
+import 'package:upper/Screens/products.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: Login.id,
+      initialRoute: Products.id,
       routes: {
         Login.id: (context) => Login(),
         Signup.id: (context) => Signup(),
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         Profile.id: (context) => Profile(),
         Index.id: (context) => Index(),
         Categories.id: (context) => Categories(),
+        Products.id: (context) => Products(),
       },
     );
   }
