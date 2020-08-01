@@ -97,6 +97,7 @@ class _LoginState extends State<Products> {
                       ),
                       pan.DividerIngredients(),
                       pan.Count(),
+                      inp.dividerElements2()
                     ],
                   ),
                 ),
