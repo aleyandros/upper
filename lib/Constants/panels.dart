@@ -33,7 +33,13 @@ class Panels {
     );
   }
 
-  /*Widget Ingredients({@required text, image, option}) {
-    return;
-  }*/
+  Widget Texts({@required text, @required style}) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      child: Text(
+        text,
+        style: style,
+      ),
+    );
+  }
 }

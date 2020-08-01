@@ -74,16 +74,22 @@ class _LoginState extends State<Products> {
                     children: <Widget>[
                       pan.Images(image1: 'hamburguesa.png'),
                       inp.dividerElements3(),
-                      Text(
-                        'Black burger',
-                        style: kLabelTitleBlack,
-                      ),
-                      Text(
-                        '\nPan artesanal, carne de res 150 gr, queso cheddar, '
-                        'plátano maduro, chorizo santarrosano, aros de '
-                        'cebolla apanados con pan de arroz y vegetales frescos.',
-                        style: kLabelBlack,
-                      )
+                      pan.Texts(text: 'Black burger', style: kLabelTitleBlack),
+                      inp.dividerElements4(),
+                      pan.Texts(
+                          text:
+                              'Pan artesanal, carne de res 150 gr, queso cheddar, '
+                              'plátano maduro, chorizo santarrosano, aros de '
+                              'cebolla apanados con pan de arroz y vegetales frescos.',
+                          style: kLabelBlack),
+                      inp.dividerElements3(),
+                      pan.Texts(
+                          text: 'Personaliza tu pedido',
+                          style: kLabelTitleBlack),
+                      inp.dividerElements4(),
+                      pan.Texts(
+                          text: 'Selecciona hasta 6 opciones',
+                          style: kLabelBlack)
                     ],
                   ),
                 ),
