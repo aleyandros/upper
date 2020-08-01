@@ -7,6 +7,7 @@ import '../Constants/labels.dart';
 import 'package:upper/Networking/firebase.dart';
 import '../Constants/inputs.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter/scheduler.dart' show timeDilation;
 
 class Products extends StatefulWidget {
   static final id = "index";
@@ -19,12 +20,6 @@ class _LoginState extends State<Products> {
   Inputs inp = Inputs();
   Buttons but = Buttons();
   Panels pan = Panels();
-  String _nombre;
-  String _apellido;
-  String _pass1;
-  String _pass2;
-  String _celular;
-  String _email;
   String _backendError = "";
   @override
   Widget build(BuildContext context) {
@@ -51,7 +46,7 @@ class _LoginState extends State<Products> {
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
-                            "Upper",
+                            '',
                             style: kLabelUpperYellow,
                           ),
                         ),
@@ -91,10 +86,17 @@ class _LoginState extends State<Products> {
                           text: 'Selecciona hasta 6 opciones',
                           style: kLabelBlack),
                       inp.dividerElements2(),
-                      pan.DividerIngredients(),
                       pan.Ingredients(
-                          text: 'Sin azucar', image: 'hamburguesa.png'),
+                        text: 'Sin chorizo santarrosano',
+                        image: 'Chorizo.png',
+                        action: (bool value) {
+                          setState(() {
+                            timeDilation = value ? 2.0 : 1.0;
+                          });
+                        },
+                      ),
                       pan.DividerIngredients(),
+                      pan.Count(),
                     ],
                   ),
                 ),
