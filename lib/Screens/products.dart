@@ -89,7 +89,12 @@ class _LoginState extends State<Products> {
                       inp.dividerElements4(),
                       pan.Texts(
                           text: 'Selecciona hasta 6 opciones',
-                          style: kLabelBlack)
+                          style: kLabelBlack),
+                      inp.dividerElements2(),
+                      pan.DividerIngredients(),
+                      pan.Ingredients(
+                          text: 'Sin azucar', image: 'hamburguesa.png'),
+                      pan.DividerIngredients(),
                     ],
                   ),
                 ),

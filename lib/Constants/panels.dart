@@ -42,4 +42,34 @@ class Panels {
       ),
     );
   }
+
+  Widget DividerIngredients() {
+    return Container(
+      width: double.infinity,
+      height: 1,
+      color: kGreyColour,
+    );
+  }
+
+  Widget Ingredients({@required text, image, action}) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+      child: Row(
+        children: <Widget>[
+          Container(
+            height: 30,
+            width: 30,
+            child: Image.asset('images/$image'),
+          ),
+          SizedBox(
+            width: 25,
+          ),
+          Text(
+            text,
+            style: kLabelBlack,
+          ),
+        ],
+      ),
+    );
+  }
 }
