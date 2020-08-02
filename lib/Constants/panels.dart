@@ -129,4 +129,75 @@ class Panels {
       ],
     );
   }
+
+  Widget ImageDestac({@required image, description, price}) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: kGreyColour,
+            offset: Offset(-3.0, 1.0),
+            blurRadius: 3.0,
+          ),
+        ],
+      ),
+      child: Column(
+        children: <Widget>[
+          Container(
+            width: 170,
+            height: 140,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(20.0),
+              ),
+              image: DecorationImage(
+                image: ExactAssetImage('images/$image'),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Container(
+            width: 170,
+            height: 60,
+            decoration: BoxDecoration(
+              color: kWhiteColour,
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(20.0),
+              ),
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 11.0, vertical: 10.0),
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text('$price', style: kLabelSubtitleBlack),
+                      SizedBox(
+                        width: 30,
+                        height: 20,
+                        child: IconButton(
+                          icon: Icon(Icons.favorite_border),
+                          onPressed: () {},
+                          color: kBlueColour,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      description,
+                      style: kLabelSubtitleBlack,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
