@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'buttons.dart';
 import 'labels.dart';
+import 'labels.dart';
 
 class Grid {
   Buttons but = Buttons();
 
   Widget Up({icon1, icon2, color1, color2, navigation1, navigation2, text}) {
     return Expanded(
-      flex: 138,
+      flex: kUpGrid,
       child: Row(
         children: <Widget>[
           SizedBox(
             width: 20.0,
           ),
-          but.backButton(icon: icon1, color: icon2, navigation: navigation1),
+          but.backButton(icon: icon1, color: color1, navigation: navigation1),
           Expanded(
             child: Align(
               alignment: Alignment.center,
