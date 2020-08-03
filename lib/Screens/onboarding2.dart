@@ -37,9 +37,12 @@ class _Onboarding2State extends State<Onboarding2> {
             ),
             Expanded(
               flex: 4,
-              child: Text("Contamos con una gran variedad de tiendas asociadas, encontrarás desde ropa, tecnología hasta comida.",
-                style: kLabelBlack,
-                textAlign: TextAlign.center,),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 50),
+                child: Text("Contamos con una gran variedad de tiendas asociadas, encontrarás desde ropa, tecnología hasta comida.",
+                  style: kLabelBlack,
+                  textAlign: TextAlign.center,),
+              ),
             ),
             Expanded(
               flex: 2 ,
@@ -68,13 +71,11 @@ class _Onboarding2State extends State<Onboarding2> {
                       CupertinoIcons.circle_filled,
                       color: kBlueColour,
                     ),
-                  ),
-                  Opacity(
                     opacity: 0.5,
-                    child: Icon(
-                      CupertinoIcons.circle_filled,
-                      color: kBlueColour,
-                    ),
+                  ),
+                  Icon(
+                    CupertinoIcons.circle_filled,
+                    color: kBlueColour,
                   ),
                   Opacity(
                     opacity: 0.5,
