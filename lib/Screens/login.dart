@@ -45,7 +45,7 @@ class _LoginState extends State<Login> {
                 Expanded(
                   flex: 2,
                   child: Text(
-                    'Bienvenido a hUpper',
+                    'Bienvenido a Upper',
                     style: kLabelTitleWhite,
                   ),
                 ),
@@ -77,6 +77,10 @@ class _LoginState extends State<Login> {
                             child: ListView(
                               children: <Widget>[
                                 Expanded(
+                                  flex: 1,
+                                  child: SizedBox(),
+                                ),
+                                Expanded(
                                   flex: 3,
                                   child: Column(
                                     children: <Widget>[
@@ -89,6 +93,9 @@ class _LoginState extends State<Login> {
                                       ),
                                       TextFormField(
                                         decoration: const InputDecoration(
+                                          suffixIcon: Icon(
+                                            Icons.mail,
+                                          ),
                                           hintText: 'diego35.da@gmail.com',
                                         ),
                                         validator: (value) {
@@ -114,6 +121,9 @@ class _LoginState extends State<Login> {
                                       ),
                                       TextFormField(
                                         decoration: const InputDecoration(
+                                          suffixIcon: Icon(
+                                            Icons.lock,
+                                          ),
                                           hintText: '**********',
                                         ),
                                         validator: (value) {
