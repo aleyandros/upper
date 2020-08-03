@@ -98,14 +98,14 @@ class _LoginState extends State<Verification> {
                             },
                             child: Container(
                               child: inp.inputForm(
-                                description: 'Codigo',
+                                description: '',
                               ),
                             ),
                           ),
                         ),
                       ),
                       but.biggestButton(
-                          text: 'crear cuenta',
+                          text: 'finalizar',
                           onPress: () {
                             Navigator.pushNamed(context, Profile.id);
                           }),

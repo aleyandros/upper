@@ -10,7 +10,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 
 class Products extends StatefulWidget {
-  static final id = "index";
+  static final id = "products";
   @override
   _LoginState createState() => _LoginState();
 }
