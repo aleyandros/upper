@@ -225,6 +225,9 @@ class _LoginState extends State<Signup> {
                     overflow: Overflow.visible,
                   ),
                 ),
+                SizedBox(
+                  height: 25,
+                ),
                 Expanded(
                   flex: kBottomGrid,
                   child: Row(
