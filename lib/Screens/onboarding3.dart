@@ -31,15 +31,18 @@ class _Onboarding3State extends State<Onboarding3> {
             Expanded(
               flex: 3,
               child: Center(
-                child: Text("Crea tu perfil",
+                child: Text("Recíbelo en poco tiempo",
                   style: kLabelTitleBlack,),
               ),
             ),
             Expanded(
               flex: 4,
-              child: Text("En Upper podrás crear un perfil con tu correo electrónico y personalizarlo a tu gusto.",
-                style: kLabelBlack,
-                textAlign: TextAlign.center,),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 50),
+                child: Text("Obtendrás tu producto el mismo día y tu alimento en menos de una hora.",
+                  style: kLabelBlack,
+                  textAlign: TextAlign.center,),
+              ),
             ),
             Expanded(
               flex: 2 ,
@@ -63,23 +66,23 @@ class _Onboarding3State extends State<Onboarding3> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  Opacity(
+                    child: Icon(
+                      CupertinoIcons.circle_filled,
+                      color: kBlueColour,
+                    ),
+                    opacity: 0.5,
+                  ),
+                  Opacity(
+                    child: Icon(
+                      CupertinoIcons.circle_filled,
+                      color: kBlueColour,
+                    ),
+                    opacity: 0.5,
+                  ),
                   Icon(
                     CupertinoIcons.circle_filled,
                     color: kBlueColour,
-                  ),
-                  Opacity(
-                    opacity: 0.5,
-                    child: Icon(
-                      CupertinoIcons.circle_filled,
-                      color: kBlueColour,
-                    ),
-                  ),
-                  Opacity(
-                    opacity: 0.5,
-                    child: Icon(
-                      CupertinoIcons.circle_filled,
-                      color: kBlueColour,
-                    ),
                   ),
                 ],
               ),

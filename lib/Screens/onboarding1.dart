@@ -37,9 +37,12 @@ class _Onboarding1State extends State<Onboarding1> {
             ),
             Expanded(
               flex: 4,
-              child: Text("En Upper podrás crear un perfil con tu correo electrónico y personalizarlo a tu gusto.",
-              style: kLabelBlack,
-              textAlign: TextAlign.center,),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 50),
+                child: Text("En Upper podrás crear un perfil con tu correo electrónico y personalizarlo a tu gusto.",
+                style: kLabelBlack,
+                textAlign: TextAlign.center,),
+              ),
             ),
             Expanded(
               flex: 2 ,
@@ -68,18 +71,18 @@ class _Onboarding1State extends State<Onboarding1> {
                     color: kBlueColour,
                   ),
                   Opacity(
-                    opacity: 0.5,
                     child: Icon(
                       CupertinoIcons.circle_filled,
                       color: kBlueColour,
                     ),
+                    opacity: 0.5,
                   ),
                   Opacity(
-                    opacity: 0.5,
                     child: Icon(
                       CupertinoIcons.circle_filled,
                       color: kBlueColour,
                     ),
+                    opacity: 0.5,
                   ),
                 ],
               ),
