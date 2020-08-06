@@ -10,6 +10,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Destacados extends StatefulWidget {
   static final id = "index";
+
   @override
   _LoginState createState() => _LoginState();
 }
@@ -20,6 +21,7 @@ class _LoginState extends State<Destacados> {
   Buttons but = Buttons();
   Panels pan = Panels();
   String _backendError = "";
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
