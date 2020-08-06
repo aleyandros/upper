@@ -11,12 +11,13 @@ AuthResultStatus _status;
 
 String verificationId;
 
-Future signIn({@required String email, @required String pass}) async {
+Future<AuthResult> signIn(
+    {@required String email, @required String pass}) async {
   try {
     AuthResult res =
         await _auth.signInWithEmailAndPassword(email: email, password: pass);
     if (res.user != null) {
-      _status = AuthResultStatus.successful;
+      return res;
     } else {
       _status = AuthResultStatus.undefined;
     }
@@ -24,7 +25,7 @@ Future signIn({@required String email, @required String pass}) async {
     final status = AuthExceptionHandler.handleException(e);
     final String errormsg =
         AuthExceptionHandler.generateExceptionMessage(status);
-    return errormsg;
+    return status;
   }
 }
 
@@ -130,4 +131,9 @@ Future<String> updateProfile({
         AuthExceptionHandler.generateExceptionMessage(status);
     return errormsg;
   }
+}
+
+Future<FirebaseUser> getCurrentUser() async {
+  FirebaseUser user = await _auth.currentUser();
+  return user;
 }

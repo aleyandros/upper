@@ -1,6 +1,14 @@
+import 'dart:math';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:upper/Networking/authExceptionHandler.dart';
+import 'package:upper/Networking/firebase.dart';
 import 'package:upper/Screens/signup.dart';
 import '../Constants/labels.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'profile.dart';
 
 class Login extends StatefulWidget {
   static final id = "login";
@@ -8,7 +16,35 @@ class Login extends StatefulWidget {
   _LoginState createState() => _LoginState();
 }
 
+enum AuthStatus {
+  NOT_DETERMINED,
+  NOT_LOGGED_IN,
+  LOGGED_IN,
+}
+
+const spinkit = SpinKitRotatingCircle(
+  color: Colors.white,
+  size: 50.0,
+);
+
 class _LoginState extends State<Login> {
+  String _userId = "";
+  String _email;
+  String _pass;
+  String _backendError = "";
+  final _formKey = GlobalKey<FormState>();
+
+  void initState() async {
+    super.initState();
+    getCurrentUser().then((user) {
+      setState(() {
+        if (user != null) {
+          Navigator.pushNamed(context, Profile.id);
+        }
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -63,106 +99,128 @@ class _LoginState extends State<Login> {
                 ),
                 Expanded(
                   flex: 8,
-                  child: Card(
-                    elevation: 3,
-                    child: Stack(
-                      alignment: AlignmentDirectional.bottomCenter,
-                      overflow: Overflow.visible,
-                      children: <Widget>[
-                        Container(
-                          color: Colors.white,
-                          width: 374.0,
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: ListView(
-                              children: <Widget>[
-                                Expanded(
-                                  flex: 1,
-                                  child: SizedBox(),
-                                ),
-                                Expanded(
-                                  flex: 3,
-                                  child: Column(
-                                    children: <Widget>[
-                                      Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          'Correo Electronico:',
-                                          style: kLabelSignupBlue,
-                                        ),
-                                      ),
-                                      TextFormField(
-                                        decoration: const InputDecoration(
-                                          suffixIcon: Icon(
-                                            Icons.mail,
-                                          ),
-                                          hintText: 'diego35.da@gmail.com',
-                                        ),
-                                        validator: (value) {
-                                          if (value.isEmpty) {
-                                            return 'ex: upper@mail.co';
-                                          }
-                                          return null;
-                                        },
-                                      ),
-                                    ],
+                  child: Form(
+                    key: _formKey,
+                    autovalidate: false,
+                    child: Card(
+                      elevation: 3,
+                      child: Stack(
+                        alignment: AlignmentDirectional.bottomCenter,
+                        overflow: Overflow.visible,
+                        children: <Widget>[
+                          Container(
+                            color: Colors.white,
+                            width: 374.0,
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: ListView(
+                                children: <Widget>[
+                                  Expanded(
+                                    flex: 1,
+                                    child: SizedBox(),
                                   ),
-                                ),
-                                Expanded(
-                                  flex: 3,
-                                  child: Column(
-                                    children: <Widget>[
-                                      Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          'Contraseña:',
-                                          style: kLabelSignupBlue,
-                                        ),
-                                      ),
-                                      TextFormField(
-                                        decoration: const InputDecoration(
-                                          suffixIcon: Icon(
-                                            Icons.lock,
+                                  Expanded(
+                                    flex: 3,
+                                    child: Column(
+                                      children: <Widget>[
+                                        Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            'Correo Electronico:',
+                                            style: kLabelSignupBlue,
                                           ),
-                                          hintText: '**********',
                                         ),
-                                        validator: (value) {
-                                          if (value.isEmpty) {
-                                            return '******';
-                                          }
-                                          return null;
-                                        },
-                                      ),
-                                    ],
+                                        TextFormField(
+                                            keyboardType:
+                                                TextInputType.emailAddress,
+                                            decoration: const InputDecoration(
+                                              suffixIcon: Icon(
+                                                Icons.mail,
+                                              ),
+                                              hintText: 'diego35.da@gmail.com',
+                                            ),
+                                            validator: (value) {
+                                              if (value.isEmpty) {
+                                                return 'ex: upper@mail.co';
+                                              }
+                                              return null;
+                                            },
+                                            onSaved: (string) {
+                                              _email = string;
+                                            }),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: SizedBox(),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          bottom: -25,
-                          child: SizedBox(
-                            width: 314,
-                            height: 50,
-                            child: RaisedButton(
-                              color: kYellowColour,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      new BorderRadius.circular(15.0)),
-                              onPressed: () {},
-                              child: Text(
-                                'INICIAR SESIÓN',
-                                style: kLabelButtonWhite,
+                                  Expanded(
+                                    flex: 3,
+                                    child: Column(
+                                      children: <Widget>[
+                                        Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            'Contraseña:',
+                                            style: kLabelSignupBlue,
+                                          ),
+                                        ),
+                                        TextFormField(
+                                            decoration: const InputDecoration(
+                                              suffixIcon: Icon(
+                                                Icons.lock,
+                                              ),
+                                              hintText: '**********',
+                                            ),
+                                            validator: (value) {
+                                              if (value.isEmpty) {
+                                                return '******';
+                                              }
+                                              return null;
+                                            },
+                                            onSaved: (string) {
+                                              _pass = string;
+                                            }),
+                                      ],
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 1,
+                                    child: SizedBox(),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                          Positioned(
+                            bottom: -25,
+                            child: SizedBox(
+                              width: 314,
+                              height: 50,
+                              child: RaisedButton(
+                                color: kYellowColour,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        new BorderRadius.circular(15.0)),
+                                onPressed: () async {
+                                  if (_formKey.currentState.validate()) {
+                                    _formKey.currentState.save();
+
+                                    AuthResult feedback = await signIn(
+                                      email: _email,
+                                      pass: _pass,
+                                    );
+                                    if (feedback.user != null) {
+                                      Navigator.pushNamed(context, Profile.id);
+                                    }
+                                  }
+                                },
+                                child: Text(
+                                  'INICIAR SESIÓN',
+                                  style: kLabelButtonWhite,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
