@@ -130,7 +130,7 @@ class Panels {
     );
   }
 
-  Widget ImageDestac({@required image, description, price}) {
+  Widget ImageDestac({@required image, description, price,}) {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
@@ -144,16 +144,18 @@ class Panels {
       ),
       child: Column(
         children: <Widget>[
-          Container(
-            width: 170,
-            height: 140,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(20.0),
-              ),
-              image: DecorationImage(
-                image: ExactAssetImage('images/$image'),
-                fit: BoxFit.cover,
+          Expanded(
+            child: Container(
+              width: 170,
+              height: 140,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(20.0),
+                ),
+                image: DecorationImage(
+                  image: ExactAssetImage('images/$image'),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
