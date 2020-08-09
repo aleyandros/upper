@@ -130,6 +130,71 @@ class Panels {
     );
   }
 
+  Widget tiendaCat({@required image, nombre, estado,}) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: kGreyColour,
+            offset: Offset(-3.0, 1.0),
+            blurRadius: 3.0,
+          ),
+        ],
+      ),
+      child: Column(
+        children: <Widget>[
+          Expanded(
+            child: Container(
+              width: 370,
+              height: 140,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(20.0),
+                ),
+                image: DecorationImage(
+                  image: ExactAssetImage('images/$image'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
+          Container(
+            width: 370,
+            height: 60,
+            decoration: BoxDecoration(
+              color: kWhiteColour,
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(20.0),
+              ),
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 11.0, vertical: 10.0),
+              child: Row(
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      nombre,
+                      style: kLabelSubtitleBlack,
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      estado,
+                      style: kLabelSubtitleBlack,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget ImageDestac({@required image, description, price,}) {
     return Container(
       decoration: BoxDecoration(
