@@ -9,7 +9,7 @@ import '../Constants/inputs.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Destacados extends StatefulWidget {
-  static final id = "index";
+  static final id = "destacados";
 
   @override
   _LoginState createState() => _LoginState();
