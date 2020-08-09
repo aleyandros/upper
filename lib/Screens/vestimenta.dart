@@ -62,8 +62,27 @@ class _VestimentaState extends State<Vestimenta> {
                 ),
                 Expanded(
                   flex: kCenterUpGrid+4,
-                  child: Container(
-                      child: inp.searchBar(text: "Buscar tiendas"))
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                          child: inp.searchBar(text: "Buscar tiendas")),
+                      SizedBox(
+                        height: 30,
+                        width: double.infinity,
+                        child: Divider(
+                          color: kBlackColour,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text("Vestimenta",
+                          style: kLabelTitleBlack,),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 Expanded(
                   flex: kCenterBottomGrid-4 + kBottomGrid,
@@ -73,7 +92,7 @@ class _VestimentaState extends State<Vestimenta> {
                     crossAxisSpacing: 34,
                     mainAxisSpacing: 30,
                     crossAxisCount: 1,
-                    
+
                     children: <Widget>[
                       Container(
                         child: pan.tiendaCat(image: "baila.png", nombre: "Baila International Footwear", estado: "Abierto"),
