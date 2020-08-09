@@ -7,7 +7,6 @@ import 'package:upper/Networking/authExceptionHandler.dart';
 import 'package:upper/Networking/firebase.dart';
 import 'package:upper/Screens/signup.dart';
 import '../Constants/labels.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'profile.dart';
 
 class Login extends StatefulWidget {
@@ -22,11 +21,6 @@ enum AuthStatus {
   LOGGED_IN,
 }
 
-const spinkit = SpinKitRotatingCircle(
-  color: Colors.white,
-  size: 50.0,
-);
-
 class _LoginState extends State<Login> {
   String _userId = "";
   String _email;
@@ -34,16 +28,7 @@ class _LoginState extends State<Login> {
   String _backendError = "";
   final _formKey = GlobalKey<FormState>();
 
-  void initState() async {
-    super.initState();
-    getCurrentUser().then((user) {
-      setState(() {
-        if (user != null) {
-          Navigator.pushNamed(context, Profile.id);
-        }
-      });
-    });
-  }
+  void initState() {}
 
   @override
   Widget build(BuildContext context) {
@@ -115,75 +100,84 @@ class _LoginState extends State<Login> {
                               padding: const EdgeInsets.all(20.0),
                               child: ListView(
                                 children: <Widget>[
-                                  Expanded(
-                                    flex: 1,
-                                    child: SizedBox(),
-                                  ),
-                                  Expanded(
-                                    flex: 3,
-                                    child: Column(
-                                      children: <Widget>[
-                                        Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: Text(
-                                            'Correo Electronico:',
-                                            style: kLabelSignupBlue,
-                                          ),
-                                        ),
-                                        TextFormField(
-                                            keyboardType:
-                                                TextInputType.emailAddress,
-                                            decoration: const InputDecoration(
-                                              suffixIcon: Icon(
-                                                Icons.mail,
-                                              ),
-                                              hintText: 'diego35.da@gmail.com',
-                                            ),
-                                            validator: (value) {
-                                              if (value.isEmpty) {
-                                                return 'ex: upper@mail.co';
-                                              }
-                                              return null;
-                                            },
-                                            onSaved: (string) {
-                                              _email = string;
-                                            }),
-                                      ],
+                                  Container(
+                                    child: Expanded(
+                                      flex: 1,
+                                      child: SizedBox(),
                                     ),
                                   ),
-                                  Expanded(
-                                    flex: 3,
-                                    child: Column(
-                                      children: <Widget>[
-                                        Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: Text(
-                                            'Contraseña:',
-                                            style: kLabelSignupBlue,
-                                          ),
-                                        ),
-                                        TextFormField(
-                                            decoration: const InputDecoration(
-                                              suffixIcon: Icon(
-                                                Icons.lock,
-                                              ),
-                                              hintText: '**********',
+                                  Container(
+                                    child: Expanded(
+                                      flex: 3,
+                                      child: Column(
+                                        children: <Widget>[
+                                          Align(
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                              'Correo Electronico:',
+                                              style: kLabelSignupBlue,
                                             ),
-                                            validator: (value) {
-                                              if (value.isEmpty) {
-                                                return '******';
-                                              }
-                                              return null;
-                                            },
-                                            onSaved: (string) {
-                                              _pass = string;
-                                            }),
-                                      ],
+                                          ),
+                                          TextFormField(
+                                              keyboardType:
+                                                  TextInputType.emailAddress,
+                                              decoration: const InputDecoration(
+                                                suffixIcon: Icon(
+                                                  Icons.mail,
+                                                ),
+                                                hintText:
+                                                    'diego35.da@gmail.com',
+                                              ),
+                                              validator: (value) {
+                                                if (value.isEmpty) {
+                                                  return 'ex: upper@mail.co';
+                                                }
+                                                return null;
+                                              },
+                                              onSaved: (string) {
+                                                _email = string;
+                                              }),
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                  Expanded(
-                                    flex: 1,
-                                    child: SizedBox(),
+                                  Container(
+                                    child: Expanded(
+                                      flex: 3,
+                                      child: Column(
+                                        children: <Widget>[
+                                          Align(
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                              'Contraseña:',
+                                              style: kLabelSignupBlue,
+                                            ),
+                                          ),
+                                          TextFormField(
+                                              decoration: const InputDecoration(
+                                                suffixIcon: Icon(
+                                                  Icons.lock,
+                                                ),
+                                                hintText: '**********',
+                                              ),
+                                              validator: (value) {
+                                                if (value.isEmpty) {
+                                                  return '******';
+                                                }
+                                                return null;
+                                              },
+                                              onSaved: (string) {
+                                                _pass = string;
+                                              }),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Expanded(
+                                      flex: 1,
+                                      child: SizedBox(),
+                                    ),
                                   ),
                                 ],
                               ),

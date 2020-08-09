@@ -137,3 +137,7 @@ Future<FirebaseUser> getCurrentUser() async {
   FirebaseUser user = await _auth.currentUser();
   return user;
 }
+
+Future<void> signOut() {
+  _auth.signOut();
+}

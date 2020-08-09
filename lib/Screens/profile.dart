@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:upper/Constants/buttons.dart';
@@ -10,6 +11,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Profile extends StatefulWidget {
   static final id = "profile";
+  Profile({this.user});
+
+  FirebaseUser user;
   @override
   _LoginState createState() => _LoginState();
 }
@@ -205,7 +209,12 @@ class _LoginState extends State<Profile> {
                             if (_formKey.currentState.validate()) {
                               _formKey.currentState.save();
 
-                              String feedback = await  updateProfile(nombre: _nombre, apellido: _apellido, email: _email, pass: _pass2, phone: _celular);
+                              String feedback = await updateProfile(
+                                  nombre: _nombre,
+                                  apellido: _apellido,
+                                  email: _email,
+                                  pass: _pass2,
+                                  phone: _celular);
                               verifyPhone(_celular);
                               setState(() {
                                 _backendError = feedback;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:upper/Screens/categories.dart';
+import 'package:upper/Screens/loading_screen.dart';
 import 'package:upper/Screens/login.dart';
 import 'package:upper/Screens/onboarding1.dart';
 import 'package:upper/Screens/onboarding2.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: Login.id,
+      initialRoute: LoadingScreen.id,
       routes: {
         Login.id: (context) => Login(),
         Signup.id: (context) => Signup(),
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         Onboarding1.id: (context) => Onboarding1(),
         Onboarding2.id: (context) => Onboarding2(),
         Onboarding3.id: (context) => Onboarding3(),
+        LoadingScreen.id: (context) => LoadingScreen(),
       },
     );
   }
