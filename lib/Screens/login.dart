@@ -71,7 +71,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 Expanded(
-                  flex: 2,
+                  flex: 3,
                   child: Text(
                     'Inicia sesión o crea una\ncuenta.',
                     textAlign: TextAlign.center,
@@ -79,8 +79,8 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 Expanded(
-                  flex: 2,
-                  child: SizedBox(),
+                  flex: 1,
+                  child: SizedBox(height: 20,),
                 ),
                 Visibility(
                   visible: _backendError.isNotEmpty,
@@ -184,7 +184,9 @@ class _LoginState extends State<Login> {
                                   Container(
                                     child: Expanded(
                                       flex: 1,
-                                      child: SizedBox(),
+                                      child: SizedBox(
+                                        height: 10,
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -240,9 +242,10 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
-                Expanded(
-                  flex: 1,
-                  child: SizedBox(),
+                Container(
+                  child: SizedBox(
+                    height: 30,
+                  ),
                 ),
                 Expanded(
                   flex: 1,
@@ -266,9 +269,10 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 Expanded(
-                  flex: 5,
+                  flex: 6,
                   child: SizedBox(),
                 ),
+
               ],
             ),
           ],
