@@ -11,7 +11,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Profile extends StatefulWidget {
   static final id = "profile";
-  Profile({this.user});
+  Profile({this.userDocumentSnapshot, this.user});
+  final userDocumentSnapshot;
   final user;
   @override
   _LoginState createState() => _LoginState();
@@ -21,6 +22,7 @@ class _LoginState extends State<Profile> {
   final _formKey = GlobalKey<FormState>();
   Inputs inp = Inputs();
   Buttons but = Buttons();
+  FirebaseUser user;
   String _nombre;
   String _apellido;
   String _pass1;
@@ -31,12 +33,15 @@ class _LoginState extends State<Profile> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    updateUI(widget.user);
+    updateUI(widget.userDocumentSnapshot, widget.user);
   }
 
-  void updateUI(FirebaseUser user) {
+  void updateUI(dynamic snapshot, FirebaseUser user) {
     setState(() {
       _email = user.email;
+      _nombre = snapshot['nombre'];
+      _apellido = snapshot['apellido'];
+      _celular = snapshot['celular'];
     });
   }
 
@@ -128,10 +133,11 @@ class _LoginState extends State<Profile> {
                                   overflow: Overflow.visible,
                                 ),
                                 inp.dividerElements(),
-                                inp.textNameForm(_email),
+                                inp.textNameForm("Hola!"),
                                 inp.dividerElements2(),
                                 inp.textForm("Nombre"),
                                 inp.inputForm(
+                                    initialValue: _nombre,
                                     description: "Tu nombre",
                                     correction: "Escribe tu nombre",
                                     validate: (String value) {
@@ -146,6 +152,7 @@ class _LoginState extends State<Profile> {
                                 inp.dividerElements2(),
                                 inp.textForm("Apellido"),
                                 inp.inputForm(
+                                    initialValue: _apellido,
                                     description: "Tu apellido",
                                     correction: "Escribe tu apellido",
                                     validate: (String value) {
@@ -160,6 +167,7 @@ class _LoginState extends State<Profile> {
                                 inp.dividerElements2(),
                                 inp.textForm("Correo electrónico"),
                                 inp.inputForm(
+                                    initialValue: _email,
                                     keyboard: TextInputType.emailAddress,
                                     description: "Correo electrónico",
                                     correction: "ex: upper@mail.co",
@@ -175,6 +183,7 @@ class _LoginState extends State<Profile> {
                                 inp.dividerElements2(),
                                 inp.textForm("Celular"),
                                 inp.inputForm(
+                                    initialValue: _celular,
                                     keyboard: TextInputType.numberWithOptions(),
                                     description: "(000)-000-00-00",
                                     correction: "No valido",
@@ -186,21 +195,6 @@ class _LoginState extends State<Profile> {
                                     },
                                     onSave: (value) {
                                       _celular = value;
-                                    }),
-                                inp.dividerElements2(),
-                                inp.textForm("Contraseña"),
-                                inp.inputForm(
-                                    obscureText: true,
-                                    description: "********",
-                                    correction: "No valido",
-                                    icon: Icons.lock,
-                                    validate: (String value) {
-                                      if (value.length < 6) {
-                                        return "No valido";
-                                      } else {
-                                        _pass1 = value;
-                                      }
-                                      return null;
                                     }),
                                 inp.dividerElements2(),
                               ],
@@ -220,7 +214,7 @@ class _LoginState extends State<Profile> {
                             if (_formKey.currentState.validate()) {
                               _formKey.currentState.save();
 
-                              String feedback = await updateProfile(
+                              String feedback = await updateUserDocument(
                                   nombre: _nombre,
                                   apellido: _apellido,
                                   email: _email,
