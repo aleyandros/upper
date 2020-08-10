@@ -23,11 +23,14 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void getUserData() async {
     var userData = await getCurrentUser();
     if (userData != null) {
-      Navigator.pushNamed(context, Profile.id, arguments: <String, Object>{
-        'userData': userData,
-      });
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) {
+          return Profile(user: userData);
+        }),
+      );
     } else {
-      Navigator.pushNamed(context, Login.id);
+      Navigator.pushReplacementNamed(context, Login.id);
     }
   }
 

@@ -82,6 +82,13 @@ class _LoginState extends State<Login> {
                   flex: 2,
                   child: SizedBox(),
                 ),
+                Visibility(
+                  visible: _backendError.isNotEmpty,
+                  child: Text(
+                    _backendError,
+                    style: kLabelWhite,
+                  ),
+                ),
                 Expanded(
                   flex: 8,
                   child: Form(
@@ -154,6 +161,7 @@ class _LoginState extends State<Login> {
                                             ),
                                           ),
                                           TextFormField(
+                                              obscureText: true,
                                               decoration: const InputDecoration(
                                                 suffixIcon: Icon(
                                                   Icons.lock,
@@ -197,13 +205,24 @@ class _LoginState extends State<Login> {
                                   if (_formKey.currentState.validate()) {
                                     _formKey.currentState.save();
 
-                                    AuthResult feedback = await signIn(
+                                    String feedback = await signIn(
                                       email: _email,
                                       pass: _pass,
                                     );
-                                    if (feedback.user != null) {
-                                      Navigator.pushNamed(context, Profile.id);
-                                    }
+
+                                    FirebaseUser user = await getCurrentUser();
+
+                                    setState(() {
+                                      _backendError = feedback;
+                                      if (user != null) {
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(builder: (context) {
+                                            return Profile(user: user);
+                                          }),
+                                        );
+                                      }
+                                    });
                                   }
                                 },
                                 child: Text(

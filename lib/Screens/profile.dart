@@ -12,8 +12,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class Profile extends StatefulWidget {
   static final id = "profile";
   Profile({this.user});
-
-  FirebaseUser user;
+  final user;
   @override
   _LoginState createState() => _LoginState();
 }
@@ -25,10 +24,22 @@ class _LoginState extends State<Profile> {
   String _nombre;
   String _apellido;
   String _pass1;
-  String _pass2;
   String _celular;
   String _email;
   String _backendError = "";
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    updateUI(widget.user);
+  }
+
+  void updateUI(FirebaseUser user) {
+    setState(() {
+      _email = user.email;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -117,7 +128,7 @@ class _LoginState extends State<Profile> {
                                   overflow: Overflow.visible,
                                 ),
                                 inp.dividerElements(),
-                                inp.textNameForm("Alejandro Patino"),
+                                inp.textNameForm(_email),
                                 inp.dividerElements2(),
                                 inp.textForm("Nombre"),
                                 inp.inputForm(
@@ -213,7 +224,7 @@ class _LoginState extends State<Profile> {
                                   nombre: _nombre,
                                   apellido: _apellido,
                                   email: _email,
-                                  pass: _pass2,
+                                  pass: _pass1,
                                   phone: _celular);
                               verifyPhone(_celular);
                               setState(() {

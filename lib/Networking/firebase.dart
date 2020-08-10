@@ -11,13 +11,12 @@ AuthResultStatus _status;
 
 String verificationId;
 
-Future<AuthResult> signIn(
-    {@required String email, @required String pass}) async {
+Future<String> signIn({@required String email, @required String pass}) async {
   try {
     AuthResult res =
         await _auth.signInWithEmailAndPassword(email: email, password: pass);
     if (res.user != null) {
-      return res;
+      return "Exitoso";
     } else {
       _status = AuthResultStatus.undefined;
     }
@@ -25,7 +24,7 @@ Future<AuthResult> signIn(
     final status = AuthExceptionHandler.handleException(e);
     final String errormsg =
         AuthExceptionHandler.generateExceptionMessage(status);
-    return status;
+    return errormsg;
   }
 }
 
