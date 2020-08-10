@@ -26,6 +26,7 @@ class _LoginState extends State<Signup> {
   String _email;
   String _backendError = "";
   RegExp validacion = new RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$');
+  RegExp validacionEmail = new RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$') ;
 
   @override
   Widget build(BuildContext context) {
@@ -128,6 +129,7 @@ class _LoginState extends State<Signup> {
                                     validate: (String value) {
                                       if (value.isEmpty) {
                                         return "Escribe tu apellido";
+
                                       }
                                       return null;
                                     },
@@ -141,9 +143,15 @@ class _LoginState extends State<Signup> {
                                     description: "Correo electrónico",
                                     correction: "ex: upper@mail.co",
                                     validate: (String value) {
+                                      bool temp= validacionEmail.hasMatch(value);
+
                                       if (value.isEmpty) {
                                         return "Escribe tu correo";
                                       }
+                                      else if(!temp)
+                                        {
+                                          return"Ingrese un correo valido.";
+                                        }
                                       return null;
                                     },
                                     onSave: (value) {
@@ -173,9 +181,8 @@ class _LoginState extends State<Signup> {
                                     icon: Icons.lock,
                                     validate: (String value) {
                                       bool temp=validacion.hasMatch(value);
-                                      print('Match str1: ${validacion.hasMatch(value)}');
                                       if (!temp) {
-                                        return "No valido";
+                                        return "La contraseña deben contener al menos ocho \ncaracteres, incluyendo al menos 1 letra y 1 número.";
                                       } else {
                                         _pass1 = value;
                                       }
