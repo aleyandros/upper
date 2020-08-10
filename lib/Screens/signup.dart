@@ -25,6 +25,8 @@ class _LoginState extends State<Signup> {
   String _celular;
   String _email;
   String _backendError = "";
+  RegExp validacion = new RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$');
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -170,7 +172,9 @@ class _LoginState extends State<Signup> {
                                     correction: "No valido",
                                     icon: Icons.lock,
                                     validate: (String value) {
-                                      if (value.length < 6) {
+                                      bool temp=validacion.hasMatch(value);
+                                      print('Match str1: ${validacion.hasMatch(value)}');
+                                      if (!temp) {
                                         return "No valido";
                                       } else {
                                         _pass1 = value;
