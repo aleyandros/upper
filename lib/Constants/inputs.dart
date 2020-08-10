@@ -36,7 +36,7 @@ class Inputs {
       obscureText: obscureText ?? false,
       keyboardType: keyboard,
       decoration: InputDecoration(
-        hintText: "  $description",
+        hintText: "$description",
         suffixIcon: Icon(
           icon,
           color: kDarkerBlueColour,
