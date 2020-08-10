@@ -80,7 +80,9 @@ class _LoginState extends State<Login> {
                 ),
                 Expanded(
                   flex: 1,
-                  child: SizedBox(height: 20,),
+                  child: SizedBox(
+                    height: 20,
+                  ),
                 ),
                 Visibility(
                   visible: _backendError.isNotEmpty,
@@ -213,7 +215,9 @@ class _LoginState extends State<Login> {
                                     );
 
                                     FirebaseUser user = await getCurrentUser();
-
+                                    // only because of the edit profile, remove when index is added
+                                    var userSnapshot =
+                                        await getUserDocument(user);
                                     setState(() {
                                       _backendError = feedback;
                                       if (user != null) {
@@ -221,7 +225,8 @@ class _LoginState extends State<Login> {
                                           context,
                                           MaterialPageRoute(builder: (context) {
                                             return Profile(
-                                              userDocumentSnapshot: user,
+                                              userDocumentSnapshot:
+                                                  userSnapshot,
                                               user: user,
                                             );
                                           }),
@@ -272,7 +277,6 @@ class _LoginState extends State<Login> {
                   flex: 6,
                   child: SizedBox(),
                 ),
-
               ],
             ),
           ],

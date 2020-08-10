@@ -22,7 +22,6 @@ class _LoginState extends State<Profile> {
   final _formKey = GlobalKey<FormState>();
   Inputs inp = Inputs();
   Buttons but = Buttons();
-  FirebaseUser user;
   String _nombre;
   String _apellido;
   String _pass1;
@@ -36,7 +35,7 @@ class _LoginState extends State<Profile> {
     updateUI(widget.userDocumentSnapshot, widget.user);
   }
 
-  void updateUI(dynamic snapshot, FirebaseUser user) {
+  void updateUI(dynamic snapshot, dynamic user) {
     setState(() {
       _email = user.email;
       _nombre = snapshot['nombre'];

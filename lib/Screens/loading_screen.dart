@@ -23,7 +23,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void getUserData() async {
     var user = await getCurrentUser();
     if (user != null) {
+      // esto se puede quitar cuando se llame al index de la pagina
       var userSnapshot = await getUserDocument(user);
+
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) {
