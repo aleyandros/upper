@@ -20,13 +20,6 @@ class _LoginState extends State<Index> {
   Buttons but = Buttons();
   Grid grid = Grid();
 
-  String _nombre;
-  String _apellido;
-  String _pass1;
-  String _pass2;
-  String _celular;
-  String _email;
-  String _backendError = "";
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -36,75 +29,40 @@ class _LoginState extends State<Index> {
           backgroundColor: kWhiteColour,
           leading: Builder(
             builder: (BuildContext context) {
-              return IconButton(
-                icon: Icon(
-                  FontAwesomeIcons.bars,
-                  color: kBlueColour,
-                ),
-                onPressed: () {
+              return but.backButton(
+                icon: FontAwesomeIcons.bars,
+                color: kGreyColour,
+                navigation: () {
                   Scaffold.of(context).openDrawer();
                 },
-                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
               );
             },
           ),
           actions: <Widget>[
             but.backButton(
-                icon: FontAwesomeIcons.shoppingCart, color: kBlueColour)
+              icon: FontAwesomeIcons.shoppingCart,
+              color: kBlueColour,
+            )
           ],
         ),
         drawer: Drawer(
           child: DrawerHeader(
-            child: Text(
-              "Upper",
-              style: kLabelUpperYellow,
+            child: Center(
+              child: Text(
+                "Upper",
+                style: kLabelUpperYellow,
+              ),
             ),
           ),
         ),
         body: SafeArea(
           child: Container(
             color: kWhiteColour,
-            child: Column(
+            child: ListView(
               children: <Widget>[
-                Expanded(
-                  flex: kUpGrid,
-                  child: Row(
-                    children: <Widget>[
-                      SizedBox(
-                        width: 20.0,
-                      ),
-                      but.backButton(
-                        icon: Icons.arrow_back_ios,
-                        color: kGreyColour,
-                      ),
-                      Expanded(
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            "",
-                            style: kLabelTitleWhite,
-                          ),
-                        ),
-                      ),
-                      but.backButton(
-                          icon: FontAwesomeIcons.shoppingCart,
-                          color: kBlueColour,
-                          navigation: () {
-                            Navigator.pushNamed(context, Verification.id);
-                          }),
-                      SizedBox(
-                        width: 20.0,
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  flex: kCenterUpGrid + kCenterBottomGrid + kBottomGrid,
-                  child: ListView(
-                    children: <Widget>[
-                      inp.searchBar(text: 'Que desea?'),
-                    ],
-                  ),
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 20.0),
+                  child: inp.searchBar(text: 'Que desea?'),
                 ),
               ],
             ),

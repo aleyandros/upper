@@ -61,11 +61,10 @@ class _VestimentaState extends State<Vestimenta> {
                   ),
                 ),
                 Expanded(
-                  flex: kCenterUpGrid+4,
+                  flex: kCenterUpGrid + 4,
                   child: Column(
                     children: <Widget>[
-                      Container(
-                          child: inp.searchBar(text: "Buscar tiendas")),
+                      Container(child: inp.searchBar(text: "Buscar tiendas")),
                       SizedBox(
                         height: 30,
                         width: double.infinity,
@@ -77,36 +76,46 @@ class _VestimentaState extends State<Vestimenta> {
                         padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
                         child: Align(
                           alignment: Alignment.centerLeft,
-                          child: Text("Vestimenta",
-                          style: kLabelTitleBlack,),
+                          child: Text(
+                            "Vestimenta",
+                            style: kLabelTitleBlack,
+                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
                 Expanded(
-                  flex: kCenterBottomGrid-4 + kBottomGrid,
+                  flex: kCenterBottomGrid - 4 + kBottomGrid,
                   child: GridView.count(
                     primary: false,
                     padding: EdgeInsets.all(20),
                     crossAxisSpacing: 34,
                     mainAxisSpacing: 30,
+                    childAspectRatio: (374 / 200),
                     crossAxisCount: 1,
-
                     children: <Widget>[
                       Container(
-                        child: pan.tiendaCat(image: "baila.png", nombre: "Baila International Footwear", estado: "Abierto"),
+                        child: pan.tiendaCat(
+                            image: "baila.png",
+                            nombre: "Baila International Footwear",
+                            estado: "Abierto"),
                       ),
                       Container(
-                        child: pan.tiendaCat(image: "baila.png", nombre: "Baila International Footwear", estado: "Abierto"),
+                        child: pan.tiendaCat(
+                            image: "baila.png",
+                            nombre: "Baila International Footwear",
+                            estado: "Abierto"),
                       ),
                       Container(
-                        child: pan.tiendaCat(image: "baila.png", nombre: "Baila International Footwear", estado: "Abierto"),
+                        child: pan.tiendaCat(
+                            image: "baila.png",
+                            nombre: "Baila International Footwear",
+                            estado: "Abierto"),
                       ),
                     ],
                   ),
                 ),
-
               ],
             ),
           ),
