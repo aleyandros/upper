@@ -12,6 +12,7 @@ import 'package:upper/Screens/index.dart';
 import 'package:upper/Screens/products.dart';
 import 'package:upper/Screens/destacados.dart';
 import 'package:upper/Screens/vestimenta.dart';
+import 'package:upper/Screens/prueba.dart';
 
 void main() => runApp(MyApp());
 

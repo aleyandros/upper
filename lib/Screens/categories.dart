@@ -17,7 +17,6 @@ class Categories extends StatefulWidget {
 }
 
 class _CategoriesState extends State<Categories> {
-
   Buttons but = Buttons();
   Inputs inp = Inputs();
   Panels pan = Panels();
@@ -57,7 +56,7 @@ class _CategoriesState extends State<Categories> {
                     padding: EdgeInsets.all(20),
                     crossAxisSpacing: 34,
                     mainAxisSpacing: 30,
-                    childAspectRatio: (374 / 200),
+                    childAspectRatio: (170 / 100),
                     crossAxisCount: 1,
                     children: <Widget>[
                       Container(
@@ -107,7 +106,6 @@ class _CategoriesState extends State<Categories> {
                     ],
                   ),
                 ),
-
               ],
             ),
           ),

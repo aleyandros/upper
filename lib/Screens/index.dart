@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:upper/Constants/buttons.dart';
+import 'package:upper/Constants/panels.dart';
 import 'package:upper/Screens/profile.dart';
 import '../Constants/labels.dart';
 import '../Constants/inputs.dart';
@@ -18,12 +19,12 @@ class _LoginState extends State<Index> {
   Inputs inp = Inputs();
   Buttons but = Buttons();
   Grid grid = Grid();
+  Panels pan = Panels();
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: kWhiteColour,
         appBar: AppBar(
           backgroundColor: kWhiteColour,
           leading: Builder(
@@ -104,6 +105,7 @@ class _LoginState extends State<Index> {
           child: Container(
             color: kWhiteColour,
             child: ListView(
+              shrinkWrap: true,
               children: <Widget>[
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 20.0),
