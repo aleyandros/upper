@@ -52,45 +52,62 @@ class _CategoriesState extends State<Categories> {
             child: Column(
               children: <Widget>[
                 Expanded(
-                  child: ListView(
+                  child: GridView.count(
+                    primary: false,
+                    padding: EdgeInsets.all(20),
+                    crossAxisSpacing: 34,
+                    mainAxisSpacing: 30,
+                    childAspectRatio: (374 / 200),
+                    crossAxisCount: 1,
                     children: <Widget>[
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 20.0),
                         child: inp.searchBar(text: 'Que desea?'),
                       ),
+                      Row(
+                        children: <Widget>[
+                          Container(
+                            child: pan.tiendaCat(
+                                image: "baila.png",
+                                nombre: "Baila International Footwear",
+                                estado: "Abierto"),
+                          ),
+                          Container(
+                            child: pan.tiendaCat(
+                                image: "baila.png",
+                                nombre: "Baila International Footwear",
+                                estado: "Abierto"),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        child: pan.tiendaCat(
+                            image: "baila.png",
+                            nombre: "Baila International Footwear",
+                            estado: "Abierto"),
+                      ),
+                      Container(
+                        child: pan.tiendaCat(
+                            image: "baila.png",
+                            nombre: "Baila International Footwear",
+                            estado: "Abierto"),
+                      ),
+                      Container(
+                        child: pan.tiendaCat(
+                            image: "baila.png",
+                            nombre: "Baila International Footwear",
+                            estado: "Abierto"),
+                      ),
+                      Container(
+                        child: pan.tiendaCat(
+                            image: "baila.png",
+                            nombre: "Baila International Footwear",
+                            estado: "Abierto"),
+                      ),
                     ],
                   ),
                 ),
-                Expanded(
-                  child: GridView.count(
-                    primary: true,
-                    padding: EdgeInsets.all(20),
-                    crossAxisSpacing: 34,
-                    mainAxisSpacing: 30,
-                    childAspectRatio: (374 / 200),
-                    crossAxisCount: 2,
-                    children: <Widget>[
-                      Container(
-                        child: pan.tiendaCat(
-                            image: "baila.png",
-                            nombre: "Baila International Footwear",
-                            estado: "Abierto"),
-                      ),
-                      Container(
-                        child: pan.tiendaCat(
-                            image: "baila.png",
-                            nombre: "Baila International Footwear",
-                            estado: "Abierto"),
-                      ),
-                      Container(
-                        child: pan.tiendaCat(
-                            image: "baila.png",
-                            nombre: "Baila International Footwear",
-                            estado: "Abierto"),
-                      ),
-                    ],
-                  ),
-                ),
+
               ],
             ),
           ),
