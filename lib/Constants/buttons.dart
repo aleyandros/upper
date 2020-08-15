@@ -46,4 +46,20 @@ class Buttons {
       onPressed: navigation,
     );
   }
+
+  Widget elementDrawer(
+      {@required icon, @required color, @required navigator, @required text}) {
+    return Row(
+      children: <Widget>[
+        backButton(icon: icon, color: color),
+        FlatButton(
+          onPressed: navigator,
+          child: Text(
+            text,
+            style: kLabelWhite,
+          ),
+        ),
+      ],
+    );
+  }
 }

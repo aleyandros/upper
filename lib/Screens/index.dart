@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:upper/Constants/buttons.dart';
-import 'package:upper/Screens/verification.dart';
+import 'package:upper/Screens/profile.dart';
 import '../Constants/labels.dart';
-import 'package:upper/Networking/firebase.dart';
 import '../Constants/inputs.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../Constants/grid.dart';
@@ -46,12 +45,58 @@ class _LoginState extends State<Index> {
           ],
         ),
         drawer: Drawer(
-          child: DrawerHeader(
-            child: Center(
-              child: Text(
-                "Upper",
-                style: kLabelUpperYellow,
-              ),
+          child: Container(
+            color: kBlueColour,
+            child: ListView(
+              padding: EdgeInsets.symmetric(horizontal: 30),
+              children: <Widget>[
+                DrawerHeader(
+                  child: Center(
+                    child: Text(
+                      "Upper",
+                      style: kLabelUpperYellow,
+                    ),
+                  ),
+                ),
+                but.elementDrawer(
+                  icon: FontAwesomeIcons.userAlt,
+                  color: kWhiteColour,
+                  text: "Mi perfil",
+                  navigator: () {
+                    Navigator.pushNamed(context, Profile.id);
+                  },
+                ),
+                but.elementDrawer(
+                  icon: FontAwesomeIcons.dolly,
+                  color: kWhiteColour,
+                  text: "Pedidos",
+                  navigator: null,
+                ),
+                but.elementDrawer(
+                  icon: FontAwesomeIcons.thumbtack,
+                  color: kWhiteColour,
+                  text: "Ubicación",
+                  navigator: null,
+                ),
+                but.elementDrawer(
+                  icon: FontAwesomeIcons.moneyBill,
+                  color: kWhiteColour,
+                  text: "Pagos",
+                  navigator: null,
+                ),
+                but.elementDrawer(
+                  icon: FontAwesomeIcons.question,
+                  color: kWhiteColour,
+                  text: "Ayuda",
+                  navigator: null,
+                ),
+                but.elementDrawer(
+                  icon: FontAwesomeIcons.signOutAlt,
+                  color: kWhiteColour,
+                  text: "Cerrar sesión",
+                  navigator: null,
+                ),
+              ],
             ),
           ),
         ),
