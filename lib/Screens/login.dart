@@ -71,7 +71,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 Expanded(
-                  flex: 2,
+                  flex: 3,
                   child: Text(
                     'Inicia sesión o crea una\ncuenta.',
                     textAlign: TextAlign.center,
@@ -79,8 +79,17 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 Expanded(
-                  flex: 2,
-                  child: SizedBox(),
+                  flex: 1,
+                  child: SizedBox(
+                    height: 20,
+                  ),
+                ),
+                Visibility(
+                  visible: _backendError.isNotEmpty,
+                  child: Text(
+                    _backendError,
+                    style: kLabelWhite,
+                  ),
                 ),
                 Expanded(
                   flex: 8,
@@ -154,6 +163,7 @@ class _LoginState extends State<Login> {
                                             ),
                                           ),
                                           TextFormField(
+                                              obscureText: true,
                                               decoration: const InputDecoration(
                                                 suffixIcon: Icon(
                                                   Icons.lock,
@@ -176,7 +186,9 @@ class _LoginState extends State<Login> {
                                   Container(
                                     child: Expanded(
                                       flex: 1,
-                                      child: SizedBox(),
+                                      child: SizedBox(
+                                        height: 10,
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -197,13 +209,30 @@ class _LoginState extends State<Login> {
                                   if (_formKey.currentState.validate()) {
                                     _formKey.currentState.save();
 
-                                    AuthResult feedback = await signIn(
+                                    String feedback = await signIn(
                                       email: _email,
                                       pass: _pass,
                                     );
-                                    if (feedback.user != null) {
-                                      Navigator.pushNamed(context, Profile.id);
-                                    }
+
+                                    FirebaseUser user = await getCurrentUser();
+                                    // only because of the edit profile, remove when index is added
+                                    var userSnapshot =
+                                        await getUserDocument(user);
+                                    setState(() {
+                                      _backendError = feedback;
+                                      if (user != null) {
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(builder: (context) {
+                                            return Profile(
+                                              userDocumentSnapshot:
+                                                  userSnapshot,
+                                              user: user,
+                                            );
+                                          }),
+                                        );
+                                      }
+                                    });
                                   }
                                 },
                                 child: Text(
@@ -218,9 +247,10 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
-                Expanded(
-                  flex: 1,
-                  child: SizedBox(),
+                Container(
+                  child: SizedBox(
+                    height: 30,
+                  ),
                 ),
                 Expanded(
                   flex: 1,
@@ -244,7 +274,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 Expanded(
-                  flex: 5,
+                  flex: 6,
                   child: SizedBox(),
                 ),
               ],

@@ -21,13 +21,22 @@ class _LoadingScreenState extends State<LoadingScreen> {
   }
 
   void getUserData() async {
-    var userData = await getCurrentUser();
-    if (userData != null) {
-      Navigator.pushNamed(context, Profile.id, arguments: <String, Object>{
-        'userData': userData,
-      });
+    var user = await getCurrentUser();
+    if (user != null) {
+      // esto se puede quitar cuando se llame al index de la pagina
+      var userSnapshot = await getUserDocument(user);
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) {
+          return Profile(
+            userDocumentSnapshot: userSnapshot,
+            user: user,
+          );
+        }),
+      );
     } else {
-      Navigator.pushNamed(context, Login.id);
+      Navigator.pushReplacementNamed(context, Login.id);
     }
   }
 

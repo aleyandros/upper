@@ -11,13 +11,12 @@ AuthResultStatus _status;
 
 String verificationId;
 
-Future<AuthResult> signIn(
-    {@required String email, @required String pass}) async {
+Future<String> signIn({@required String email, @required String pass}) async {
   try {
     AuthResult res =
         await _auth.signInWithEmailAndPassword(email: email, password: pass);
     if (res.user != null) {
-      return res;
+      return "Exitoso";
     } else {
       _status = AuthResultStatus.undefined;
     }
@@ -25,7 +24,7 @@ Future<AuthResult> signIn(
     final status = AuthExceptionHandler.handleException(e);
     final String errormsg =
         AuthExceptionHandler.generateExceptionMessage(status);
-    return status;
+    return errormsg;
   }
 }
 
@@ -37,8 +36,8 @@ Future<String> register({
   @required String phone,
 }) async {
   //esto se guarda en el firebase
-  UserModel user = UserModel(
-      email: email, nombre: nombre, apellido: apellido, celular: phone);
+  UserModel user =
+      UserModel(nombre: nombre, apellido: apellido, celular: phone);
 
   Map<String, Object> data = user.toJson();
 
@@ -111,19 +110,21 @@ Future<void> verifyPhone(phoneNo) async {
       codeAutoRetrievalTimeout: autoTimeout);
 }
 
-Future<String> updateProfile({
+// actualiza el documento de firestore
+Future<String> updateUserDocument({
   @required String nombre,
   String apellido,
   String email,
   String pass,
   String phone,
 }) async {
-  UserModel user = UserModel(
-      email: email, nombre: nombre, apellido: apellido, celular: phone);
+  UserModel user =
+      UserModel(nombre: nombre, apellido: apellido, celular: phone);
 
   Map<String, Object> data = user.toJson();
   try {
     FirebaseUser user = await _auth.currentUser();
+    user.updateEmail(email);
     db.collection("Users").document(user.uid).setData(data);
   } catch (e) {
     final status = AuthExceptionHandler.handleException(e);
@@ -140,4 +141,10 @@ Future<FirebaseUser> getCurrentUser() async {
 
 Future<void> signOut() {
   _auth.signOut();
+}
+
+Future getUserDocument(FirebaseUser user) async {
+  DocumentSnapshot document =
+      await db.collection("Users").document(user.uid).get();
+  return document;
 }

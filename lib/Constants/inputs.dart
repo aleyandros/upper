@@ -29,12 +29,14 @@ class Inputs {
       Function validate,
       Function onSave,
       TextInputType keyboard,
-      bool obscureText}) {
+      bool obscureText,
+      String initialValue}) {
     return TextFormField(
+      initialValue: initialValue,
       obscureText: obscureText ?? false,
       keyboardType: keyboard,
       decoration: InputDecoration(
-        hintText: "  $description",
+        hintText: "$description",
         suffixIcon: Icon(
           icon,
           color: kDarkerBlueColour,
