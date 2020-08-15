@@ -29,6 +29,8 @@ class _LoginState extends State<Index> {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: kWhiteColour,
+        appBar: AppBar(),
+        drawer: Drawer(),
         body: SafeArea(
           child: Container(
             color: kWhiteColour,
