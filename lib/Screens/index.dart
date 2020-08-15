@@ -6,6 +6,7 @@ import '../Constants/labels.dart';
 import 'package:upper/Networking/firebase.dart';
 import '../Constants/inputs.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../Constants/grid.dart';
 
 class Index extends StatefulWidget {
   static final id = "index";
@@ -17,6 +18,8 @@ class _LoginState extends State<Index> {
   final _formKey = GlobalKey<FormState>();
   Inputs inp = Inputs();
   Buttons but = Buttons();
+  Grid grid = Grid();
+
   String _nombre;
   String _apellido;
   String _pass1;
@@ -29,8 +32,35 @@ class _LoginState extends State<Index> {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: kWhiteColour,
-        appBar: AppBar(),
-        drawer: Drawer(),
+        appBar: AppBar(
+          backgroundColor: kWhiteColour,
+          leading: Builder(
+            builder: (BuildContext context) {
+              return IconButton(
+                icon: Icon(
+                  FontAwesomeIcons.bars,
+                  color: kBlueColour,
+                ),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+              );
+            },
+          ),
+          actions: <Widget>[
+            but.backButton(
+                icon: FontAwesomeIcons.shoppingCart, color: kBlueColour)
+          ],
+        ),
+        drawer: Drawer(
+          child: DrawerHeader(
+            child: Text(
+              "Upper",
+              style: kLabelUpperYellow,
+            ),
+          ),
+        ),
         body: SafeArea(
           child: Container(
             color: kWhiteColour,
