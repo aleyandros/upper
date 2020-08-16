@@ -6,6 +6,9 @@ import 'package:upper/Screens/profile.dart';
 import '../Constants/labels.dart';
 import 'package:upper/Networking/firebase.dart';
 import '../Constants/inputs.dart';
+import 'package:pinput/pin_put/pin_put.dart';
+import 'package:pinput/pin_put/pin_put_state.dart';
+
 
 class Verification extends StatefulWidget {
   static final id = "verification";
@@ -15,10 +18,22 @@ class Verification extends StatefulWidget {
 
 class _LoginState extends State<Verification> {
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController _pinPutController = TextEditingController();
+  final FocusNode _pinPutFocusNode = FocusNode();
+
+  BoxDecoration get _pinPutDecoration {
+    return BoxDecoration(
+      border: Border.all(color: kBlueColour),
+      borderRadius: BorderRadius.circular(15),
+    );
+  }
+
+
   Inputs inp = Inputs();
   Buttons but = Buttons();
   String _codigo;
   String _backendError = "";
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -82,30 +97,55 @@ class _LoginState extends State<Verification> {
                         style: kLabelSubtitleWhite,
                         textAlign: TextAlign.center,
                       ),
-                      Card(
-                        elevation: 3,
-                        child: Container(
-                          alignment: Alignment.center,
-                          padding: EdgeInsets.fromLTRB(30, 0, 30, 30),
-                          color: kWhiteColour,
-                          width: 374,
-                          height: 300,
-                          child: Form(
-                            key: _formKey,
-                            autovalidate: false,
-                            onChanged: () {
-                              Form.of(primaryFocus.context).save();
-                            },
-                            child: Container(
-                              child: inp.inputForm(
-                                description: '',
+                      SizedBox(
+                        height: 50,
+                      ),
+                      Expanded(
+                        child: Card(
+                          elevation: 3,
+                          child: Container(
+                            alignment: Alignment.center,
+                            padding: EdgeInsets.fromLTRB(30, 0, 30, 30),
+                            color: kWhiteColour,
+                            width: 374,
+                            height: 300,
+                            child: Form(
+                              key: _formKey,
+                              autovalidate: false,
+                              onChanged: () {
+                                Form.of(primaryFocus.context).save();
+                              },
+                              child: Container(
+                                height: 40,
+                                child: PinPut(
+                                  fieldsCount: 4,
+                                  onSubmit: (String pin) {
+                                    setState(() {
+                                      _codigo=pin;
+                                    });
+                                  },
+                                  focusNode: _pinPutFocusNode,
+                                  controller: _pinPutController,
+                                  submittedFieldDecoration: _pinPutDecoration.copyWith(
+                                      borderRadius: BorderRadius.circular(20)),
+                                  selectedFieldDecoration: _pinPutDecoration,
+                                  followingFieldDecoration: _pinPutDecoration.copyWith(
+                                    borderRadius: BorderRadius.circular(5),
+                                    border: Border.all(
+                                      color: kYellowColour.withOpacity(.5),
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
+                      SizedBox(
+                        height: 10,
+                      ),
                       but.biggestButton(
-                          text: 'finalizar',
+                          text: "Finalizar",
                           onPress: () {
                             Navigator.pushNamed(context, Profile.id);
                           }),
