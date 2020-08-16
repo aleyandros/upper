@@ -119,6 +119,7 @@ class _LoginState extends State<Verification> {
                                 height: 40,
                                 child: PinPut(
                                   fieldsCount: 4,
+                                  // pin es el codigo ingresado y se devuelve cuando se ha ingresado los 4 numeros.
                                   onSubmit: (String pin) {
                                     setState(() {
                                       _codigo=pin;
