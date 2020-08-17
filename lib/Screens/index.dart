@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:upper/Constants/buttons.dart';
 import 'package:upper/Constants/panels.dart';
+import 'package:upper/Screens/categories.dart';
+import 'package:upper/Screens/destacados.dart';
 import 'package:upper/Screens/profile.dart';
+import 'package:upper/Screens/login.dart';
 import '../Constants/labels.dart';
 import '../Constants/inputs.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -80,12 +83,6 @@ class _LoginState extends State<Index> {
                   navigator: null,
                 ),
                 but.elementDrawer(
-                  icon: FontAwesomeIcons.moneyBill,
-                  color: kWhiteColour,
-                  text: "Pagos",
-                  navigator: null,
-                ),
-                but.elementDrawer(
                   icon: FontAwesomeIcons.question,
                   color: kWhiteColour,
                   text: "Ayuda",
@@ -95,7 +92,9 @@ class _LoginState extends State<Index> {
                   icon: FontAwesomeIcons.signOutAlt,
                   color: kWhiteColour,
                   text: "Cerrar sesión",
-                  navigator: null,
+                  navigator: () {
+                    Navigator.pushNamed(context, Login.id);
+                  },
                 ),
               ],
             ),
@@ -110,6 +109,28 @@ class _LoginState extends State<Index> {
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 20.0),
                   child: inp.searchBar(text: 'Que desea?'),
+                ),
+                Container(
+                  child: Column(
+                    children: <Widget>[
+                      FlatButton(
+                        child: Text("Categorias"),
+                        onPressed: () {
+                          Navigator.pushNamed(context, Categories.id);
+                        },
+                      ),
+                      FlatButton(
+                        child: Text("Destacados"),
+                        onPressed: () {
+                          Navigator.pushNamed(context, Destacados.id);
+                        },
+                      ),
+                      FlatButton(
+                        child: Text("Mas vendidos"),
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

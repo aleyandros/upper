@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:upper/Screens/categories.dart';
 import 'package:upper/Screens/signup.dart';
 import '../Constants/labels.dart';
 import 'package:upper/Screens/verification.dart';
@@ -23,43 +24,27 @@ class _VestimentaState extends State<Vestimenta> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: kWhiteColour,
+        appBar: AppBar(
+          backgroundColor: kBlueColour,
+          leading: but.backButton(
+            icon: Icons.arrow_back_ios,
+            color: kWhiteColour,
+            navigation: () {
+              Navigator.pushNamed(context, Categories.id);
+            },
+          ),
+          actions: <Widget>[
+            but.backButton(
+              icon: Icons.store,
+              color: kBlueColour,
+              navigation: () {},
+            ),
+          ],
+        ),
         body: SafeArea(
           child: Container(
             child: Column(
               children: <Widget>[
-                Expanded(
-                  flex: kUpGrid,
-                  child: Row(
-                    children: <Widget>[
-                      SizedBox(
-                        width: 20.0,
-                      ),
-                      but.backButton(
-                        icon: Icons.arrow_back_ios,
-                        color: kGreyColour,
-                      ),
-                      Expanded(
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            '',
-                            style: kLabelUpperYellow,
-                          ),
-                        ),
-                      ),
-                      but.backButton(
-                          icon: FontAwesomeIcons.shoppingCart,
-                          color: kBlueColour,
-                          navigation: () {
-                            Navigator.pushNamed(context, Verification.id);
-                          }),
-                      SizedBox(
-                        width: 20.0,
-                      ),
-                    ],
-                  ),
-                ),
                 Expanded(
                   flex: kCenterUpGrid + 4,
                   child: Column(

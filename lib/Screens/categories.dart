@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:upper/Constants/buttons.dart';
 import 'package:upper/Constants/panels.dart';
-import 'package:upper/Screens/verification.dart';
+import 'package:upper/Screens/index.dart';
+import 'package:upper/Screens/vestimenta.dart';
 import '../Constants/labels.dart';
 import 'package:upper/Networking/firebase.dart';
 import '../Constants/inputs.dart';
@@ -28,22 +29,21 @@ class _CategoriesState extends State<Categories> {
         backgroundColor: kWhiteColour,
         appBar: AppBar(
           backgroundColor: kWhiteColour,
-          leading: Builder(
-            builder: (BuildContext context) {
-              return but.backButton(
-                icon: Icons.arrow_back_ios,
-                color: kGreyColour,
-                navigation: () {
-                  Scaffold.of(context).openDrawer();
-                },
-              );
+          leading: but.backButton(
+            icon: Icons.arrow_back_ios,
+            color: kGreyColour,
+            navigation: () {
+              Navigator.pushNamed(context, Index.id);
             },
           ),
           actions: <Widget>[
             but.backButton(
               icon: FontAwesomeIcons.shoppingCart,
               color: kBlueColour,
-            )
+              navigation: () {
+                Navigator.pushNamed(context, Vestimenta.id);
+              },
+            ),
           ],
         ),
         body: SafeArea(

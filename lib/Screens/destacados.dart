@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:upper/Constants/buttons.dart';
 import 'package:upper/Constants/panels.dart';
-import 'package:upper/Screens/verification.dart';
+import 'package:upper/Screens/products.dart';
+import 'package:upper/Screens/index.dart';
 import '../Constants/labels.dart';
 import 'package:upper/Networking/firebase.dart';
 import '../Constants/inputs.dart';
@@ -26,46 +27,31 @@ class _LoginState extends State<Destacados> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: kWhiteColour,
+        appBar: AppBar(
+          backgroundColor: kWhiteColour,
+          leading: but.backButton(
+            icon: Icons.arrow_back_ios,
+            color: kGreyColour,
+            navigation: () {
+              Navigator.pushNamed(context, Index.id);
+            },
+          ),
+          actions: <Widget>[
+            but.backButton(
+              icon: FontAwesomeIcons.shoppingCart,
+              color: kBlueColour,
+              navigation: () {
+                Navigator.pushNamed(context, Products.id);
+              },
+            ),
+          ],
+        ),
         body: SafeArea(
           child: Container(
             color: kWhiteColour,
             child: Column(
               children: <Widget>[
                 Expanded(
-                  flex: kUpGrid,
-                  child: Row(
-                    children: <Widget>[
-                      SizedBox(
-                        width: 20.0,
-                      ),
-                      but.backButton(
-                        icon: Icons.arrow_back_ios,
-                        color: kGreyColour,
-                      ),
-                      Expanded(
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            '',
-                            style: kLabelUpperYellow,
-                          ),
-                        ),
-                      ),
-                      but.backButton(
-                          icon: FontAwesomeIcons.shoppingCart,
-                          color: kBlueColour,
-                          navigation: () {
-                            Navigator.pushNamed(context, Verification.id);
-                          }),
-                      SizedBox(
-                        width: 20.0,
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  flex: kCenterUpGrid + kCenterBottomGrid + kBottomGrid,
                   child: GridView.count(
                     primary: false,
                     padding: EdgeInsets.all(20),
@@ -74,30 +60,6 @@ class _LoginState extends State<Destacados> {
                     crossAxisCount: 2,
                     childAspectRatio: (170 / 210),
                     children: <Widget>[
-                      pan.ImageDestac(
-                          image: 'hamburguesa.png',
-                          description: 'Black burguer',
-                          price: '\$15.000'),
-                      pan.ImageDestac(
-                          image: 'hamburguesa.png',
-                          description: 'Black burguer',
-                          price: '\$15.000'),
-                      pan.ImageDestac(
-                          image: 'hamburguesa.png',
-                          description: 'Black burguer',
-                          price: '\$15.000'),
-                      pan.ImageDestac(
-                          image: 'hamburguesa.png',
-                          description: 'Black burguer',
-                          price: '\$15.000'),
-                      pan.ImageDestac(
-                          image: 'hamburguesa.png',
-                          description: 'Black burguer',
-                          price: '\$15.000'),
-                      pan.ImageDestac(
-                          image: 'hamburguesa.png',
-                          description: 'Black burguer',
-                          price: '\$15.000'),
                       pan.ImageDestac(
                           image: 'hamburguesa.png',
                           description: 'Black burguer',

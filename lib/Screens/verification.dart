@@ -2,13 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:upper/Constants/buttons.dart';
 import 'package:upper/Screens/signup.dart';
+
+import 'package:upper/Screens/index.dart';
 import 'package:upper/Screens/profile.dart';
 import '../Constants/labels.dart';
 import 'package:upper/Networking/firebase.dart';
 import '../Constants/inputs.dart';
 import 'package:pinput/pin_put/pin_put.dart';
 import 'package:pinput/pin_put/pin_put_state.dart';
-
 
 class Verification extends StatefulWidget {
   static final id = "verification";
@@ -28,7 +29,6 @@ class _LoginState extends State<Verification> {
     );
   }
 
-
   Inputs inp = Inputs();
   Buttons but = Buttons();
   String _codigo;
@@ -38,44 +38,36 @@ class _LoginState extends State<Verification> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: kBlueColour,
+          leading: but.backButton(
+            icon: Icons.arrow_back_ios,
+            color: kWhiteColour,
+            navigation: () {
+              Navigator.pushNamed(context, Signup.id);
+            },
+          ),
+          title: Center(
+            child: Text(
+              'Verificación',
+              style: kLabelTitleWhite,
+            ),
+          ),
+          actions: <Widget>[
+            but.backButton(
+              icon: Icons.store,
+              color: kBlueColour,
+              navigation: () {
+                Navigator.pushNamed(context, Index.id);
+              },
+            ),
+          ],
+        ),
         body: SafeArea(
           child: Container(
             color: kBlueColour,
             child: Column(
               children: <Widget>[
-                Expanded(
-                  flex: kUpGrid,
-                  child: Row(
-                    children: <Widget>[
-                      SizedBox(
-                        width: 20.0,
-                      ),
-                      but.backButton(
-                        icon: Icons.arrow_back_ios,
-                        color: kWhiteColour,
-                        navigation: () {
-                          Navigator.pushNamed(context, Signup.id);
-                        },
-                      ),
-                      Expanded(
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Verificación',
-                            style: kLabelTitleWhite,
-                          ),
-                        ),
-                      ),
-                      but.backButton(
-                        icon: Icons.shop,
-                        color: kBlueColour,
-                      ),
-                      SizedBox(
-                        width: 30.0,
-                      ),
-                    ],
-                  ),
-                ),
                 Expanded(
                   flex: 1,
                   child: Container(
@@ -122,15 +114,18 @@ class _LoginState extends State<Verification> {
                                   // pin es el codigo ingresado y se devuelve cuando se ha ingresado los 4 numeros.
                                   onSubmit: (String pin) {
                                     setState(() {
-                                      _codigo=pin;
+                                      _codigo = pin;
                                     });
                                   },
                                   focusNode: _pinPutFocusNode,
                                   controller: _pinPutController,
-                                  submittedFieldDecoration: _pinPutDecoration.copyWith(
-                                      borderRadius: BorderRadius.circular(20)),
+                                  submittedFieldDecoration:
+                                      _pinPutDecoration.copyWith(
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
                                   selectedFieldDecoration: _pinPutDecoration,
-                                  followingFieldDecoration: _pinPutDecoration.copyWith(
+                                  followingFieldDecoration:
+                                      _pinPutDecoration.copyWith(
                                     borderRadius: BorderRadius.circular(5),
                                     border: Border.all(
                                       color: kYellowColour.withOpacity(.5),
@@ -145,11 +140,7 @@ class _LoginState extends State<Verification> {
                       SizedBox(
                         height: 10,
                       ),
-                      but.biggestButton(
-                          text: "Finalizar",
-                          onPress: () {
-                            Navigator.pushNamed(context, Profile.id);
-                          }),
+                      but.biggestButton(text: "Finalizar", onPress: () {}),
                     ],
                   ),
                 ),

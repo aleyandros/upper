@@ -25,54 +25,44 @@ class _LoginState extends State<Signup> {
   String _celular;
   String _email;
   String _backendError = "";
-  RegExp validacion = new RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$');
-  RegExp validacionEmail = new RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$') ;
+  RegExp validacion =
+      new RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$');
+  RegExp validacionEmail = new RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: kBlueColour,
+          leading: but.backButton(
+            icon: Icons.arrow_back_ios,
+            color: kWhiteColour,
+            navigation: () {
+              Navigator.pushNamed(context, Login.id);
+            },
+          ),
+          title: Center(
+            child: Text(
+              'Regístrate',
+              style: kLabelTitleWhite,
+            ),
+          ),
+          actions: <Widget>[
+            but.backButton(
+              icon: Icons.store,
+              color: kBlueColour,
+              navigation: () {
+                Navigator.pushNamed(context, Verification.id);
+              },
+            ),
+          ],
+        ),
         body: SafeArea(
           child: Container(
             color: kBlueColour,
             child: Column(
               children: <Widget>[
-                Expanded(
-                  flex: kUpGrid,
-                  child: Row(
-                    children: <Widget>[
-                      SizedBox(
-                        width: 20.0,
-                      ),
-                      but.backButton(
-                        icon: Icons.arrow_back_ios,
-                        color: kWhiteColour,
-                        navigation: () {
-                          Navigator.pushNamed(context, Login.id);
-                        },
-                      ),
-                      Expanded(
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Registrate',
-                            style: kLabelTitleWhite,
-                          ),
-                        ),
-                      ),
-                      but.backButton(
-                        icon: Icons.shop,
-                        color: kBlueColour,
-                        navigation: () {
-                          Navigator.pushNamed(context, Verification.id);
-                        },
-                      ),
-                      SizedBox(
-                        width: 30.0,
-                      ),
-                    ],
-                  ),
-                ),
                 Visibility(
                   visible: _backendError.isNotEmpty,
                   child: Text(
@@ -129,7 +119,6 @@ class _LoginState extends State<Signup> {
                                     validate: (String value) {
                                       if (value.isEmpty) {
                                         return "Escribe tu apellido";
-
                                       }
                                       return null;
                                     },
@@ -143,15 +132,14 @@ class _LoginState extends State<Signup> {
                                     description: "Correo electrónico",
                                     correction: "ex: upper@mail.co",
                                     validate: (String value) {
-                                      bool temp= validacionEmail.hasMatch(value);
+                                      bool temp =
+                                          validacionEmail.hasMatch(value);
 
                                       if (value.isEmpty) {
                                         return "Escribe tu correo";
+                                      } else if (!temp) {
+                                        return "Ingrese un correo valido.";
                                       }
-                                      else if(!temp)
-                                        {
-                                          return"Ingrese un correo valido.";
-                                        }
                                       return null;
                                     },
                                     onSave: (value) {
@@ -180,7 +168,7 @@ class _LoginState extends State<Signup> {
                                     correction: "No valido",
                                     icon: Icons.lock,
                                     validate: (String value) {
-                                      bool temp=validacion.hasMatch(value);
+                                      bool temp = validacion.hasMatch(value);
                                       if (!temp) {
                                         return "La contraseña deben contener al menos ocho \ncaracteres, incluyendo al menos 1 letra y 1 número.";
                                       } else {

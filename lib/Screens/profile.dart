@@ -48,46 +48,21 @@ class _LoginState extends State<Profile> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: kWhiteColour,
+        appBar: AppBar(
+          backgroundColor: kWhiteColour,
+          leading: but.backButton(
+            icon: Icons.arrow_back_ios,
+            color: kGreyColour,
+            navigation: () {
+              Navigator.pushNamed(context, Index.id);
+            },
+          ),
+        ),
         body: SafeArea(
           child: Container(
             color: kWhiteColour,
             child: Column(
               children: <Widget>[
-                Expanded(
-                  flex: kUpGrid,
-                  child: Row(
-                    children: <Widget>[
-                      SizedBox(
-                        width: 20.0,
-                      ),
-                      but.backButton(
-                          icon: Icons.arrow_back_ios,
-                          color: kGreyColour,
-                          navigation: () {
-                            Navigator.pushNamed(context, Index.id);
-                          }),
-                      Expanded(
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            "",
-                            style: kLabelTitleWhite,
-                          ),
-                        ),
-                      ),
-                      but.backButton(
-                          icon: FontAwesomeIcons.shoppingCart,
-                          color: kBlueColour,
-                          navigation: () {
-                            Navigator.pushNamed(context, Verification.id);
-                          }),
-                      SizedBox(
-                        width: 20.0,
-                      ),
-                    ],
-                  ),
-                ),
                 Expanded(
                   flex: kCenterUpGrid + kCenterBottomGrid,
                   child: Stack(
