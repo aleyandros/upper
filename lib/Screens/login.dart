@@ -34,6 +34,7 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+
         body: Stack(
           alignment: AlignmentDirectional.center,
           children: <Widget>[
@@ -60,7 +61,7 @@ class _LoginState extends State<Login> {
             Column(
               children: <Widget>[
                 Expanded(
-                  flex: 6,
+                  flex: 4,
                   child: SizedBox(),
                 ),
                 Expanded(
@@ -76,12 +77,6 @@ class _LoginState extends State<Login> {
                     'Inicia sesión o crea una\ncuenta.',
                     textAlign: TextAlign.center,
                     style: kLabelSubtitleWhite,
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: SizedBox(
-                    height: 20,
                   ),
                 ),
                 Visibility(
@@ -252,30 +247,34 @@ class _LoginState extends State<Login> {
                     height: 30,
                   ),
                 ),
-                Expanded(
-                  flex: 1,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                Flexible(
+                  flex: 4,
+                  child: Column(
                     children: <Widget>[
-                      Text(
-                        '¿No tienes cuenta? ',
-                        style: kLabelBlue,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            '¿No tienes cuenta? ',
+                            style: kLabelBlue,
+                          ),
+                          FlatButton(
+                            child: Text(
+                              "crea una",
+                              style: kLabelUnderlineBlue,
+                            ),
+                            onPressed: () {
+                              Navigator.pushNamed(context, Signup.id);
+                            },
+                          )
+                        ],
                       ),
-                      FlatButton(
-                        child: Text(
-                          "crea una",
-                          style: kLabelUnderlineBlue,
-                        ),
-                        onPressed: () {
-                          Navigator.pushNamed(context, Signup.id);
-                        },
+                      Expanded(
+                        flex:2,
+                        child: SizedBox(),
                       )
                     ],
                   ),
-                ),
-                Expanded(
-                  flex: 6,
-                  child: SizedBox(),
                 ),
               ],
             ),
