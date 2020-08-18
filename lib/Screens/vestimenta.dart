@@ -28,14 +28,14 @@ class _VestimentaState extends State<Vestimenta> {
           backgroundColor: kWhiteColour,
           leading: but.backButton(
             icon: Icons.arrow_back_ios,
-            color: kWhiteColour,
+            color: kGreyColour,
             navigation: () {
               Navigator.pushNamed(context, Categories.id);
             },
           ),
           actions: <Widget>[
             but.backButton(
-              icon: Icons.store,
+              icon: FontAwesomeIcons.shoppingCart,
               color: kBlueColour,
               navigation: () {},
             ),
