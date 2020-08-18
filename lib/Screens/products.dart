@@ -50,6 +50,7 @@ class _LoginState extends State<Products> {
                 Expanded(
                   child: ListView(
                     children: <Widget>[
+                      inp.dividerElements2(),
                       pan.Images(image1: 'hamburguesa.png'),
                       inp.dividerElements3(),
                       pan.Texts(text: 'Black burger', style: kLabelTitleBlack),

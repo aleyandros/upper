@@ -25,7 +25,7 @@ class _VestimentaState extends State<Vestimenta> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: kBlueColour,
+          backgroundColor: kWhiteColour,
           leading: but.backButton(
             icon: Icons.arrow_back_ios,
             color: kWhiteColour,
