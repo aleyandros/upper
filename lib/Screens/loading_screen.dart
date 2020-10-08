@@ -2,8 +2,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:upper/Networking/firebase.dart';
+import 'package:upper/Screens/index.dart';
 import 'package:upper/Screens/login.dart';
-import 'package:upper/Screens/profile.dart';
+import 'index.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class LoadingScreen extends StatefulWidget {
@@ -29,7 +30,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) {
-          return Profile(
+          return Index(
             userDocumentSnapshot: userSnapshot,
             user: user,
           );

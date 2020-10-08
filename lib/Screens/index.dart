@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:upper/Constants/buttons.dart';
@@ -10,19 +11,35 @@ import '../Constants/labels.dart';
 import '../Constants/inputs.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../Constants/grid.dart';
+import 'package:upper/Networking/firebase.dart';
 
 class Index extends StatefulWidget {
   static final id = "index";
+  Index({this.userDocumentSnapshot, this.user});
+  final userDocumentSnapshot;
+  final user;
   @override
-  _LoginState createState() => _LoginState();
+  _IndexState createState() => _IndexState();
 }
 
-class _LoginState extends State<Index> {
+class _IndexState extends State<Index> {
+  String _nombre;
   final _formKey = GlobalKey<FormState>();
   Inputs inp = Inputs();
   Buttons but = Buttons();
   Grid grid = Grid();
   Panels pan = Panels();
+  @override
+  void initState() {
+    super.initState();
+    updateUI(widget.userDocumentSnapshot, widget.user);
+  }
+
+  void updateUI(dynamic snapshot, dynamic user) {
+    setState(() {
+      _nombre = snapshot['nombre'];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,8 +83,18 @@ class _LoginState extends State<Index> {
                   icon: FontAwesomeIcons.userAlt,
                   color: kWhiteColour,
                   text: "Mi perfil",
-                  navigator: () {
-                    Navigator.pushNamed(context, Profile.id);
+                  navigator: () async {
+                    setState(() {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) {
+                          return Profile(
+                            userDocumentSnapshot: widget.userDocumentSnapshot,
+                            user: widget.user,
+                          );
+                        }),
+                      );
+                    });
                   },
                 ),
                 but.elementDrawer(
@@ -93,7 +120,8 @@ class _LoginState extends State<Index> {
                   color: kWhiteColour,
                   text: "Cerrar sesión",
                   navigator: () {
-                    Navigator.pushNamed(context, Login.id);
+                    signOut();
+                    Navigator.pushReplacementNamed(context, Login.id);
                   },
                 ),
               ],

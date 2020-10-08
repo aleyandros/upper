@@ -7,7 +7,7 @@ import 'package:upper/Networking/authExceptionHandler.dart';
 import 'package:upper/Networking/firebase.dart';
 import 'package:upper/Screens/signup.dart';
 import '../Constants/labels.dart';
-import 'profile.dart';
+import 'index.dart';
 
 class Login extends StatefulWidget {
   static final id = "login";
@@ -34,7 +34,6 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-
         body: Stack(
           alignment: AlignmentDirectional.center,
           children: <Widget>[
@@ -219,7 +218,7 @@ class _LoginState extends State<Login> {
                                         Navigator.pushReplacement(
                                           context,
                                           MaterialPageRoute(builder: (context) {
-                                            return Profile(
+                                            return Index(
                                               userDocumentSnapshot:
                                                   userSnapshot,
                                               user: user,
@@ -270,7 +269,7 @@ class _LoginState extends State<Login> {
                         ],
                       ),
                       Expanded(
-                        flex:2,
+                        flex: 2,
                         child: SizedBox(),
                       )
                     ],

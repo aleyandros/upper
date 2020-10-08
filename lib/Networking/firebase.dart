@@ -44,6 +44,7 @@ Future<String> register({
   try {
     AuthResult res = await _auth.createUserWithEmailAndPassword(
         email: email, password: pass);
+
     if (res.user != null) {
       _status = AuthResultStatus.successful;
       await db.collection("Users").document(res.user.uid).setData(data);

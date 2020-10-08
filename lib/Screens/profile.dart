@@ -54,7 +54,7 @@ class _LoginState extends State<Profile> {
             icon: Icons.arrow_back_ios,
             color: kGreyColour,
             navigation: () {
-              Navigator.pushNamed(context, Index.id);
+              Navigator.pop(context);
             },
           ),
         ),
