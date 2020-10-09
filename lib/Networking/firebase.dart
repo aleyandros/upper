@@ -136,8 +136,12 @@ Future<String> updateUserDocument({
 }
 
 Future<FirebaseUser> getCurrentUser() async {
-  FirebaseUser user = await _auth.currentUser();
-  return user;
+  try {
+    FirebaseUser user = await _auth.currentUser();
+    return user;
+  } catch (e) {
+    return e;
+  }
 }
 
 Future<void> signOut() {
@@ -145,7 +149,11 @@ Future<void> signOut() {
 }
 
 Future getUserDocument(FirebaseUser user) async {
-  DocumentSnapshot document =
-      await db.collection("Users").document(user.uid).get();
-  return document;
+  try {
+    DocumentSnapshot document =
+        await db.collection("Users").document(user.uid).get();
+    return document;
+  } catch (e) {
+    return e;
+  }
 }

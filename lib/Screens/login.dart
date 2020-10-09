@@ -79,7 +79,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 Visibility(
-                  visible: _backendError.isNotEmpty,
+                  visible: true,
                   child: Text(
                     _backendError,
                     style: kLabelWhite,
@@ -103,87 +103,65 @@ class _LoginState extends State<Login> {
                               padding: const EdgeInsets.all(20.0),
                               child: ListView(
                                 children: <Widget>[
-                                  Container(
-                                    child: Expanded(
-                                      flex: 1,
-                                      child: SizedBox(),
-                                    ),
-                                  ),
-                                  Container(
-                                    child: Expanded(
-                                      flex: 3,
-                                      child: Column(
-                                        children: <Widget>[
-                                          Align(
-                                            alignment: Alignment.centerLeft,
-                                            child: Text(
-                                              'Correo Electronico:',
-                                              style: kLabelSignupBlue,
+                                  Column(
+                                    children: <Widget>[
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          'Correo Electronico:',
+                                          style: kLabelSignupBlue,
+                                        ),
+                                      ),
+                                      TextFormField(
+                                          keyboardType:
+                                              TextInputType.emailAddress,
+                                          decoration: const InputDecoration(
+                                            suffixIcon: Icon(
+                                              Icons.mail,
                                             ),
+                                            hintText: 'diego35.da@gmail.com',
                                           ),
-                                          TextFormField(
-                                              keyboardType:
-                                                  TextInputType.emailAddress,
-                                              decoration: const InputDecoration(
-                                                suffixIcon: Icon(
-                                                  Icons.mail,
-                                                ),
-                                                hintText:
-                                                    'diego35.da@gmail.com',
-                                              ),
-                                              validator: (value) {
-                                                if (value.isEmpty) {
-                                                  return 'ex: upper@mail.co';
-                                                }
-                                                return null;
-                                              },
-                                              onSaved: (string) {
-                                                _email = string;
-                                              }),
-                                        ],
-                                      ),
-                                    ),
+                                          validator: (value) {
+                                            if (value.isEmpty) {
+                                              return 'ex: upper@mail.co';
+                                            }
+                                            return null;
+                                          },
+                                          onSaved: (string) {
+                                            _email = string;
+                                          }),
+                                    ],
                                   ),
-                                  Container(
-                                    child: Expanded(
-                                      flex: 3,
-                                      child: Column(
-                                        children: <Widget>[
-                                          Align(
-                                            alignment: Alignment.centerLeft,
-                                            child: Text(
-                                              'Contraseña:',
-                                              style: kLabelSignupBlue,
+                                  Column(
+                                    children: <Widget>[
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          'Contraseña:',
+                                          style: kLabelSignupBlue,
+                                        ),
+                                      ),
+                                      TextFormField(
+                                          obscureText: true,
+                                          decoration: const InputDecoration(
+                                            suffixIcon: Icon(
+                                              Icons.lock,
                                             ),
+                                            hintText: '**********',
                                           ),
-                                          TextFormField(
-                                              obscureText: true,
-                                              decoration: const InputDecoration(
-                                                suffixIcon: Icon(
-                                                  Icons.lock,
-                                                ),
-                                                hintText: '**********',
-                                              ),
-                                              validator: (value) {
-                                                if (value.isEmpty) {
-                                                  return '******';
-                                                }
-                                                return null;
-                                              },
-                                              onSaved: (string) {
-                                                _pass = string;
-                                              }),
-                                        ],
-                                      ),
-                                    ),
+                                          validator: (value) {
+                                            if (value.isEmpty) {
+                                              return '******';
+                                            }
+                                            return null;
+                                          },
+                                          onSaved: (string) {
+                                            _pass = string;
+                                          }),
+                                    ],
                                   ),
                                   Container(
-                                    child: Expanded(
-                                      flex: 1,
-                                      child: SizedBox(
-                                        height: 10,
-                                      ),
-                                    ),
+                                    height: 10,
                                   ),
                                 ],
                               ),
@@ -207,12 +185,13 @@ class _LoginState extends State<Login> {
                                       email: _email,
                                       pass: _pass,
                                     );
-
+                                    print(feedback + "bro");
                                     FirebaseUser user = await getCurrentUser();
                                     // only because of the edit profile, remove when index is added
                                     var userSnapshot =
                                         await getUserDocument(user);
                                     setState(() {
+                                      print("inside and" + feedback);
                                       _backendError = feedback;
                                       if (user != null) {
                                         Navigator.pushReplacement(
@@ -242,7 +221,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 Container(
-                  child: SizedBox(
+                  child: Container(
                     height: 30,
                   ),
                 ),
@@ -270,7 +249,7 @@ class _LoginState extends State<Login> {
                       ),
                       Expanded(
                         flex: 2,
-                        child: SizedBox(),
+                        child: Container(),
                       )
                     ],
                   ),
