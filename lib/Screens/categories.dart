@@ -63,22 +63,7 @@ class _CategoriesState extends State<Categories> {
                         padding: EdgeInsets.symmetric(vertical: 20.0),
                         child: inp.searchBar(text: 'Que desea?'),
                       ),
-                      Row(
-                        children: <Widget>[
-                          Container(
-                            child: pan.tiendaCat(
-                                image: "baila.png",
-                                nombre: "Baila International Footwear",
-                                estado: "Abierto"),
-                          ),
-                          Container(
-                            child: pan.tiendaCat(
-                                image: "baila.png",
-                                nombre: "Baila International Footwear",
-                                estado: "Abierto"),
-                          ),
-                        ],
-                      ),
+
                       Container(
                         child: pan.tiendaCat(
                             image: "baila.png",

@@ -96,11 +96,16 @@ class Inputs {
               height: 40,
               child: TextFormField(
                 decoration: InputDecoration(
+                  focusedBorder: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                  errorBorder: InputBorder.none,
+                  disabledBorder: InputBorder.none,
                   icon: Icon(
                     Icons.search,
                     color: kGreyColour,
                   ),
                   hintText: text,
+
                 ),
               ),
             ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:upper/Screens/signup.dart';
 import '../Constants/labels.dart';
+import '../Constants/buttons.dart';
 
 class Onboarding3 extends StatefulWidget {
   static final id = "onboarding3";
@@ -11,6 +12,7 @@ class Onboarding3 extends StatefulWidget {
 }
 
 class _Onboarding3State extends State<Onboarding3> {
+  Buttons but = Buttons();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -45,20 +47,12 @@ class _Onboarding3State extends State<Onboarding3> {
               ),
             ),
             Expanded(
-              flex: 2 ,
-              child: Container(
-                width: 280,
-                child: RaisedButton(
-                  color: kYellowColour,
-                  shape: RoundedRectangleBorder(
-                      borderRadius:
-                      new BorderRadius.circular(15.0)),
-                  onPressed: () {},
-                  child: Text(
-                    'SIGUIENTE',
-                    style: kLabelButtonWhite,
-                  ),
-                ),
+              flex: 2,
+              child: but.biggestButton(
+                  text: 'SIGUIENTE',
+                  width: 280.0,
+                  height: 30.0,
+                  onPress: (){}
               ),
             ),
             Expanded(

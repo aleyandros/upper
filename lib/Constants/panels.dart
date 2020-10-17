@@ -150,8 +150,7 @@ class Panels {
         children: <Widget>[
           Expanded(
             child: Container(
-              width: 370,
-              height: 140,
+
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.vertical(
                   top: Radius.circular(20.0),
@@ -164,8 +163,7 @@ class Panels {
             ),
           ),
           Container(
-            width: 370,
-            height: 60,
+
             decoration: BoxDecoration(
               color: kWhiteColour,
               borderRadius: BorderRadius.vertical(
@@ -219,8 +217,6 @@ class Panels {
         children: <Widget>[
           Expanded(
             child: Container(
-              width: 170,
-              height: 140,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.vertical(
                   top: Radius.circular(20.0),
@@ -233,8 +229,6 @@ class Panels {
             ),
           ),
           Container(
-            width: 170,
-            height: 60,
             decoration: BoxDecoration(
               color: kWhiteColour,
               borderRadius: BorderRadius.vertical(

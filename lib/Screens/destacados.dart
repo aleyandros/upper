@@ -72,6 +72,26 @@ class _LoginState extends State<Destacados> {
                           image: 'hamburguesa.png',
                           description: 'Black burguer',
                           price: '\$15.000'),
+                      pan.ImageDestac(
+                          image: 'hamburguesa.png',
+                          description: 'Black burguer',
+                          price: '\$15.000'),
+                      pan.ImageDestac(
+                          image: 'hamburguesa.png',
+                          description: 'Black burguer',
+                          price: '\$15.000'),
+                      pan.ImageDestac(
+                          image: 'hamburguesa.png',
+                          description: 'Black burguer',
+                          price: '\$15.000'),
+                      pan.ImageDestac(
+                          image: 'hamburguesa.png',
+                          description: 'Black burguer',
+                          price: '\$15.000'),
+                      pan.ImageDestac(
+                          image: 'hamburguesa.png',
+                          description: 'Black burguer',
+                          price: '\$15.000'),
                     ],
                   ),
                 ),
