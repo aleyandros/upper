@@ -5,6 +5,7 @@ class Buttons {
   double _width;
   double _height;
 
+  //Boton amarillo grande
   Widget biggestButton({@required text, width, height, Function onPress}) {
     _width = width != null ? _width = width : _width = 314;
     _height = height != null ? _height = height : _height = 50;
@@ -25,6 +26,7 @@ class Buttons {
     );
   }
 
+  //Opcion de retroceder
   Widget backButton({@required icon, color, navigation}) {
     return IconButton(
       icon: Icon(

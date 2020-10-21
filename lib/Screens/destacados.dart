@@ -51,13 +51,22 @@ class _LoginState extends State<Destacados> {
             color: kWhiteColour,
             child: Column(
               children: <Widget>[
+                //inicia solo el escrito de destacados
+                inp.dividerElements3(),
+                Align(
+                    alignment: Alignment.centerLeft,
+                    child:
+                        pan.Texts(text: 'Destacados', style: kLabelTitleBlack)),
+                inp.dividerElements4(),
                 Expanded(
+                  // se hacer una cuadricula de 2xn en donde se organizan los elementos
                   child: GridView.count(
                     primary: false,
                     padding: EdgeInsets.all(20),
                     crossAxisSpacing: 34,
                     mainAxisSpacing: 30,
                     crossAxisCount: 2,
+                    // esta es la relacion de tamano
                     childAspectRatio: (170 / 210),
                     children: <Widget>[
                       pan.ImageDestac(
