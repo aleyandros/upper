@@ -6,6 +6,10 @@ import 'package:upper/Constants/buttons.dart';
 
 class Panels {
   Buttons but = Buttons();
+
+  //Imagen grande
+  //Utilizado en:
+  //-Products
   Widget Images({@required image1, image2, image3, image4, image5}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -37,6 +41,10 @@ class Panels {
     );
   }
 
+  //Subtitulo negro
+  //Utilizado en:
+  //-Destacados
+  //-Products
   Widget Texts({@required text, @required style}) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -47,6 +55,9 @@ class Panels {
     );
   }
 
+  //Linea divisora entre ingredientes
+  //Utilizado en:
+  //-Products
   Widget DividerIngredients() {
     return Container(
       width: double.infinity,
@@ -55,6 +66,9 @@ class Panels {
     );
   }
 
+  //Icono, texto y checkbox del ingrediente
+  //Utilizado en:
+  //-Productos
   Widget Ingredients({@required text, image, action}) {
     return Column(
       children: <Widget>[
@@ -75,6 +89,9 @@ class Panels {
     );
   }
 
+  //Contador productos + boton agregar al carrito
+  //Utilizado en:
+  //-Products
   Widget Count() {
     return Column(
       children: <Widget>[
@@ -130,6 +147,10 @@ class Panels {
     );
   }
 
+  //Card tienda/categoria
+  //Utilizado en:
+  //-Caategories
+  //-Vestimenta
   Widget tiendaCat({
     @required image,
     nombre,
@@ -197,6 +218,9 @@ class Panels {
     );
   }
 
+  //Card producto destacado
+  //Utilizado en:
+  //-Destacados
   Widget ImageDestac({
     @required image,
     description,
@@ -270,78 +294,4 @@ class Panels {
     );
   }
 
-  Widget ImageDestac2({
-    @required image,
-    description,
-    price,
-  }) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: kGreyColour,
-            offset: Offset(-3.0, 1.0),
-            blurRadius: 13.0,
-          ),
-        ],
-      ),
-      child: Column(
-        children: <Widget>[
-          Container(
-            width: 170,
-            height: 140,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(20.0),
-              ),
-              image: DecorationImage(
-                image: ExactAssetImage('images/$image'),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          Container(
-            width: 170,
-            height: 60,
-            decoration: BoxDecoration(
-              color: kWhiteColour,
-              borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(20.0),
-              ),
-            ),
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 11.0, vertical: 10.0),
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text('$price', style: kLabelSubtitleBlack),
-                      SizedBox(
-                        width: 30,
-                        height: 20,
-                        child: IconButton(
-                          icon: Icon(Icons.favorite_border),
-                          onPressed: () {},
-                          color: kBlueColour,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      description,
-                      style: kLabelSubtitleBlack,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 }
