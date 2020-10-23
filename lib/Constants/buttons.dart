@@ -56,7 +56,8 @@ class Buttons {
     );
   }
 
-  Widget bigIconsButton({@required icon, color, navigation}) {
+  //Boton para editar foto de perfil
+  Widget editButton({@required icon, color, navigation}) {
     return IconButton(
       icon: Icon(
         icon,
@@ -67,6 +68,7 @@ class Buttons {
     );
   }
 
+  //Boton de opciones menu hamburguesa
   Widget elementDrawer(
       {@required icon, @required color, @required navigator, @required text}) {
     return Row(

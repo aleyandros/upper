@@ -100,7 +100,7 @@ class _LoginState extends State<Profile> {
                                     Positioned(
                                       bottom: -15,
                                       right: 90,
-                                      child: but.bigIconsButton(
+                                      child: but.editButton(
                                           icon: Icons.edit, color: kBlueColour),
                                     )
                                   ],
