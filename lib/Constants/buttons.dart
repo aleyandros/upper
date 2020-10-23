@@ -6,6 +6,13 @@ class Buttons {
   double _height;
 
   //Boton amarillo grande
+  //Utilizado en:
+  //-Los 3 Onboardings
+  //-Login
+  //-SignUp
+  //-Verification
+  //-Profile
+  //-Panels ( Widget Count() )
   Widget biggestButton({@required text, width, height, Function onPress}) {
     _width = width != null ? _width = width : _width = 314;
     _height = height != null ? _height = height : _height = 50;
@@ -26,8 +33,19 @@ class Buttons {
     );
   }
 
-  //Opcion de retroceder
-  Widget backButton({@required icon, color, navigation}) {
+  //Opcion de retroceder (Sujeto a cambios)
+  //Utilizado en:
+  //-Grid ( Widget Up() )
+  //-Panels ( Widget Count() )
+  //-Categories
+  //-Destacados
+  //-Index
+  //-Productos
+  //-Profile
+  //-SignUp
+  //-Verification
+  //-Vestimenta
+  Widget smallButton({@required icon, color, navigation}) {
     return IconButton(
       icon: Icon(
         icon,
@@ -53,7 +71,7 @@ class Buttons {
       {@required icon, @required color, @required navigator, @required text}) {
     return Row(
       children: <Widget>[
-        backButton(icon: icon, color: color),
+        smallButton(icon: icon, color: color),
         FlatButton(
           onPressed: navigator,
           child: Text(

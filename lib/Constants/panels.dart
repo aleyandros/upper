@@ -99,7 +99,7 @@ class Panels {
               ),
               child: Row(
                 children: <Widget>[
-                  but.backButton(
+                  but.smallButton(
                     icon: Icons.add,
                   ),
                   SizedBox(
@@ -112,7 +112,7 @@ class Panels {
                   SizedBox(
                     width: 20,
                   ),
-                  but.backButton(
+                  but.smallButton(
                     icon: Icons.remove,
                   ),
                 ],

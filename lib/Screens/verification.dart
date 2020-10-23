@@ -40,7 +40,7 @@ class _LoginState extends State<Verification> {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: kBlueColour,
-          leading: but.backButton(
+          leading: but.smallButton(
             icon: Icons.arrow_back_ios,
             color: kWhiteColour,
             navigation: () {
@@ -54,7 +54,7 @@ class _LoginState extends State<Verification> {
             ),
           ),
           actions: <Widget>[
-            but.backButton(
+            but.smallButton(
               icon: Icons.store,
               color: kBlueColour,
               navigation: () {

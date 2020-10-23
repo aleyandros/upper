@@ -27,7 +27,7 @@ class _LoginState extends State<Products> {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: kWhiteColour,
-          leading: but.backButton(
+          leading: but.smallButton(
             icon: Icons.arrow_back_ios,
             color: kGreyColour,
             navigation: () {
@@ -35,7 +35,7 @@ class _LoginState extends State<Products> {
             },
           ),
           actions: <Widget>[
-            but.backButton(
+            but.smallButton(
               icon: FontAwesomeIcons.shoppingCart,
               color: kBlueColour,
               navigation: () {},

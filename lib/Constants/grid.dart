@@ -14,7 +14,7 @@ class Grid {
           SizedBox(
             width: 20.0,
           ),
-          but.backButton(icon: icon1, color: color1, navigation: navigation1),
+          but.smallButton(icon: icon1, color: color1, navigation: navigation1),
           Expanded(
             child: Align(
               alignment: Alignment.center,
@@ -24,7 +24,7 @@ class Grid {
               ),
             ),
           ),
-          but.backButton(icon: icon2, color: color2, navigation: navigation2),
+          but.smallButton(icon: icon2, color: color2, navigation: navigation2),
           SizedBox(
             width: 30.0,
           ),

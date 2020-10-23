@@ -49,7 +49,7 @@ class _IndexState extends State<Index> {
           backgroundColor: kWhiteColour,
           leading: Builder(
             builder: (BuildContext context) {
-              return but.backButton(
+              return but.smallButton(
                 icon: FontAwesomeIcons.bars,
                 color: kGreyColour,
                 navigation: () {
@@ -59,7 +59,7 @@ class _IndexState extends State<Index> {
             },
           ),
           actions: <Widget>[
-            but.backButton(
+            but.smallButton(
               icon: FontAwesomeIcons.shoppingCart,
               color: kBlueColour,
             )

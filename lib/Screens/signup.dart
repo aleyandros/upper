@@ -35,7 +35,7 @@ class _LoginState extends State<Signup> {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: kBlueColour,
-          leading: but.backButton(
+          leading: but.smallButton(
             icon: Icons.arrow_back_ios,
             color: kWhiteColour,
             navigation: () {
@@ -49,7 +49,7 @@ class _LoginState extends State<Signup> {
             ),
           ),
           actions: <Widget>[
-            but.backButton(
+            but.smallButton(
               icon: Icons.store,
               color: kBlueColour,
               navigation: () {

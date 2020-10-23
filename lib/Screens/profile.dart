@@ -50,7 +50,7 @@ class _LoginState extends State<Profile> {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: kWhiteColour,
-          leading: but.backButton(
+          leading: but.smallButton(
             icon: Icons.arrow_back_ios,
             color: kGreyColour,
             navigation: () {
