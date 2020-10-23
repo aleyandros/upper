@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'labels.dart';
 
 class Inputs {
+
+  //Titulo inputs
+  //Utilizado en:
+  //-SignUp
+  //-Profile
   Widget textForm(text) {
     return Align(
       alignment: Alignment.centerLeft,
@@ -12,6 +17,7 @@ class Inputs {
     );
   }
 
+  //No se sabe, si usted no lo hizo diego borrelo
   Widget textNameForm(text) {
     return Align(
       alignment: Alignment.center,
@@ -22,6 +28,10 @@ class Inputs {
     );
   }
 
+  //Input reutilizable
+  //Utilizado en:
+  //-SignUp
+  //-Profile
   Widget inputForm(
       {@required description,
       correction,
@@ -47,30 +57,39 @@ class Inputs {
     );
   }
 
+  //Distancia entre inputs
   Widget dividerElements2() {
     return SizedBox(
       height: 20,
     );
   }
 
+  //Distancia entre inputs
   Widget dividerElements() {
     return SizedBox(
       height: 10,
     );
   }
 
+  //Distancia entre inputs
   Widget dividerElements3() {
     return SizedBox(
       height: 30,
     );
   }
 
+  //Distancia entre inputs
   Widget dividerElements4() {
     return SizedBox(
       height: 5,
     );
   }
 
+  //Barra de búsqueda
+  //Utilizado en:
+  //-Categories
+  //-Index
+  //-Vestimenta
   Widget searchBar({@required text}) {
     return Align(
       alignment: Alignment.center,

@@ -6,7 +6,8 @@ import 'labels.dart';
 class Grid {
   Buttons but = Buttons();
 
-  Widget Up({icon1, icon2, color1, color2, navigation1, navigation2, text}) {
+  //No utilizado todavia
+  Widget appBar({icon1, icon2, color1, color2, navigation1, navigation2, text}) {
     return Expanded(
       flex: kUpGrid,
       child: Row(
